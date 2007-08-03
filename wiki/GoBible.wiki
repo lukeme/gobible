@@ -1,0 +1,8 @@
+#summary Introduction to the Go Bible Project.
+
+= Go Bible Project =
+
+Go Bible consists of two core components:
+
+  * GoBibleCore - Engine that runs on mobile phone
+  * GoBibleCreator - Tool for combining Bible texts and GoBibleCore into phone application
