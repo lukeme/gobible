@@ -1,0 +1,10 @@
+#summary The GoBibleCore Engine.
+
+= Introduction =
+
+The GoBibleCore engine supports both MIDP 1.0 and MIDP 2.0 phones. It is the software which displays the Bible text on the phone and allows the user to browse, search, send SMSes, etc.
+
+
+= Details =
+
+_To come..._
