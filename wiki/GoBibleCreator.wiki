@@ -1,0 +1,12 @@
+#summary Tool for creating Go Bible applications.
+
+= Introduction =
+
+GoBibleCreator is a java command line tool for converting ThML or OSIS Bible texts into mobile phone applications.
+
+
+= Details =
+
+Please see http://go-bible.org/developer
+
+_More to come..._
