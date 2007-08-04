@@ -1,0 +1,18 @@
+This page will list release notes for Go Bible Core and Go Bible Creator.
+
+= Introduction =
+
+For version history up to 2.2.3, refer to [http://gobible.jolon.org/news.html Go Bible News]
+
+
+= Details =
+
+_Please expand this section as the project develops_.
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
+
+
+
