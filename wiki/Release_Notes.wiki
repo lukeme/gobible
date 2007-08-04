@@ -1,4 +1,4 @@
-This page will list release notes for Go Bible Core and Go Bible Creator.
+_This page will list release notes for Go Bible Core and Go Bible Creator._
 
 = Introduction =
 
@@ -13,6 +13,5 @@ Add your content here.  Format your content with:
   * Text in *bold* or _italic_
   * Headings, paragraphs, and lists
   * Automatic links to other wiki pages
-
 
 
