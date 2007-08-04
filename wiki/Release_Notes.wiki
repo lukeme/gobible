@@ -1,4 +1,4 @@
-_This page will list release notes for Go Bible Core and Go Bible Creator._
+#summary This page will list release notes for Go Bible Core and Go Bible Creator.
 
 = Introduction =
 
