@@ -9,7 +9,7 @@ Building JavaME applications can be difficult since they depend on various API l
 
 The first step is to check out the source code using svn. Go to the Source tab above and follow the Google code instructions for how to use svn to get the source.
 
-Change into the GoBibleCore directory where you will find the ReadMe.txt file. The ReadMe.txt file contains additional instructions for configuring the build.xml file to successfully build GoBibleCore.
+Change into the GoBibleCore directory where you will find the `ReadMe.txt` file. The `ReadMe.txt` file contains additional instructions for configuring the build.xml file to successfully build GoBibleCore.
 
 Some tools GoBibleCore requires for building:
 
