@@ -15,6 +15,6 @@ Some tools GoBibleCore requires for building:
 
   * [http://ant.apache.org/ Ant]
   * [http://antenna.sourceforge.net/ Antenna]
-  * [http://java.sun.com/products/sjwtoolkit/ WTK]
+  * [http://java.sun.com/products/sjwtoolkit/ Wireless Toolkit]
   * [http://www.mpowerplayer.com/ MPowerPlayer]
   * [http://www.microemu.org/ Microemulator]
