@@ -13,8 +13,8 @@ Change into the GoBibleCore directory where you will find the `ReadMe.txt` file.
 
 Some tools GoBibleCore requires for building:
 
-  * [http://ant.apache.org Ant]
-  * [http://antenna.sourceforge.org Antenna]
+  * [http://ant.apache.org/ Ant]
+  * [http://antenna.sourceforge.net/ Antenna]
   * [http://java.sun.com/products/sjwtoolkit/ WTK]
   * [http://www.mpowerplayer.com/ MPowerPlayer]
   * [http://www.microemu.org/ Microemulator]
