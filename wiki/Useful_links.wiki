@@ -1,0 +1,13 @@
+#summary Some useful links relating to the Go Bible project
+
+= Introduction =
+
+For discussions on all aspects of Go Bible, the must visit link is 
+* [http://jolon.org/vanillaforum/ Go Bible Forum]
+
+For an unbiased description of Go Bible, see
+* [http://en.wikipedia.org/wiki/Go_Bible Go Bible Wikipedia article]
+
+== Other useful links are ==
+* [http://dfhmch.googlepages.com/home David's Go Bible Repository]
+* [http://www.box.net/shared/7pemx6xzcb/rss.xml RSS feed to David's box.net shared files and folders]
