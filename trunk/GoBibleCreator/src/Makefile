@@ -2,7 +2,7 @@
 GoBibleCreator.jar: *.class Manifest
 	jar cfm GoBibleCreator.jar Manifest *.class jolon
 
-*.class: *.java jolon.jar
+*.class: *.java
 	javac *.java
 
 clean:
