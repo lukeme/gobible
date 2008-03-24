@@ -8,6 +8,8 @@ Go Bible consists of two core components:
   * GoBibleCore - Engine that runs on mobile phones.
   * GoBibleCreator - Tool for combining Bible texts and GoBibleCore into a phone application.
 
+Both components use the GoBibleDataFormat.
+
 The Go Bible source code has been placed in the public domain. Read more about the GoBibleLicense.
 
 == See also ==
