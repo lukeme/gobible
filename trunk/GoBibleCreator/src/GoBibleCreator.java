@@ -6,9 +6,14 @@
 //  For the glory of our Lord Jesus Christ and the furtherance of His Kingdom.
 //  This file is placed into the public domain.
 //
+import java.awt.*;
+import java.awt.font.*;
+import java.awt.geom.*;
+import java.awt.image.*;
 import java.io.*;
 import java.util.*;
 import java.util.jar.*;
+import javax.imageio.*;
 import jolon.xml.*;
 
 /**
@@ -54,7 +59,7 @@ public abstract class GoBibleCreator
 	 * Version of Go Bible to be written to JAR and JAD files. Major version will
 	 * be the MIDP version. eg. MIDP 2.0 version will be 2.x.x.
 	 **/
-	public final static String SUB_VERSION = "2.3";
+	public final static String SUB_VERSION = "2.4";
 
 	/** Style changes are written out as flags in a single byte. **/
 	public final static char STYLE_RED = 1;
@@ -96,6 +101,9 @@ public abstract class GoBibleCreator
 	
 	/** Info string. **/
 	protected static String infoString = null;
+
+	/** Custom font string. **/
+	protected static String customFontString = null;
 	
 	/** Text alignment. **/
 	protected static int align = ALIGN_LEFT;
@@ -107,6 +115,11 @@ public abstract class GoBibleCreator
 		non-English UI strings specified in the Collections file.
      **/	
 	protected static HashMap uiProperties = new HashMap();
+	
+	/** Identical to the keys used in the books HashMap except retains the order
+	    of books from the XML file (the HashMap does not retain order).
+		@see parseBooks **/
+	protected static Vector<String> bookNames = new Vector<String>();
 
 	/** 
 	 * The starting point. 
@@ -117,9 +130,21 @@ public abstract class GoBibleCreator
 	 **/
     public static void main (String args[]) throws IOException
 	{
-		if (args.length < 2 || (args.length % 2) != 0)
+		if (args.length < 1)
 		{
 			System.out.println("Usage: java -jar XmlFilePath CollectionsFilePath");
+		}
+		else if (args.length == 1)
+		{
+			// No Collections file specified so generate 
+			// Collections file from XML
+			File xmlFile = new File(args[0]);
+			HashMap books = parseXml(xmlFile);
+			
+			if (books != null)
+			{
+				generateCollectionsFile(new File(xmlFile.getParent(), "Collections.txt"), xmlFile.getName(), books);
+			}
 		}
 		else
 		{
@@ -143,6 +168,43 @@ public abstract class GoBibleCreator
 	 * @param collectionsFile Collections File
 	 */
 	public static void create(File xmlFile, File collectionsFile) throws IOException
+	{
+		HashMap books = parseXml(xmlFile);
+		
+		if (books != null)
+		{
+			parseUiProperties();
+			
+			// Parse the collections file
+			Vector collections = parseCollectionsFile(collectionsFile, books);
+			
+			if (customFontString != null)
+			{
+				generateCustomFont(customFontString, collectionsFile, books);
+			}
+			
+			// Open GoBibleCore based on MIDP version 
+			String goBibleJarFileName = "GoBibleCore/GoBibleCore2.jar";
+			
+			// Set some fields based on the MIDP version
+			if (midpVersion.equals("MIDP-1.0"))
+			{
+				versionString = "1." + SUB_VERSION;
+				goBibleJarFileName = "GoBibleCore/GoBibleCore1.jar";
+			}
+			
+			JarFile goBibleJar = new JarFile(goBibleJarFileName);
+			
+			// Write out the Go Bible data files into the same directory as the collections file
+			writeCollections(collectionsFile.getParentFile(), collections, books, goBibleJar);
+		}
+	}
+
+	/**
+	 * Parses the XML file as OSIS or ThML format and extracts and returns
+	 * books as a HashMap.
+	 */
+	public static HashMap parseXml(File xmlFile) throws IOException
 	{
 		System.out.println("Parsing " + xmlFile.getName() + "...");
 	
@@ -181,31 +243,44 @@ public abstract class GoBibleCreator
 			else
 			{
 				System.out.println("Error: XML file does not contain OSIS or ThML content: " + xmlFile.getName());
-				return;
+				return null;
 			}
 		}
 		
 		HashMap books = creator.parse(parent);
 		
-		parseUiProperties();
+		return books;
+	}
+	
+	/**
+	 * No collections file was specified so generating collections file.
+	 */
+	public static void generateCollectionsFile(File collectionsFile, String xmlFileName, HashMap books) throws IOException
+	{
+		System.out.println("No Collections file specified, generating: " + collectionsFile.getPath());
 		
-		// Parse the collections file
-		Vector collections = parseCollectionsFile(collectionsFile, books);
+		PrintWriter writer = new PrintWriter(new FileWriter(collectionsFile));
 		
-		// Open GoBibleCore based on MIDP version 
-		String goBibleJarFileName = "GoBibleCore/GoBibleCore2.jar";
+		// Make the collection name the file name without extension
+		int dotIndex = xmlFileName.lastIndexOf('.');
+		String collectionName = xmlFileName;
 		
-		// Set some fields based on the MIDP version
-		if (midpVersion.equals("MIDP-1.0"))
+		if (dotIndex > 0)
 		{
-			versionString = "1." + SUB_VERSION;
-			goBibleJarFileName = "GoBibleCore/GoBibleCore1.jar";
+			collectionName = collectionName.substring(0, dotIndex);
 		}
 		
-		JarFile goBibleJar = new JarFile(goBibleJarFileName);
+		writer.println("Collection: " + collectionName);
 		
-		// Write out the Go Bible data files into the same directory as the collections file
-		writeCollections(collectionsFile.getParentFile(), collections, books, goBibleJar);
+		// Print out books
+		for (String bookName: bookNames)
+		{
+			writer.println("Book: " + bookName);
+		}
+		
+		writer.close();
+		
+		System.out.println("Collections file generated.");
 	}
 
 	/**
@@ -241,6 +316,8 @@ public abstract class GoBibleCreator
 						
 						// Add book to the lookup table
 						books.put(book.name, book);
+						
+						bookNames.add(book.name);
 					}
 				}
 			}
@@ -306,6 +383,11 @@ public abstract class GoBibleCreator
 			else if (line.startsWith("Info:"))
 			{
 				infoString = line.substring(5).trim();
+			}
+			// Test if line specifies Custom-Font property
+			else if (line.startsWith("Custom-Font:"))
+			{
+				customFontString = line.substring(12).trim();
 			}
 			// Test if line specifies Language-Code property
 			else if (line.startsWith("Language-Code:"))
@@ -866,6 +948,105 @@ public abstract class GoBibleCreator
 		jarOutputStream.write(byteArray, 0, byteArray.length);
 	}
 
+	/**
+	 * Goes through all of the characters in the verses and generates font bitmaps for them.
+	 * This is currently experimental and shouldn't be used for any production collections.
+	 **/
+	public static void generateCustomFont(String customFontString, File collectionsFile, HashMap books) throws IOException
+	{
+		System.out.println("Generating fonts...");
+		
+		// Create a glyph directory
+		File glyphDirectory = new File(collectionsFile.getParent(), "glyphs");
+		
+		if (!glyphDirectory.exists())
+		{
+			glyphDirectory.mkdir();
+		}
+		
+		Font font = new Font(customFontString, Font.PLAIN, 14);
+		
+		BufferedImage testFontImage = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
+		
+		Graphics2D testGraphics = (Graphics2D) testFontImage.getGraphics();
+		testGraphics.setFont(font);
+		FontMetrics fontMetrics = testGraphics.getFontMetrics();
+		int ascent = fontMetrics.getAscent();
+		
+		FontRenderContext testFontRenderContext = testGraphics.getFontRenderContext();
+		
+		HashMap<Integer, BufferedImage> glyphs = new HashMap<Integer, BufferedImage>();
+		
+		for (Object bookObject: books.values())
+		{
+			Book book = (Book) bookObject;
+			
+			for (Object chapterObject: book.chapters)
+			{
+				Chapter chapter = (Chapter) chapterObject;
+				
+				char[] charArray = chapter.allVerses.toString().toCharArray();
+				
+				int startIndex = 0;
+				int c = 0;
+				
+				// Go through verse data and convert characters not yet converted
+				for (int i = 0; i < charArray.length; i++)
+				{
+					c |= charArray[i];
+					
+					// If next character will be a Tamil vowel then skip to next character
+					if (i < charArray.length - 1 && charArray[i + 1] >= '\u0BBE' && charArray[i + 1] <= '\u0BCD')
+					{
+						startIndex = i;
+						c <<= 16;
+						continue;
+					}
+					
+					if (!glyphs.containsKey(c))
+					{
+						Rectangle2D stringBounds = font.getStringBounds(charArray, startIndex, i + 1, testFontRenderContext);
+						
+						String hexString = Integer.toHexString(c);
+						
+						System.out.println(hexString + ": " + ((char) c) + ", height: " + fontMetrics.getHeight());
+						
+						BufferedImage fontImage = new BufferedImage((int) stringBounds.getWidth(), fontMetrics.getHeight(), BufferedImage.TYPE_INT_ARGB);
+						
+						Graphics2D graphics = (Graphics2D) fontImage.getGraphics();
+
+						graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+						graphics.setColor(Color.BLACK);
+						graphics.setFont(font);
+
+						// Convert character to a bitmap
+						graphics.drawString(new String(charArray, startIndex, i - startIndex + 1), 0, ascent);
+						
+						//ImageIO.write(fontImage, "PNG", new File(glyphDirectory, hexString + ".png"));
+						
+						glyphs.put(c, fontImage);
+					}
+					
+					startIndex = i + 1;
+					c = 0;
+				}
+			}
+		}
+		
+		// Go through HashMap and generate new HashMap of glyph indexes.
+		HashMap<Integer, Integer> glyphIndexes = new HashMap<Integer, Integer>();
+		
+		int index = 0;
+		for (int key: glyphs.keySet())
+		{
+			glyphIndexes.put(key, index);
+			ImageIO.write(glyphs.get(key), "PNG", new File(glyphDirectory, index + ".png"));
+			index++;
+		}
+		
+		System.out.println("Fonts generated.");
+
+	}
 	
 	public abstract HashMap parse(XMLObject xml);
 
