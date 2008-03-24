@@ -1,0 +1,18 @@
+#summary The Go Bible Data Format
+
+The JAR file contents:
+
+  * {{{Bible Data/Index}}}
+  * {{{[Book Name]/Index}}}
+  * {{{[Book Name]/[Book Name] [File Number]}}} (these files contain the verse data)
+
+Example for a collection which only contains the book of Matthew:
+
+  * Bible Data/Index
+  * Bible Data/Matthew/Index
+  * Bible Data/Matthew/Matthew 0
+  * Bible Data/Matthew/Matthew 1
+  * Bible Data/Matthew/Matthew 2
+  * Bible Data/Matthew/Matthew 3
+  * Bible Data/Matthew/Matthew 4
+  * Bible Data/Matthew/Matthew 5
