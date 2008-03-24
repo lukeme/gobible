@@ -1,10 +1,17 @@
 #summary The Go Bible Data Format
 
-The JAR file contents:
+This page describes the data files that are produced by GoBibleCreator and packaged into the final JAR. It also describes their format.
 
-  * {{{Bible Data/Index}}}
-  * {{{Bible Data/[Book Name]/Index}}}
-  * {{{Bible Data/[Book Name]/[Book Name] [File Number]}}} (these files contain the verse data)
+There are three types of data files produced by GoBibleCreator:
+  * Global Index File
+  * Book Index Files
+  * Verse Data Files
+
+These appears in the JAR file as follows:
+
+  * {{{Bible Data/Index}}} (Global Index File)
+  * {{{Bible Data/[Book Name]/Index}}} (Book Index File)
+  * {{{Bible Data/[Book Name]/[Book Name] [File Number]}}} (Verse Data File)
 
 Example for a collection which only contains the book of Matthew:
 
@@ -17,7 +24,9 @@ Example for a collection which only contains the book of Matthew:
   * Bible Data/Matthew/Matthew 4
   * Bible Data/Matthew/Matthew 5
 
-The files named "Matthew n" contain the actual verse data. GoBibleCreator splits the verse data into multiple files to speed up file loading and also to limit the memory used. When a user searches or navigates in Go Bible the GoBibleCore will load each verse data file as it is needed releasing the previous one. This optimisation is probably not needed on modern devices which can load entire books into memory very quickly.
+The files named "Matthew n" contain the actual verse data. GoBibleCreator splits the verse data into multiple files to speed up file loading and also to limit the memory used . GoBibleCreator currently has a maximum file size limit set to 24KB, therefore if a book exceeds this size it will result in multiple verse data files. When a user searches or navigates in Go Bible, the GoBibleCore will load each verse data file as it is needed releasing the previous one. This optimisation may not be needed on modern devices which may load entire books into memory very quickly (this hasn't been tested).
+
+The following sections describe the format of each data file type.
 
 ===The Global Index File: {{{Bible Data/Index}}}===
 
@@ -36,6 +45,8 @@ It has the following format:
     * {{{int}}} - Number of characters in the chapter (this is required so that GoBibleCore knows where in the verse data file a chapter begins)
     * {{{byte}}} - Number of verses in the chapter
 
+Note: the data types used above are the standard Java data types and GoBibleCreator uses DataOutputStream to create the file. This means that the utf strings are not standard UTF-8 but are Java's UTF-8 format. See the DataOutputStream class reference in the Java API documentation for more information about it's format.
+
 ===The Book Index File: {{{Bible Data/[Book Name]/Index}}}===
 
 The Book Index File simply contains the length of each verse of every chapter. This is used to quickly locate a verse.
@@ -43,3 +54,16 @@ The Book Index File simply contains the length of each verse of every chapter. T
   * {{{[For each chapter]}}}
     * {{{[For each verse]}}}
       * short - Number of characters in the verse
+
+===The Verse Data File: {{{Bible Data/[Book Name]/Index}}}===
+
+Unlike the Java utf strings stored in the Global Index File, the verse data is stored as true UTF-8. File has the following format:
+
+  * {{{int}}} - Total number of bytes of verse data (not characters)
+  * {{{byte[]}}} - The raw UTF-8 bytes of the verse data
+
+Note that the verse data consists of all verses from all chapters for this particular verse data file appended together. There is no separation between verses. ie. There is no end-of-line delimiter or null terminator. The only way to know the length of the verse is to use the verse lengths from the Book Index File.
+
+The only unusual aspect of the verse data is that style markup can be inserted. Currently this has only been used to indicate Christ's Words in red. However, it could also be used for italics, however the code is not there in GoBibleCreator or GoBibleCore, even though it would be relatively simple to add.
+
+The red style is turned on with the UTF-8 character 0x1 and turned off again with the same character. Since Go Bible has very little need for standard ASCII control characters I envisage that any UTF-8 character below 10 could probably be used without an issue.
