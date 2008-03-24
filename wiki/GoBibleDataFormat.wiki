@@ -7,7 +7,7 @@ There are three types of data files produced by GoBibleCreator:
   * Book Index Files
   * Verse Data Files
 
-These appears in the JAR file as follows:
+These appear in the JAR file as follows:
 
   * {{{Bible Data/Index}}} (Global Index File)
   * {{{Bible Data/[Book Name]/Index}}} (Book Index File)
