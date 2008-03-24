@@ -57,7 +57,7 @@ The Book Index File simply contains the length of each verse of every chapter. T
 
 ===The Verse Data File: {{{Bible Data/[Book Name]/Index}}}===
 
-Unlike the Java utf strings stored in the Global Index File, the verse data is stored as true UTF-8. File has the following format:
+Unlike the Java utf strings stored in the Global Index File, the verse data is stored as true UTF-8. The file has the following format:
 
   * {{{int}}} - Total number of bytes of verse data (not characters)
   * {{{byte[]}}} - The raw UTF-8 bytes of the verse data
