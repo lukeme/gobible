@@ -48,7 +48,7 @@ It has the following format:
     * {{{int}}} - Number of characters in the chapter (this is required so that GoBibleCore knows where in the verse data file a chapter begins)
     * {{{byte}}} - Number of verses in the chapter
 
-Note: the data types used above are the standard Java data types. GoBibleCreator uses DataOutputStream to create the file. This means that the utf strings are not standard UTF-8 but are Java's UTF-8 format. Also all primitive types are signed. See the DataOutputStream class reference in the Java API documentation for more information about it's format.
+Note: the data types used above are the standard Java data types. GoBibleCreator uses [http://java.sun.com/javase/6/docs/api/java/io/DataOutputStream.html DataOutputStream] to create the file. This means that the utf strings are not standard UTF-8 but are Java's UTF-8 format. Also all primitive types are signed. See the [http://java.sun.com/javase/6/docs/api/java/io/DataOutputStream.html DataOutputStream] class reference in the Java API documentation for more information about it's format.
 
 ===The Book Index File: {{{Bible Data/[Book Name]/Index}}}===
 
