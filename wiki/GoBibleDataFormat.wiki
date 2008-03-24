@@ -3,8 +3,8 @@
 The JAR file contents:
 
   * {{{Bible Data/Index}}}
-  * {{{[Book Name]/Index}}}
-  * {{{[Book Name]/[Book Name] [File Number]}}} (these files contain the verse data)
+  * {{{Bible Data/[Book Name]/Index}}}
+  * {{{Bible Data/[Book Name]/[Book Name] [File Number]}}} (these files contain the verse data)
 
 Example for a collection which only contains the book of Matthew:
 
@@ -16,3 +16,5 @@ Example for a collection which only contains the book of Matthew:
   * Bible Data/Matthew/Matthew 3
   * Bible Data/Matthew/Matthew 4
   * Bible Data/Matthew/Matthew 5
+
+The files named "Matthew n" contain the actual verse data. GoBibleCreator splits the verse data into multiple files to speed up file loading and also to limit the memory used. When a user searches or navigates in Go Bible the GoBibleCore will load each verse data file as it is needed releasing the previous one. This optimisation is probably not needed on modern devices which can load entire books into memory very quickly.
