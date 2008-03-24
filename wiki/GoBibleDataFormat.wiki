@@ -13,7 +13,7 @@ These appear in the JAR file as follows:
   * {{{Bible Data/[Book Name]/Index}}} (Book Index File)
   * {{{Bible Data/[Book Name]/[Book Name] [File Number]}}} (Verse Data File)
 
-Example for a collection which only contains the book of Matthew:
+As an example, here are the files produced for a collection which only contains the book of Matthew:
 
   * Bible Data/Index
   * Bible Data/Matthew/Index
