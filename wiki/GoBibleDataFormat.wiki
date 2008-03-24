@@ -38,7 +38,7 @@ It has the following format:
  * {{{[For each book]}}}
   * {{{utf}}} - Book display name
   * {{{utf}}} - Book's file name (used for both the book directory and verse data files, this an ASCII safe version of the file name as opposed to the display name which can contain any unicode characters)
-  * {{{short}}} - Start chapter (This field is only used if a book must be split across different collections (ie. JAR files), this was a requirement when devices had JAR size restrictions smaller than the largest book (Psalms). As far as I am aware no MIDP 2.0 phone has a memory limit which requires books to be split. Nonetheless it is here if it is needed.)
+  * {{{short}}} - Start chapter (Chapter numbers start at 1 or whatever was read in from the source ThML or OSIS file, so theoretically a chapter could start at 0 but I haven't seen this yet, and it would result in the user seeing a chapter 0 on screen. The only time when this field would be larger than 1 is if a book must be split across different collections (ie. JAR files), this was a requirement when devices had JAR size restrictions smaller than the largest book (Psalms). As far as I am aware no MIDP 2.0 phone has a memory limit which requires books to be split.)
   * {{{short}}} - Number of chapters (if the book has been split then this will contain only the number of chapters in this collection, but normally it will be the total number of chapters in the book)
   * {{{[For each chapter]}}}
     * {{{byte}}} - The file number which contains this chapter (so that GoBibleCore knows where to look for it)
