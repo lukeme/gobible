@@ -58,7 +58,7 @@ The Book Index File simply contains the length of each verse of every chapter. T
     * {{{[For each verse]}}}
       * short - Number of characters in the verse
 
-===The Verse Data File: {{{Bible Data/[Book Name]/Index}}}===
+===The Verse Data File: {{{Bible Data/[Book Name]/[Book Name] [File Number]}}}===
 
 Unlike the Java utf strings stored in the Global Index File, the verse data is stored as true UTF-8. The file has the following format:
 
