@@ -4,11 +4,12 @@
 
 For version history up to 2.2.3, refer to [http://gobible.jolon.org/news.html Go Bible News]
 
-
 == 2.2.5 ==
 
 * GoBibleCreator no longer takes ThML/OSIS files in as command line arguments. Instead the source text is specified in the Source-Text property in the Collections.txt file. However, if a ThML/OSIS file specified on the command line then GoBibleCreator will generate a Collections.txt file for it (but won't generate the actual collection JARs/JADs).
 * GoBibleCreator can now be run from a different directory and GoBibleCreator will still be able to locate the GoBibleCore directory which is in the same directory as the GoBibleCreator.jar.
+* Have added all Collections.txt files used to generate the collections on the Go Bible website to the repository.
+* Have begun adding source texts to the repository but have only got up to Hungarian as svn commit seems to be temperamental with large files.
 
 == 2.2.4 ==
 
