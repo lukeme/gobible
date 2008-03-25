@@ -1,8 +1,8 @@
 #!
 set version=2.2.5
 
-if (! -e $version) then
-	mkdir $version
+if (! -e ../Release/$version) then
+	mkdir -p ../Release/$version
 endif
 
 foreach file ( * )
