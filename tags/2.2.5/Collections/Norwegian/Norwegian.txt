@@ -1,0 +1,220 @@
+Info: Thanks to Oddmund Nordgaard for providing the translation.
+Source-Text: ../../source_text/Norwegian/norsk.xml
+Book-Name-Map: Gen, Genesis
+Book-Name-Map: Exod, Exodus
+Book-Name-Map: Lev, Leviticus
+Book-Name-Map: Num, Numbers
+Book-Name-Map: Deut, Deuteronomy
+Book-Name-Map: Josh, Joshua
+Book-Name-Map: Judg, Judges
+Book-Name-Map: Ruth, Ruth
+Book-Name-Map: 1Sam, 1 Samuel
+Book-Name-Map: 2Sam, 2 Samuel
+Book-Name-Map: 1Kgs, 1 Kings
+Book-Name-Map: 2Kgs, 2 Kings
+Book-Name-Map: 1Chr, 1 Chronicles
+Book-Name-Map: 2Chr, 2 Chronicles
+Book-Name-Map: Ezra, Ezra
+Book-Name-Map: Neh, Nehemiah
+Book-Name-Map: Esth, Esther
+Book-Name-Map: Job, Job
+Book-Name-Map: Ps, Psalm
+Book-Name-Map: Prov, Proverbs
+Book-Name-Map: Eccl, Ecclesiastes
+Book-Name-Map: Song, Song of Songs
+Book-Name-Map: Isa, Isaiah
+Book-Name-Map: Jer, Jeremiah
+Book-Name-Map: Lam, Lamentations
+Book-Name-Map: Ezek, Ezekiel
+Book-Name-Map: Dan, Daniel
+Book-Name-Map: Hos, Hosea
+Book-Name-Map: Joel, Joel
+Book-Name-Map: Amos, Amos
+Book-Name-Map: Obad, Obadiah
+Book-Name-Map: Jonah, Jonah
+Book-Name-Map: Mic, Micah
+Book-Name-Map: Nah, Nahum
+Book-Name-Map: Hab, Habakkuk
+Book-Name-Map: Zeph, Zephaniah
+Book-Name-Map: Hag, Haggai
+Book-Name-Map: Zech, Zechariah
+Book-Name-Map: Mal, Malachi
+Book-Name-Map: Matt, Matthew
+Book-Name-Map: Mark, Mark
+Book-Name-Map: Luke, Luke
+Book-Name-Map: John, John
+Book-Name-Map: Acts, Acts
+Book-Name-Map: Rom, Romans
+Book-Name-Map: 1Cor, 1 Corinthians
+Book-Name-Map: 2Cor, 2 Corinthians
+Book-Name-Map: Gal, Galatians
+Book-Name-Map: Eph, Ephesians
+Book-Name-Map: Phil, Phillippians
+Book-Name-Map: Col, Colossians
+Book-Name-Map: 1Thess, 1 Thessalonians
+Book-Name-Map: 2Thess, 2 Thessalonians
+Book-Name-Map: 1Tim, 1 Timothy
+Book-Name-Map: 2Tim, 2 Timothy
+Book-Name-Map: Titus, Titus
+Book-Name-Map: Phlm, Philemon
+Book-Name-Map: Heb, Hebrews
+Book-Name-Map: Jas, James
+Book-Name-Map: 1Pet, 1 Peter
+Book-Name-Map: 2Pet, 2 Peter
+Book-Name-Map: 1John, 1 John
+Book-Name-Map: 2John, 2 John
+Book-Name-Map: 3John, 3 John
+Book-Name-Map: Jude, Jude
+Book-Name-Map: Rev, Revelations
+Collection: Norsk
+Book: Gen
+Book: Exod
+Book: Lev
+Book: Num
+Book: Deut
+Book: Josh
+Book: Judg
+Book: Ruth
+Book: 1Sam
+Book: 2Sam
+Book: 1Kgs
+Book: 2Kgs
+Book: 1Chr
+Book: 2Chr
+Book: Ezra
+Book: Neh
+Book: Esth
+Book: Job
+Book: Ps
+Book: Prov
+Book: Eccl
+Book: Song
+Book: Isa
+Book: Jer
+Book: Lam
+Book: Ezek
+Book: Dan
+Book: Hos
+Book: Joel
+Book: Amos
+Book: Obad
+Book: Jonah
+Book: Mic
+Book: Nah
+Book: Hab
+Book: Zeph
+Book: Hag
+Book: Zech
+Book: Mal
+Book: Matt
+Book: Mark
+Book: Luke
+Book: John
+Book: Acts
+Book: Rom
+Book: 1Cor
+Book: 2Cor
+Book: Gal
+Book: Eph
+Book: Phil
+Book: Col
+Book: 1Thess
+Book: 2Thess
+Book: 1Tim
+Book: 2Tim
+Book: Titus
+Book: Phlm
+Book: Heb
+Book: Jas
+Book: 1Pet
+Book: 2Pet
+Book: 1John
+Book: 2John
+Book: 3John
+Book: Jude
+Book: Rev
+Collection: Genesis
+Book: Gen
+Collection: Exodus Levi
+Book: Exod
+Book: Lev
+Collection: Numbers Deuteronomy
+Book: Num
+Book: Deut
+Collection: Josh Judges Ruth
+Book: Josh
+Book: Judg
+Book: Ruth
+Collection: Samuel
+Book: 1Sam
+Book: 2Sam
+Collection: Kings
+Book: 1Kgs
+Book: 2Kgs
+Collection: Chronicles
+Book: 1Chr
+Book: 2Chr
+Collection: Ezra Neh Esther Job
+Book: Ezra
+Book: Neh
+Book: Esth
+Book: Job
+Collection: Psalms
+Book: Ps
+Collection: Solomon
+Book: Prov
+Book: Eccl
+Book: Song
+Collection: Isaiah
+Book: Isa
+Collection: Jeremiah Lament
+Book: Jer
+Book: Lam
+Collection: Ezekiel
+Book: Ezek
+Collection: Prophets
+Book: Dan
+Book: Hos
+Book: Joel
+Book: Amos
+Book: Obad
+Book: Jonah
+Book: Mic
+Book: Nah
+Book: Hab
+Book: Zeph
+Book: Hag
+Book: Zech
+Book: Mal
+Collection: Matt Mark
+Book: Matt
+Book: Mark
+Collection: Luke John
+Book: Luke
+Book: John
+Collection: Acts
+Book: Acts
+Collection: Pauls Letters
+Book: Rom
+Book: 1Cor
+Book: 2Cor
+Book: Gal
+Book: Eph
+Book: Phil
+Book: Col
+Book: 1Thess
+Book: 2Thess
+Book: 1Tim
+Book: 2Tim
+Book: Titus
+Book: Phlm
+Collection: Heb to Revelation NO
+Book: Heb
+Book: Jas
+Book: 1Pet
+Book: 2Pet
+Book: 1John
+Book: 2John
+Book: 3John
+Book: Jude
+Book: Rev
