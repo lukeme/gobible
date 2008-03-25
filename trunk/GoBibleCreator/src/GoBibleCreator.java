@@ -21,15 +21,16 @@ import jolon.xml.*;
  * ThML formats. See OsisConverter and ThmlConverter classes for format
  * specific information. 
  * <p>
- * Usage: java -jar GoBibleCreator.jar XmlFilePath CollectionsFilePath
+ * Usage: java -jar GoBibleCreator.jar CollectionsFilePath
  * </p>
  * <p>
- * The collections file specifies the name of the collection and the 
- * contents of the collection.
+ * The collections file specifies the name of the collection, the 
+ * contents of the collection, and the location of the source text.
  * </p>
  * It has the following format:
  * <p>
  * <pre>
+ * Source-Text: Source.thml
  * Collection: Collection Name
  * Book: Book Name, Start Chapter, End Chapter
  * Book: Book Name, Start Chapter, End Chapter
@@ -41,6 +42,7 @@ import jolon.xml.*;
  * included.
  * An example would be:
  * <pre>
+ * Source-Text: KJV.thml
  * Collection: Gospels
  * Book: Matthew
  * Book: Mark
@@ -59,7 +61,7 @@ public abstract class GoBibleCreator
 	 * Version of Go Bible to be written to JAR and JAD files. Major version will
 	 * be the MIDP version. eg. MIDP 2.0 version will be 2.x.x.
 	 **/
-	public final static String SUB_VERSION = "2.4";
+	public final static String SUB_VERSION = "2.5";
 
 	/** Style changes are written out as flags in a single byte. **/
 	public final static char STYLE_RED = 1;
@@ -128,35 +130,35 @@ public abstract class GoBibleCreator
 	 * the second argument is the XML file (OSIS or ThML), and the third 
 	 * argument is the collections file as specified above.
 	 **/
-    public static void main (String args[]) throws IOException
+    public static void main(String args[]) throws IOException
 	{
 		if (args.length < 1)
 		{
-			System.out.println("Usage: java -jar XmlFilePath CollectionsFilePath");
+			System.out.println("Usage: java -jar CollectionsFilePath");
 		}
-		else if (args.length == 1)
-		{
-			// No Collections file specified so generate 
-			// Collections file from XML
-			File xmlFile = new File(args[0]);
-			HashMap books = parseXml(xmlFile);
-			
-			if (books != null)
+		else 
+		{			
+			for (String arg: args)
 			{
-				generateCollectionsFile(new File(xmlFile.getParent(), "Collections.txt"), xmlFile.getName(), books);
-			}
-		}
-		else
-		{
-			// Create each package
-			int numberOfPackages = args.length / 2;
-			
-			for (int i = 0; i < numberOfPackages; i++)
-			{
-				File xmlFile = new File(args[i * 2]);
-				File collectionsFile = new File(args[1 + (i * 2)]);
-				
-				create(xmlFile, collectionsFile);
+				// If a thml or xml file has been specified then generate a collections file
+				// from it and do nothing else, otherwise we assume a collections file
+				// has been specified and will generate the collections from it
+				if ((arg.toLowerCase().endsWith(".xml") || arg.toLowerCase().endsWith(".thml")))
+				{
+					// No Collections file specified so generate 
+					// Collections file from XML
+					File xmlFile = new File(args[0]);
+					HashMap books = parseXml(xmlFile);
+					
+					if (books != null)
+					{
+						generateCollectionsFile(new File(xmlFile.getParent(), "Collections.txt"), xmlFile.getName(), books);
+					}
+				}
+				else
+				{
+					create(new File(arg));
+				}
 			}
 		}
     }
@@ -164,11 +166,16 @@ public abstract class GoBibleCreator
 	/**
 	 * Parses the XML and collection files and writes out the Go Bible data
 	 * files in the same directory as the collection files.
-	 * @param xmlFile OSIS or ThML file
 	 * @param collectionsFile Collections File
 	 */
-	public static void create(File xmlFile, File collectionsFile) throws IOException
+	public static void create(File collectionsFile) throws IOException
 	{
+		// Extract xml file from the collectionsFile property: Source-Text
+		String sourceTextPath = extractSourceTextPath(collectionsFile);
+		
+		// The sourceTextPath is relative to the collectionsFile
+		File xmlFile = new File(collectionsFile.getParent(), sourceTextPath);
+	
 		HashMap books = parseXml(xmlFile);
 		
 		if (books != null)
@@ -193,11 +200,77 @@ public abstract class GoBibleCreator
 				goBibleJarFileName = "GoBibleCore/GoBibleCore1.jar";
 			}
 			
-			JarFile goBibleJar = new JarFile(goBibleJarFileName);
+			// Work out the current directory of the GoBibleCreator.jar
+			File jarDirectory = getJarDirectory();
+			File jarFile = new File(jarDirectory, goBibleJarFileName);
+			
+			JarFile goBibleJar = new JarFile(jarFile);
 			
 			// Write out the Go Bible data files into the same directory as the collections file
 			writeCollections(collectionsFile.getParentFile(), collections, books, goBibleJar);
 		}
+	}
+	
+	/**
+	 * @return The directory containing the GoBibleCreator.jar file that is being executed.
+	 */
+	public static File getJarDirectory()
+	{
+		String classPath = System.getProperty("java.class.path");
+		String pathSeparator = System.getProperty("path.separator");
+		
+		String[] paths = classPath.split(pathSeparator);
+		
+		// Find the path which contains GoBibleCreator.jar
+		for (String path: paths)
+		{
+			if (path.contains("GoBibleCreator.jar"))
+			{
+				File file = new File(path);
+				return file.getParentFile();
+			}
+		}
+		
+		System.out.println("Error: couldn't find the path to GoBibleCreator.jar");
+		
+		return null;
+	}
+	
+	public static String extractSourceTextPath(File collectionsFile) throws IOException
+	{
+		String sourceTextPath = null;
+		
+		// Open the file for reading one line at a time in UTF-8 character encoding
+		LineNumberReader reader = new LineNumberReader(new InputStreamReader(new FileInputStream(collectionsFile), "UTF-8"));
+		
+		Vector collections = new Vector();
+		Collection collection = null;
+		String line = null;
+		String sourceTextPropertyName = "Source-Text:";
+		
+		// Read the collections in the file
+		while ((line = reader.readLine()) != null)
+		{
+			// Test if line contains the source text property
+			if (line.startsWith(sourceTextPropertyName))
+			{
+				sourceTextPath = line.substring(sourceTextPropertyName.length()).trim();
+			}
+		}
+		
+		reader.close();
+		
+		if (sourceTextPath == null)
+		{
+			System.err.println("Error parsing collections file: No Source-Text specified.");
+			System.err.println("The source text is either a ThML or OSIS XML file.");
+			System.err.println("It must be specified as follows:");
+			System.err.println("Source-Text: Source.xml");
+			System.err.println("For example:");
+			System.err.println("Source-Text: kjv.thml");
+		}
+		
+		return sourceTextPath;
 	}
 
 	/**
@@ -332,8 +405,9 @@ public abstract class GoBibleCreator
 	 */
 	public static void parseUiProperties() throws IOException
 	{
+		File uiFile = new File(getJarDirectory(), "GoBibleCore/ui.properties");
 		// Open the file for reading one line at a time in UTF-8 character encoding
-		LineNumberReader reader = new LineNumberReader(new InputStreamReader(new FileInputStream("GoBibleCore/ui.properties"), "UTF-8"));
+		LineNumberReader reader = new LineNumberReader(new InputStreamReader(new FileInputStream(uiFile), "UTF-8"));
 		
 		String line = null;
 		
@@ -379,6 +453,10 @@ public abstract class GoBibleCreator
 			{
 				wapSite = line.substring(9).trim();
 			}
+			// Source-Text is ignored here but is retrieved earlier from within extractSourceTextPath()
+			else if (line.startsWith("Source-Text:"))
+			{
+			}			
 			// Test if line specifies Info property
 			else if (line.startsWith("Info:"))
 			{
