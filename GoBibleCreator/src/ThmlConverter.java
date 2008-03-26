@@ -79,9 +79,20 @@ public class ThmlConverter extends GoBibleCreator
 		return Integer.parseInt(title.substring(spaceIndex + 1));
 	}
 	
+	/**
+	 * A chapter consists of paragraphs (<p> tags). Somewhere within
+	 * those paragraphs exists <scripture> tags which indicate the
+	 * start of a new scripture. So we need to collate the textual data
+	 * until a new scripture tag, storing the collated data as the previous verse
+	 * and starting again to collate the new verse data.
+	 */
 	public void parseChapter(XMLObject xml, Chapter chapter)
 	{
 		//int paragraph = 1;
+		
+		// Contains the verse string as it is built from the XML
+		// Will be stored in the chapter when a new verse tag is encountered
+		String verse = null;
 		
 		// Find each paragraph
 		for (Enumeration e = xml.getChildren(); e.hasMoreElements(); )
@@ -94,18 +105,22 @@ public class ThmlConverter extends GoBibleCreator
 			if (xmlParagraph.getTag().equals(PARAGRAPH_TAG))
 			{
 				//System.out.println("Parsing paragraph " + paragraph++);
-				parseParagraphs(xmlParagraph, chapter);
+				verse = parseParagraphs(xmlParagraph, chapter, verse);
 			}
 		}		
+
+		// If there was a last verse then add it
+		if (verse != null && !verse.equals(""))
+		{
+			addNewVerse(chapter, verse);
+		}
 	}
 	
-	private void parseParagraphs(XMLObject paragraph, Chapter chapter)
+	private String parseParagraphs(XMLObject paragraph, Chapter chapter, String verse)
 	{
-		String verse = null;
-		
 		Enumeration e = paragraph.getChildren();
 		
-		do
+		while(e.hasMoreElements())
 		{
 			// Get the next xml child
 			XMLObject xml = (XMLObject) e.nextElement();
@@ -116,18 +131,7 @@ public class ThmlConverter extends GoBibleCreator
 				// If the last verse isn't null then add it
 				if (verse != null)
 				{
-					// Before adding the verse trim and replace all new line characters with spaces
-					String verseString = trim(verse).replace('\n', ' ');
-
-					// Convert HTML ampersand characters if the verse data contains one
-					if (verseString.indexOf('&') >= 0)
-					{
-						verseString = convertAmpersands(verseString);
-					}
-
-					//System.out.println(verseString);
-					chapter.verses.addElement(verseString);
-					chapter.allVerses.append(verseString);
+					addNewVerse(chapter, verse);
 				}
 				
 				// Re-initialise the verse
@@ -162,22 +166,27 @@ public class ThmlConverter extends GoBibleCreator
 				}
 			}
 		}
-		while(e.hasMoreElements());
 		
-		// If there was a last verse then add it
-		if (verse != null && !verse.equals(""))
+		return verse;
+	}
+	
+	/**
+	 * Adds the verse string to the specified chapter, doing some character
+	 * conversions beforehand.
+	 */
+	private void addNewVerse(Chapter chapter, String verse)
+	{
+		// Before adding the verse trim and replace all new line characters with spaces
+		String verseString = trim(verse).replace('\n', ' ');
+
+		// Convert HTML ampersand characters if the verse data contains one
+		if (verseString.indexOf('&') >= 0)
 		{
-			// Before adding the verse trim and replace all new line characters with spaces
-			String verseString = trim(verse).replace('\n', ' ');
-			
-			// Convert HTML ampersand characters if the verse data contains one
-			if (verseString.indexOf('&') >= 0)
-			{
-				verseString = convertAmpersands(verseString);
-			}
-			
-			chapter.verses.addElement(verseString);		
-			chapter.allVerses.append(verseString);	
+			verseString = convertAmpersands(verseString);
 		}
+
+		//System.out.println(verseString);
+		chapter.verses.addElement(verseString);
+		chapter.allVerses.append(verseString);		
 	}
 }
