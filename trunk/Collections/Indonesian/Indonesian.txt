@@ -1,5 +1,5 @@
 Info: Terjemahan Baru (New Translation)
-Source-Text: ../../source_text/Indonesian/idbar Indonesian Names (plus Yakobus 3).thm
+Source-Text: ../../source_text/Indonesian/idbar_gobible.thm
 Collection: Alkitab
 Book: Kejadian
 Book: Keluaran
