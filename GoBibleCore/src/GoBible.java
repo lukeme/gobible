@@ -281,7 +281,10 @@ public class GoBible extends MIDlet implements Runnable
 	public void turnOnBacklight()
 	{
 		// See if Nokia UI API exists
-		try
+		// This has been disabled as it can cause problems on some phones
+		// with not turning the backlight off and also restricts
+		// Go Bible from installing on BlackBerry phones
+		/*try
 		{
 			Class.forName("com.nokia.mid.ui.DeviceControl");
 			
@@ -315,7 +318,7 @@ public class GoBible extends MIDlet implements Runnable
 		catch (ClassNotFoundException e)
 		{
 			// Fail quietly
-		}
+		}*/
 	}
 	
 	/**
