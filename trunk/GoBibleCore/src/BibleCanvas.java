@@ -53,6 +53,10 @@ public class BibleCanvas extends Canvas implements CommandListener
 	private Command exitCommand = new Command(GoBible.getString("UI-Exit"), Command.EXIT, 0);
 	private Command cancelCommand = new Command(GoBible.getString("UI-Cancel"), Command.CANCEL, 0);
 
+	/**
+	 * The verses of string. eg. Mark 1:1 of 45.
+	 */
+	private String ofString = GoBible.getString("UI-Of");
 	
 	/**
 	 * By default display the splash screen
@@ -721,7 +725,7 @@ public class BibleCanvas extends Canvas implements CommandListener
 			
 			int bookNameWidth = boldFont.stringWidth(bookName);
 			int referenceStringWidth = boldFont.stringWidth(referenceString);
-			int ofStringWidth = boldFont.stringWidth(" " + GoBible.getString("UI-Of") + " " + numberOfVerses);
+			int ofStringWidth = boldFont.stringWidth(" " + ofString + " " + numberOfVerses);
 			
 			int coreWidth = bookNameWidth + referenceStringWidth + 2 * BAR_PADDING;
 			
@@ -731,7 +735,7 @@ public class BibleCanvas extends Canvas implements CommandListener
 				// Draw the " of " string
 				//g.setGrayScale(64);
 				g.setColor(textColour);
-				g.drawString(" " + GoBible.getString("UI-Of") + " " + numberOfVerses, width - BAR_PADDING, BAR_PADDING, Graphics.RIGHT | Graphics.TOP);
+				g.drawString(" " + ofString + " " + numberOfVerses, width - BAR_PADDING, BAR_PADDING, Graphics.RIGHT | Graphics.TOP);
 			}
 			else
 			{
