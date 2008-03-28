@@ -1,5 +1,5 @@
 Info: Ukrainian. Produced from ThML file provided by http://www.ccel.org.
-Source-Text: ../../source_text/Ukrainian/uk.xml
+Source-Text: Ukrainian/uk.xml
 Collection: Ukrainian
 Book: Genesis
 Book: Exodus

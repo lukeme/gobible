@@ -1,4 +1,4 @@
-Source-Text: ../../source_text/Afrikaans/AFK.thml
+Source-Text: Afrikaans/AFK.thml
 Info: Afrikaans Bybel, door Paul (www.maheke.com) Koppelvlak in Afrikaans deur Nico nico@vddi.co.za
 UI-Goto:Gaan na
 UI-Cancel:Staak

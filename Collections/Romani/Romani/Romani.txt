@@ -1,5 +1,5 @@
 Info: E Lashi Viasta Ruth Modrow; Compiled by octavian_lupu@yahoo.com Produced from file provided by http://www.unboundbible.org
-Source-Text: ../../source_text/Romani/RomaniBible.thml
+Source-Text: Romani/RomaniBible.thml
 MIDP: MIDP-2.0
 Book-Name-Map:  Matthew, Mate
 Book-Name-Map:  Mark, Markos

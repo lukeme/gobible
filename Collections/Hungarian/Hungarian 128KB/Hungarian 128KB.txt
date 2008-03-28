@@ -1,5 +1,5 @@
 Info: Hungarian Bible, compiled by octavian_lupu@yahoo.com Produced from ThML file provided by http://www.ccel.org.
-Source-Text: ../../source_text/Hungarian/hu.xml
+Source-Text: Hungarian/hu.xml
 MIDP: MIDP-1.0
 Book-Name-Map:  Genesis, 1 Mozes
 Book-Name-Map:  Exodus, 2 Mozes

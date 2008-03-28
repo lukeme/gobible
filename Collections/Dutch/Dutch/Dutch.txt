@@ -1,5 +1,5 @@
 Info: Dutch "Staten Vertaling" by Paul using text, with permission, from BibleDatabase.org.
-Source-Text: ../../source_text/Dutch/SV1750.thml
+Source-Text: Dutch/SV1750.thml
 Collection: NL sv1750
 Book: Genesis
 Book: Exodus

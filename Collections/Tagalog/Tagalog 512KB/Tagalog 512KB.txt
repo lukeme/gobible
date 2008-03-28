@@ -1,5 +1,5 @@
 Info: Tagalog 1905. Produced from file provided by http://unbound.biola.edu.
-Source-Text: ../../source_text/Tagalog/tagalog_full.thml
+Source-Text: Tagalog/tagalog_full.thml
 Collection: Old Testament 1
 Book: Genesis
 Book: Exodus

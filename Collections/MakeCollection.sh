@@ -12,7 +12,7 @@ set file = "$1"
 set zipFile = "../Release/$version/Go Bible $file $version.zip"
 echo $zipFile
 if (! -e "$zipFile") then
-	java -Xmx128m -jar ../GoBibleCreator/src/GoBibleCreator.jar "$file/$file.txt"
+	java -Xmx128m -jar ../GoBibleCreator/src/GoBibleCreator.jar -d "../source_text" "$file/$file.txt"
 	cd "$file"
 	zip "../$zipFile" *.jad *.jar
 	cd ..

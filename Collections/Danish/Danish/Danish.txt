@@ -1,5 +1,5 @@
 Info: Danish Bible. Thanks to Søren Noer for helping with the translation.
-Source-Text: ../../source_text/Danish/Danish Bible.thml
+Source-Text: Danish/Danish Bible.thml
 Collection: New Testament
 Book: Mattæus-evangeliet
 Book: Markus-evangeliet

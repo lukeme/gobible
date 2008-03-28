@@ -1,5 +1,5 @@
 Info: Croatian. Produced from ThML file provided by http://www.ccel.org.
-Source-Text: ../../source_text/Croatian/hr.thm
+Source-Text: Croatian/hr.thm
 Collection: Croatian
 Book: Genesis
 Book: Exodus

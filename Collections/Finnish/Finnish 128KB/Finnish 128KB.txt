@@ -1,4 +1,4 @@
-Source-Text: ../../source_text/Finnish/Bible_FI_33_38.thml
+Source-Text: Finnish/Bible_FI_33_38.thml
 Book-Name-Map: Genesis, 1 Moos.
 Book-Name-Map: Exodus, 2 Moos.
 Book-Name-Map: Leviticus, 3 Moos.

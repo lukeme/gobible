@@ -1,5 +1,5 @@
 Info: Russian Translation. Produced from ThML file provided by http://www.ccel.org.
-Source-Text: ../../source_text/Russian/ru.thm
+Source-Text: Russian/ru.thm
 Collection: Old Testament 1
 Book: Genesis
 Book: Exodus
