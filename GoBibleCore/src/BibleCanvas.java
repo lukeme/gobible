@@ -721,7 +721,7 @@ public class BibleCanvas extends Canvas implements CommandListener
 			
 			int bookNameWidth = boldFont.stringWidth(bookName);
 			int referenceStringWidth = boldFont.stringWidth(referenceString);
-			int ofStringWidth = boldFont.stringWidth(" " + GoBible.getString("UI-of") + " " + numberOfVerses);
+			int ofStringWidth = boldFont.stringWidth(" " + GoBible.getString("UI-Of") + " " + numberOfVerses);
 			
 			int coreWidth = bookNameWidth + referenceStringWidth + 2 * BAR_PADDING;
 			
@@ -731,7 +731,7 @@ public class BibleCanvas extends Canvas implements CommandListener
 				// Draw the " of " string
 				//g.setGrayScale(64);
 				g.setColor(textColour);
-				g.drawString(" " + GoBible.getString("UI-of") + " " + numberOfVerses, width - BAR_PADDING, BAR_PADDING, Graphics.RIGHT | Graphics.TOP);
+				g.drawString(" " + GoBible.getString("UI-Of") + " " + numberOfVerses, width - BAR_PADDING, BAR_PADDING, Graphics.RIGHT | Graphics.TOP);
 			}
 			else
 			{
