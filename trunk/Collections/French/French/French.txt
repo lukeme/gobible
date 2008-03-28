@@ -1,5 +1,5 @@
 Info: French Louis Segond Translation. Produced from ThML file provided by http://www.ccel.org.
-Source-Text: ../../source_text/French/frls.xml
+Source-Text: French/frls.xml
 
 Collection: French
 Book: Genesis

@@ -1,5 +1,5 @@
 Info: Terjemahan Baru (New Translation)
-Source-Text: ../../source_text/Indonesian/idbar_gobible.thm
+Source-Text: Indonesian/idbar_gobible.thm
 Collection: Matius Markus
 Book: Matius
 Book: Markus

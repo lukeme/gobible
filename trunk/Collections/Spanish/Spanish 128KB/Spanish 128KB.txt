@@ -1,5 +1,5 @@
 Info: Reina Valera. Produced from ThML file provided by http://www.ccel.org.
-Source-Text: ../../source_text/Spanish/esrv.xml
+Source-Text: Spanish/esrv.xml
 Collection: Matt Mark
 Book: Matthew
 Book: Mark

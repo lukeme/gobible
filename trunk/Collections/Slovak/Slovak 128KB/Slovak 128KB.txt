@@ -1,5 +1,5 @@
 Info: Slovensky evanjelicky preklad, Tranoscius. Source: Theophilos and http://www.ecav.sk, by RS Software.
-Source-Text: ../../source_text/Slovak/Biblia.thml
+Source-Text: Slovak/Biblia.thml
 Book-Name-Map: Genesis, Genesis
 Book-Name-Map: Exodus, Exodus
 Book-Name-Map: Leviticus, Leviticus

@@ -1,5 +1,5 @@
 Info: Biblia Cornilescu. Produced from ThML file provided by http://www.ccel.org.
-Source-Text: ../../source_text/Romanian/RomanianBible.thml
+Source-Text: Romanian/RomanianBible.thml
 Collection: Vechiul Testament 1
 Book: Geneza
 Book: Exod

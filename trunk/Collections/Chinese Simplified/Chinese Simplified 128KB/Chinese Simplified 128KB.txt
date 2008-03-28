@@ -1,5 +1,5 @@
 Info: Chinese Simplified Version.
-Source-Text: ../../source_text/Chinese/Simplified/cnt-simple.thm
+Source-Text: Chinese/Simplified/cnt-simple.thm
 Book-Name-Map: Genesis, 创世记
 Book-Name-Map: Exodus, 出埃及记
 Book-Name-Map: Leviticus, 利未记

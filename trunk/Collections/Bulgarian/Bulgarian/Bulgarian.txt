@@ -1,5 +1,5 @@
 Info: Bulgarian Translation. Produced from ThML file provided by http://www.ccel.org.
-Source-Text: ../../source_text/Bulgarian/bu.thm
+Source-Text: Bulgarian/bu.thm
 Book-Name-Map: Genesis, Битие
 Book-Name-Map: Exodus, Изход
 Book-Name-Map: Leviticus, Левит

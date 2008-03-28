@@ -1,5 +1,5 @@
 Info: Smith and Van Dyke Arabic Translation. Thanks to Maria El-Ghazaly for additional translation.
-Source-Text: ../../source_text/Arabic/asvd.xml
+Source-Text: Arabic/asvd.xml
 MIDP: MIDP-1.0
 Align: Right
 UI-Goto: الذهاب إلى

@@ -1,5 +1,5 @@
 Info: 1917 Swedish Bible, using OSIS text from ccel.org. Book and Collection name translation by Olov Ennerstam and additional testing by Kim Westberg.
-Source-Text: ../../source_text/Swedish/swe1917.xml
+Source-Text: Swedish/swe1917.xml
 Book-Name-Map: Gen, 1 Moseboken
 Book-Name-Map: Exod, 2 Moseboken
 Book-Name-Map: Lev, 3 Moseboken

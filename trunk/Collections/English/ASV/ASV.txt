@@ -1,5 +1,5 @@
 Info: American Standard Version. Produced from ThML file provided by http://www.ccel.org.
-Source-Text: ../../source_text/asv/asv.xml
+Source-Text: asv/asv.xml
 Collection: ASV
 Book: Genesis
 Book: Exodus

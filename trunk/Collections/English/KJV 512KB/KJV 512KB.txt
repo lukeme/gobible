@@ -1,5 +1,5 @@
 Info: King James Version, 1611. Produced from ThML file provided by http://www.ccel.org.
-Source-Text: ../../source_text/KJV/kjv.thml
+Source-Text: KJV/kjv.thml
 Collection: Old Testament 1
 Book: Genesis
 Book: Exodus

@@ -1,5 +1,5 @@
 Info: Romanian Bible. Produced from ThML file provided by http://www.ccel.org. Thanks to Octavian Lupu for providing this translation.
-Source-Text: ../../source_text/Romanian/RomanianBible.thml
+Source-Text: Romanian/RomanianBible.thml
 Collection: Romanian
 Book: Geneza
 Book: Exod

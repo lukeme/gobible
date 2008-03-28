@@ -1,5 +1,5 @@
 Info: Smith and Van Dyke Arabic Translation. Thanks to Magdi Haiman Nakhla, Emad Haiman Nakhla, and Maria El-Ghazaly for extra help with the translation.
-Source-Text: ../../source_text/Arabic/asvd_shaped.xml
+Source-Text: Arabic/asvd_shaped.xml
 Align: Right
 UI-Goto: الذهاب إلى
 UI-Cancel: إلغاء

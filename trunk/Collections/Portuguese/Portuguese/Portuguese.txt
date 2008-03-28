@@ -1,5 +1,5 @@
 Info: Almeida Revista e Atualizada, 2005. Desenvolvido e adaptado para o portugues por Frank de Melo Penha com um arquivo ThML provido por http://www.ccel.org.
-Source-Text: ../../source_text/Portuguese/pt.thml
+Source-Text: Portuguese/pt.thml
 Book-Name-Map: Genesis, Genesis
 Book-Name-Map: Exodus, Exodo
 Book-Name-Map: Leviticus, Levitico

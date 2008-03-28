@@ -1,5 +1,5 @@
 Info: Original Luther Translation. Produced from ThML file provided by http://www.ccel.org. Thanks to Julian Becker for additional translation.
-Source-Text: ../../source_text/German/Luther.thml
+Source-Text: German/Luther.thml
 UI-Goto: Gehe zu
 UI-Cancel: Abbruch
 UI-Preferences: Einstellungen
