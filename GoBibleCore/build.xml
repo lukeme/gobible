@@ -4,9 +4,8 @@
 	
 	<property name="wtk.home" value="/Developer/J2ME/mpp-sdk"/>
 
-	<!-- Note the following line can probably be omitted on PCs with WTK installed,
-		nokiaui.jar may still be required though -->
-		<property name="wtk.midpapi" value="/Developer/J2ME/mpp-sdk/stubs/midp-2.0.jar:/Developer/J2ME/mpp-sdk/stubs/cldc-1.0.jar:/Developer/J2ME/microemulator-2.0.1/lib/microemu-jsr-120.jar:/Developer/J2ME/microemulator-2.0.1/lib/microemu-nokiaui.jar"/>
+	<!-- Note the following line can probably be omitted on PCs with WTK installed -->
+		<property name="wtk.midpapi" value="/Developer/J2ME/mpp-sdk/stubs/midp-2.0.jar:/Developer/J2ME/mpp-sdk/stubs/cldc-1.0.jar:/Developer/J2ME/microemulator-2.0.1/lib/microemu-jsr-120.jar"/>
 
 	<property name="wtk.cldc.version" value="1.0"/>
 		
