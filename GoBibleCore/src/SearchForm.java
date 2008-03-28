@@ -60,7 +60,7 @@ public class SearchForm extends Form implements CommandListener
 	 */
 	public SearchForm(GoBible goBible)
 	{
-		super("Search");
+		super(GoBible.getString("UI-Search"));
 	
 		this.goBible = goBible;
 		
