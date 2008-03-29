@@ -4,7 +4,7 @@
 
 For version history up to 2.2.3, refer to [http://gobible.jolon.org/news.html Go Bible News]
 
-== 2.2.5 - 26 March 2008==
+== 2.2.5 - 26 March 2008 ==
 
   * GoBibleCreator no longer takes ThML/OSIS files in as command line arguments. Instead the source text is specified in the Source-Text property in the Collections.txt file. However, if a ThML/OSIS file specified on the command line then GoBibleCreator will generate a Collections.txt file for it (but won't generate the actual collection JARs/JADs).
   * GoBibleCreator can now be run from a different directory and GoBibleCreator will still be able to locate the GoBibleCore directory which is in the same directory as the GoBibleCreator.jar.
@@ -12,7 +12,8 @@ For version history up to 2.2.3, refer to [http://gobible.jolon.org/news.html Go
   * Have begun adding source texts to the repository but have only got up to Hungarian as svn commit seems to be temperamental with large files.
   * Go Bible releases are now being tagged. The tag for this release is 2.2.5.
 
-== 2.2.4 ==
+== 2.2.4 - 5 August 2007 ==
+  _This build was available only by download from the Go Bible Google Group._
 
   * GoBibleDataFormat now uses shorts instead of bytes for start chapter and number of chapters.
   * GoBibleCreator will automatically generate a Collections.txt file if only a ThML/OSIS file is passed in as a parameter.
