@@ -11,7 +11,7 @@ The first step is to check out the source code using SVN. Go to the *Source* tab
 
 Change into the GoBibleCore directory where you will find the `ReadMe.txt` file. The `ReadMe.txt` file contains additional instructions for configuring the build.xml file to successfully build GoBibleCore.
 
-Some tools GoBibleCore requires for building:
+Some tools GoBibleCore requires for building or testing:
 
   * [http://ant.apache.org/ Ant]
   * [http://antenna.sourceforge.net/ Antenna]
