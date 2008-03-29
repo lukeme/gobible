@@ -48,6 +48,12 @@ public class ThmlConverter extends GoBibleCreator
 
 	/** ThML tag used to change the colour of the text to red. **/
 	public final static String RED_TAG = "span";
+
+	/** Attribute of ThML tag used to change the colour of the text to red. **/
+	public final static String RED_TAG_ATTRIBUTE = "class";
+
+	/** Value of attribute of ThML tag used to change the colour of the text to red. **/
+	public final static String RED_TAG_VALUE = "red";
 	
 	/** Style changes are written out as flags in a single byte. **/
 	public final static char STYLE_RED = 1;
@@ -145,16 +151,19 @@ public class ThmlConverter extends GoBibleCreator
 					verse += xml.getTag();
 				}
 				// Only extract the CDATA if this tag isn't a 'sup' tag which merely indicates the verse number
-				else if (!xml.getTag().equals("sup"))
+				// also ignore span tags with class "chap" as these are just chapter numbers which we
+				// don't want to display
+				else if (!xml.getTag().equals("sup") && 
+					!(xml.getTag().equals("span") && xml.getAttribute("class", "").equals("chap")))
 				{
 					String newVerseData = extractCDATA(xml);
 
 					// Only add the new verse data if it is non-empty
 					if (newVerseData.length() > 0)
 					{
-						// If the tag is a span tag then we want to indicate that
+						// If the tag is a span tag with class="red" then we want to indicate that
 						// Christ's words are in red
-						if (xml.getTag().equals(RED_TAG))
+						if (xml.getTag().equals(RED_TAG) && xml.getAttribute(RED_TAG_ATTRIBUTE, "").equals(RED_TAG_VALUE))
 						{
 							verse += STYLE_RED + newVerseData + STYLE_RED;
 						}
