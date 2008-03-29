@@ -9,11 +9,13 @@ endif
 
 set file = "$1"
 
-set zipFile = "../Release/$version/Go Bible $file $version.zip"
+set zipFile = "../../Release/$version/Go Bible $file $version.zip"
 echo $zipFile
 if (! -e "$zipFile") then
-	java -Xmx128m -jar ../GoBibleCreator/src/GoBibleCreator.jar -d "../source_text" "$file/$file.txt"
+	echo "  Running GoBibleCreator..."
+	java -Xmx128m -jar ../../GoBibleCreator/src/GoBibleCreator.jar -d "../../source_text" "$file/$file.txt"
 	cd "$file"
+	echo "  Zipping..."
 	zip "../$zipFile" *.jad *.jar
 	cd ..
 endif
