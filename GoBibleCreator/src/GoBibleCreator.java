@@ -61,7 +61,7 @@ public abstract class GoBibleCreator
 	 * Version of Go Bible to be written to JAR and JAD files. Major version will
 	 * be the MIDP version. eg. MIDP 2.0 version will be 2.x.x.
 	 **/
-	public final static String SUB_VERSION = "2.5";
+	public final static String SUB_VERSION = "2.6";
 
 	/** Style changes are written out as flags in a single byte. **/
 	public final static char STYLE_RED = 1;
@@ -96,6 +96,17 @@ public abstract class GoBibleCreator
 	
 	public static int MAX_FILE_SIZE = MAX_FILE_SIZE_MIDP_2;
 	
+	/**
+	 * By default GoBibleCreator parses the source text and generates the verse
+	 * data which is stored in the JAR files. This is a time consuming process
+	 * and rarely needs to be repeated. If "-u" is specifed on the command-line
+	 * then this variable is set to true which means to only update the existing
+	 * JAR/JAD files instead of reparsing the source text and generating the
+	 * verse data. However, it is off by default to ensure that the files are
+	 * generated.
+	 */
+	protected static boolean updateOnly = false;
+	
 	/** Location of WAP site where JAD files will be placed. 
 		If no 'Wap-site:' attribute is specified in the Collections file then no WAP files will be 
 		produced. **/
@@ -122,6 +133,12 @@ public abstract class GoBibleCreator
 	    of books from the XML file (the HashMap does not retain order).
 		@see parseBooks **/
 	protected static Vector<String> bookNames = new Vector<String>();
+	
+	/**
+	 * This will be prepended to the Source-Text path in the Collections.txt file.
+	 * Can be set through the -d parameter.
+	 */
+	protected static String baseSourceDirectory = null;
 
 	/** 
 	 * The starting point. 
@@ -137,13 +154,40 @@ public abstract class GoBibleCreator
 			System.out.println("Usage: java -jar CollectionsFilePath");
 		}
 		else 
-		{			
+		{
+			// Turns on temporarily the flag to indicate that the next argument
+			// will be a base directory for the Source-Text, activated by a "-d" argument.
+			boolean baseSourceDirectoryFlag = false;
+			
 			for (String arg: args)
 			{
+				if (arg.equals("-u"))
+				{
+					// Update-only flag has been specified which means we won't be
+					// parsing the source text or updating the text in the JAR file.
+					// Instead we will be only modifying the existing JAR/JAD files
+					// which should already exist
+					updateOnly = true;
+				}
+				else if (arg.equals("-d"))
+				{
+					// If -d is specified then the next argument will be a directory
+					// for which all Source-Text paths will be considered relative to.
+					// See the if statement below.
+					baseSourceDirectoryFlag = true;
+				}
+				else if (baseSourceDirectoryFlag)
+				{
+					// This argument is the base directory for Source-Text, we can
+					// switch the flag off now and considered the other arguments
+					// as normal.
+					baseSourceDirectory = arg;
+					baseSourceDirectoryFlag = false;
+				}
 				// If a thml or xml file has been specified then generate a collections file
 				// from it and do nothing else, otherwise we assume a collections file
 				// has been specified and will generate the collections from it
-				if ((arg.toLowerCase().endsWith(".xml") || arg.toLowerCase().endsWith(".thml")))
+				else if ((arg.toLowerCase().endsWith(".xml") || arg.toLowerCase().endsWith(".thml")))
 				{
 					// No Collections file specified so generate 
 					// Collections file from XML
@@ -169,16 +213,29 @@ public abstract class GoBibleCreator
 	 * @param collectionsFile Collections File
 	 */
 	public static void create(File collectionsFile) throws IOException
-	{
-		// Extract xml file from the collectionsFile property: Source-Text
-		String sourceTextPath = extractSourceTextPath(collectionsFile);
+	{		
+		HashMap books = null;
 		
-		// The sourceTextPath is relative to the collectionsFile
-		File xmlFile = new File(collectionsFile.getParent(), sourceTextPath);
-	
-		HashMap books = parseXml(xmlFile);
+		// If updateOnly is true then we are only updating the existing
+		// JAD/JAR files and won't be parsing the source text
+		if (!updateOnly)
+		{
+			// Extract xml file from the collectionsFile property: Source-Text
+			String sourceTextPath = extractSourceTextPath(collectionsFile);
+
+			// Base source directory can be overridden with the -d argument
+			if (baseSourceDirectory == null)
+			{
+				// By default the sourceTextPath is relative to the collectionsFile
+				baseSourceDirectory = collectionsFile.getParent();
+			}
+			
+			File xmlFile = new File(baseSourceDirectory, sourceTextPath);
 		
-		if (books != null)
+			books = parseXml(xmlFile);
+		}
+		
+		if (books != null || updateOnly)
 		{
 			parseUiProperties();
 			
@@ -517,17 +574,20 @@ public abstract class GoBibleCreator
 				
 				bookShortName = bookShortName.substring(0, commaIndex).trim();
 				
-				// Find the book
-				Book book = (Book) books.get(bookShortName);
-				
-				if (book == null)
+				if (!updateOnly)
 				{
-					System.out.println("Error: can't find book name: " + bookShortName);
-					System.out.println("Check Book-Name-Map entries with XML file.");
+					// Find the book
+					Book book = (Book) books.get(bookShortName);
+					
+					if (book == null)
+					{
+						System.out.println("Error: can't find book name: " + bookShortName);
+						System.out.println("Check Book-Name-Map entries with XML file.");
+					}
+					
+					// Set the book's long name
+					book.name = bookLongName;
 				}
-				
-				// Set the book's long name
-				book.name = bookLongName;
 			}
 			// Test if this is a new collection
 			else if (line.startsWith("Collection:"))
@@ -591,8 +651,10 @@ public abstract class GoBibleCreator
 				// Trim whitespace from around the book name
 				bookName = bookName.trim();
 				
-				// If the start and end chapters aren't specified then get them from the XML book
-				if (startChapter == -1)
+				// If the start and end chapters aren't specified then get them from the XML book.
+				// We can only do this if updateOnly isn't set, otherwise the source text
+				// won't have been parsed.
+				if (startChapter == -1 && !updateOnly)
 				{
 					Book xmlBook = (Book) books.get(bookName);
 					
@@ -639,20 +701,20 @@ public abstract class GoBibleCreator
 	 **/
 	public static void writeCollections(File directory, Vector collections, HashMap books, JarFile goBibleJar) throws IOException
 	{
-		StringBuffer wapPage = new StringBuffer();
+		/*StringBuffer wapPage = new StringBuffer();
 	
-		wapPage.append("<html>\n<head>\n<title>Go Bible</title>\n</head>\n<body>\n\n");
+		wapPage.append("<html>\n<head>\n<title>Go Bible</title>\n</head>\n<body>\n\n");*/
 	
 		for (Enumeration e = collections.elements(); e.hasMoreElements(); )
 		{
 			Collection collection = (Collection) e.nextElement();
 			
-			System.out.print("Writing Collection " + collection.fileName + ": ");
+			System.out.println("Writing Collection " + collection.fileName + ": ");
 			
-			writeCollection(directory, collection, books, goBibleJar, wapPage);
+			writeCollection(directory, collection, books, goBibleJar/*, wapPage*/);
 		}
 		
-		if (wapSite != null)
+		/*if (wapSite != null)
 		{
 			wapPage.append("</body>\n</html>");
 			
@@ -663,7 +725,7 @@ public abstract class GoBibleCreator
 			
 			writer.print(wapPage.toString());
 			writer.close();
-		}
+		}*/
 	}
 	
 	/**
@@ -677,10 +739,9 @@ public abstract class GoBibleCreator
 	 * @param wapPage StringBuffer containing the contents of the WAP page where a new line will be added for
 	 * the current collection.
 	 **/
-	public static void writeCollection(File directory, Collection collection, HashMap books, JarFile goBibleJar, StringBuffer wapPage) throws IOException
+	public static void writeCollection(File directory, Collection collection, HashMap books, JarFile goBibleJar/*, StringBuffer wapPage*/) throws IOException
 	{
 		// Create a manifest file for the new JAR
-		
 		Manifest manifest = new Manifest();
 		
 		Attributes attributes = manifest.getMainAttributes();
@@ -703,46 +764,7 @@ public abstract class GoBibleCreator
 		
 		// Write out the alignment property
 		attributes.putValue("Go-Bible-Align", ALIGN_TEXT[align]);
-		
-		// Create a new JAR file using the contents of the Go Bible JAR and the new manifest
-	
-		File jarFile = new File(directory, collection.fileName + ".jar");
-	
-		JarOutputStream jarOutputStream = new JarOutputStream(new BufferedOutputStream(new FileOutputStream(jarFile)), manifest);
-	
-		// Copy contents of Go Bible JAR into new JAR
-		for (Enumeration e = goBibleJar.entries(); e.hasMoreElements(); )
-		{
-			JarEntry jarEntry = (JarEntry) e.nextElement();
-			
-			//System.out.println("Reading entry from GoBible.jar: " + jarEntry.getName());
-			
-			// Ignore existing manifest, and ui.properties file if
-			// the Collections file has specified UI properties
-			if (!jarEntry.getName().startsWith("META-INF") && !jarEntry.getName().equals(UI_PROPERTIES_FILE_NAME))
-			{
-				// Add entry to new JAR file
-				jarOutputStream.putNextEntry(jarEntry);
-				
-				InputStream inputStream = new BufferedInputStream(goBibleJar.getInputStream(jarEntry));
-				
-				// Read all of the bytes from the Go Bible JAR file and write them to the new JAR file
-				byte[] buffer = new byte [100000];
-				int length;
-				
-				while ((length = inputStream.read(buffer)) != -1)
-				{
-					jarOutputStream.write(buffer, 0, length);
-				}
-				
-				// Close the input stream
-				inputStream.close();
-			}
-		}
-		
-		// Create a JAR entry for the UI properties
-		jarOutputStream.putNextEntry(new JarEntry(UI_PROPERTIES_FILE_NAME));
-		
+
 		// Create a String to contain the UI properties
 		String uiPropertiesString = "";
 		Set uiMappings = uiProperties.entrySet();
@@ -752,17 +774,22 @@ public abstract class GoBibleCreator
 			Map.Entry entry = (Map.Entry) i.next();
 			uiPropertiesString += entry.getKey() + ":" + entry.getValue() + "\n";
 		}
-		
-		jarOutputStream.write(uiPropertiesString.getBytes("UTF-8"));
-	
-		writeMultipleIndex(jarOutputStream, collection, books);
 
-		writeMultipleBooks(jarOutputStream, collection, books);
+		// Create a new JAR file using the contents of the Go Bible JAR and the new manifest
+		File jarFile = new File(directory, collection.fileName + ".jar");
 
-		jarOutputStream.close();
-
-		System.out.println(collection.books.size() + " book(s) written.");
-		
+		// If updateOnly is true then we haven't parsed the source text and hence
+		// won't be generating any books or verse data so we are going to
+		// source the Bible Data from the existing JAR file
+		if (updateOnly)
+		{
+			updateCollectionJar(directory, jarFile, collection, goBibleJar, manifest, uiPropertiesString);	
+		}
+		else
+		{
+			writeCollectionJar(directory, jarFile, collection, books, goBibleJar, manifest, uiPropertiesString);
+		}
+				
 		// Create the JAD file that will go in the zip
 		createJadFile(directory, collection, jarFile.length(), collection.fileName + ".jar");
 		
@@ -776,12 +803,119 @@ public abstract class GoBibleCreator
 			}	
 
 			// Create the JAD file for the WAP site
-			createJadFile(wapDirectory, collection, jarFile.length(), wapSite + collection.fileName + ".jar");
+			createJadFile(wapDirectory, collection, jarFile.length(), wapSite + "/" + directory.getName() + "/" + collection.fileName + ".jar");
 			
 			// Add a line to the wapPage
-			wapPage.append("<object declare=\"declare\" id=\"" + collection.fileName + "\" data=\"" + wapSite + collection.fileName + ".jad\" type=\"text/vnd.sun.j2me.app-descriptor\"></object>\n");
-			wapPage.append("<a jad=\"#" + collection.fileName + "\" href=\"" + wapSite + collection.fileName + ".jad" + "\">" + collection.name + " " + (jarFile.length() >> 10) + "k</a><br/>\n\n");
+			/*wapPage.append("<object declare=\"declare\" id=\"" + collection.fileName + "\" data=\"" + wapSite + collection.fileName + ".jad\" type=\"text/vnd.sun.j2me.app-descriptor\"></object>\n");
+			wapPage.append("<a jad=\"#" + collection.fileName + "\" href=\"" + wapSite + collection.fileName + ".jad" + "\">" + collection.name + " " + (jarFile.length() >> 10) + "k</a><br/>\n\n");*/
 		}
+	}
+	
+	/**
+	 * 1. Rename existing jar file appending ".tmp"
+	 * 2. Create new jar file with initial name
+	 * 3. Copy "Bible Data" entry of tmp jar file to new jar file
+	 * 4. Delete tmp jar file.
+	 */
+	public static void updateCollectionJar(File directory, File jarFile, Collection collection, JarFile goBibleJar, Manifest manifest, String uiPropertiesString) throws IOException
+	{
+		// Make sure the existing JAR exists
+		if (jarFile.exists())
+		{
+			File tmpFile = new File(directory, collection.fileName + ".jar" + ".tmp");
+			
+			jarFile.renameTo(tmpFile);
+			
+			// Recreate the JAR file using the tmp as a base
+			jarFile = new File(directory, collection.fileName + ".jar");
+			
+			JarFile tmpJar = new JarFile(tmpFile);
+
+			JarOutputStream jarOutputStream = new JarOutputStream(new BufferedOutputStream(new FileOutputStream(jarFile)), manifest);
+			
+			// Copy in the Bible Data from the original JAR
+			copyInContentsOfJar(tmpJar, jarOutputStream, "Bible Data");
+			
+			// Copy in GoBibleCore
+			copyInContentsOfJar(goBibleJar, jarOutputStream, null);
+
+			// Create a JAR entry for the UI properties
+			jarOutputStream.putNextEntry(new JarEntry(UI_PROPERTIES_FILE_NAME));
+			jarOutputStream.write(uiPropertiesString.getBytes("UTF-8"));
+			
+			jarOutputStream.close();
+			
+			// Remove the tmp file
+			tmpFile.delete();
+		}
+		else
+		{
+			System.out.println("Error: existing JAR file does not exist: " + jarFile.getAbsolutePath());
+			System.out.println("An existing JAR file must exist when the -u option is used.");
+		}
+	}
+	
+	/**
+	 * Creates a JAR file containing all of the Books specified in the Collections.txt file.
+	 */
+	public static void writeCollectionJar(File directory, File jarFile, Collection collection, HashMap books, JarFile goBibleJar, Manifest manifest, String uiPropertiesString) throws IOException
+	{
+		JarOutputStream jarOutputStream = new JarOutputStream(new BufferedOutputStream(new FileOutputStream(jarFile)), manifest);
+
+		// Copy from Go Bible Jar
+		copyInContentsOfJar(goBibleJar, jarOutputStream, null);
+
+		// Create a JAR entry for the UI properties
+		jarOutputStream.putNextEntry(new JarEntry(UI_PROPERTIES_FILE_NAME));
+		jarOutputStream.write(uiPropertiesString.getBytes("UTF-8"));
+	
+		writeMultipleIndex(jarOutputStream, collection, books);
+		writeMultipleBooks(jarOutputStream, collection, books);
+
+		jarOutputStream.close();
+
+		System.out.println(collection.books.size() + " book(s) written.");
+	}
+	
+	/**
+	 * Copies the contents of one JAR into another already open JAR.
+	 * @param jar The source JAR to copy from.
+	 * @param jarOutputStream The destination JAR to copy to.
+	 * @param name Will only copy entries that begin with this name, can be null to copy everything.
+	 */
+	public static void copyInContentsOfJar(JarFile jar, JarOutputStream jarOutputStream, String name) throws IOException
+	{
+		// Copy contents of Go Bible JAR into new JAR
+		for (Enumeration e = jar.entries(); e.hasMoreElements(); )
+		{
+			JarEntry jarEntry = (JarEntry) e.nextElement();
+			
+			//System.out.println("Reading entry from GoBible.jar: " + jarEntry.getName());
+			
+			String entryName = jarEntry.getName();
+			
+			// Ignore existing manifest, and ui.properties file if
+			// the Collections file has specified UI properties
+			if (!entryName.startsWith("META-INF") && !entryName.equals(UI_PROPERTIES_FILE_NAME) && (name == null || entryName.startsWith(name)))
+			{
+				// Add entry to new JAR file
+				jarOutputStream.putNextEntry(jarEntry);
+				
+				InputStream inputStream = new BufferedInputStream(jar.getInputStream(jarEntry));
+				
+				// Read all of the bytes from the Go Bible JAR file and write them to the new JAR file
+				byte[] buffer = new byte [100000];
+				int length;
+				
+				while ((length = inputStream.read(buffer)) != -1)
+				{
+					jarOutputStream.write(buffer, 0, length);
+				}
+				
+				// Close the input stream
+				inputStream.close();
+			}
+		}		
 	}
 	
 	/**
