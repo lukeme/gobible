@@ -41,6 +41,13 @@ foreach language ( * )
 				foreach jadFile (*.jad)
 					#echo $jadFile
 					set urlBase = "http://wap.jolon.org/$directoryNumber"
+					
+					# Looks for a line starting with "MIDlet-Jar-URL: " followed
+					# by any characters.  Replaces it with "MIDlet-Jar-URL: " followed
+					# by the contents of our urlBase variable followed by what originally
+					# followed the "MIDlet-Jar-URL: " which would be XXXX.jar 
+					# (indicated by \2 which means the second group, where groups
+					# are formed by the parentheses in the regular expression).
 					sed "s|\(MIDlet-Jar-URL:\ \)\([^ ]*\)|MIDlet-Jar-URL:\ $urlBase/\2|" "$jadFile" > "../../$wapDir/$directoryNumber/$jadFile"
 				end
 				cd ..
