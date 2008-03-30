@@ -1,0 +1,49 @@
+<!-- Make Downloads Page -->
+
+<script type="text/javascript" src="Translations.js"></script>
+
+<script type="text/javascript">
+
+function load()
+{
+	var textArea = document.getElementById("output");
+	var baseURL = "http://www.go-bible.org";
+	var version = "2.2.6";
+	
+	textArea.value = "<table>\n";
+	textArea.value += "<tr><td><b><i>Language</i></b></td><td><b><i>Translation</i></b></td></tr>\n";
+	
+	for (languageName in packages.Languages)
+	{
+		language = packages.Languages[languageName];
+		
+		for (translationName in language)
+		{
+			translation = language[translationName];
+			
+			for (variantIndex in translation.Variants)
+			{
+				variant = translation.Variants[variantIndex];
+				
+				// Construct the URL
+				variantFileName = variants.Variants[variant].FileName;
+				url = baseURL + "/Collections/" + version + "/" + "Go Bible " + translation.FileName + " " + variantFileName + version + ".zip";
+				
+				line = '<tr><td>' + languageName + ' </td><td>\<a href="' + url + '"\>' + translation.FileName + " " + variantFileName + '\</a\></td></tr>\n';
+				textArea.value += line;
+			}
+		}
+	}
+	
+	textArea.value += "</table>";
+}
+
+</script>
+
+<body onload="load()">
+<textarea id="output" cols="140" rows="40">
+
+
+</textarea>
+
+</body>
