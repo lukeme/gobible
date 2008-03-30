@@ -1,0 +1,689 @@
+<html>
+
+<head>
+<title>
+Go Bible
+</title>
+  <link rel="Stylesheet" href="style.css" type="text/css" media="screen" />
+<link rel="shortcut icon" href="http://go-bible.org/favicon.ico" type="image/vnd.microsoft.icon" />
+
+</head>
+
+<body>
+
+<table align="center" width="900" bgcolor="#CCFF66"> <tr><td>
+<p align="center">
+<a href="welcome.html">Go Bible Home</a> | 
+<b>News</b> | 
+<!-- <a href="documentation.html">Documentation</a> | -->
+<a href="http://jolon.org/vanillaforum/categories.php">Forum</a> | 
+<a href="about.html">About</a> | 
+<a href="contact.html">Contact</a> | 
+<a href="developer/welcome.html">Developer</a> 
+
+</p>
+</td></tr></table>
+
+
+<table cellspacing="20" width="900" align="center">
+<tr valign="top">
+<td>
+<img align="middle" alt="Go Bible Logo" src="GoBibleLogo.png"/>
+</td>
+<td>
+<h1>Go Bible</h1>
+
+<i>For the glory of our Lord Jesus Christ and the furtherance of His Kingdom.</i>
+
+<table cellspacing="10">
+
+<tr valign="top">
+
+<!-- Main content area -->
+
+<td>
+
+<table align="center" cellpadding="5">
+<tr bgcolor="#f0f0f0"><td><b>Wednesday 26 March 2008 - Go Bible 2.2.5 released</b></td></tr>
+<tr bgcolor="#ffffe0"><td>
+<p>
+I haven't updated this news page for some time but work has been going on behind the scenes. All of the Go Bible source code is now available at the <a href="http://code.google.com/p/gobible">Go Bible Google Code project</a> web site, including:
+</p>
+
+<ul>
+<li><a href="http://code.google.com/p/gobible/source/browse/trunk/GoBibleCore">GoBibleCore</a></li>
+<li><a href="http://code.google.com/p/gobible/source/browse/trunk/GoBibleCreator">GoBibleCreator</a></li>
+<li><a href="http://code.google.com/p/gobible/source/browse/trunk/Collections">Collections.txt files</a> used to produce the files on this website</li>
+<li>Some of the <a href="http://code.google.com/p/gobible/source/browse/trunk/source_text">source texts</a> used to generate the files on this website</li>
+</ul>
+
+<p>
+I have streamlined the build process a bit which has allowed me to update all of the translations on the website to the latest version which is now 2.2.5. You can read the <a href="http://code.google.com/p/gobible/wiki/Release_Notes">Release Notes here</a>. There are no feature additions or bug fixes to the Go Bible application between 2.2.5 and the previous 2.2.3 release. The changes mainly affect GoBibleCreator.
+</p>
+
+<p>
+The Go Bible Development Wiki also contains a page describing the <a href="http://code.google.com/p/gobible/wiki/GoBibleDataFormat">Go Bible Data Format</a> which might be useful for anyone interested in writing a brand new version of Go Bible from scratch or enhancing the development tools. Some potential projects include:
+</p>
+
+<ul>
+<li>Rewriting Go Bible to use <a href="http://www.j2mepolish.org">J2ME Polish</a> which provides lots of nice user interface features and <a href="http://www.enoughsoftware.com/docs/gui-item-stringitem.html#StringItem-bitmapfonts">custom fonts</a>.</li>
+<li>A version of Go Bible written in <a href="http://mobile.processing.org/">Mobile.Processing</a> (Mobile.Processing also supports custom fonts).</li>
+<li>A version of Go Bible for <a href="http://code.google.com/android/">Android</a>.</li>
+<li>A version of Go Bible for the <a href="http://developer.apple.com/iphone/">iPhone</a>.</li>
+<li>A PHP script which converts source text into Go Bible Data Format.</a>
+</ul>
+
+<p>
+	If you are interested in developing for Go Bible you might also want to check out the <a href="http://groups.google.com/group/go-bible-dev">Go Bible Dev Google Group</a>. Note this group is for those interested in writing code. If you are producing translations then check out the <a href="http://groups.google.com/group/go-bible">Go Bible Google Group</a>. If you have questions about installing or using Go Bible or any other discussion then check out the <a href="http://jolon.org/vanillaforum/categories.php">Go Bible Forums</a> on this website.
+</p>
+
+</td></tr>
+</table>
+
+
+<table align="center" cellpadding="5">
+<tr bgcolor="#f0f0f0"><td><b>Sunday 15 April 2007 - Go Bible Forums Live!</b></td></tr>
+<tr bgcolor="#ffffe0"><td>
+<p>
+	Go Bible has been around for almost 4 years now. Over that time I have received thousands of emails (thank you!). Today I have set up and enabled the <a href="http://jolon.org/vanillaforum/categories.php">Go Bible Forums</a> which will be a place where people can post questions about installation problems and also discuss new translations and features. I hope it will be a place where people can help each other out.
+</p>
+
+<p>
+	God bless you!
+</p>
+
+</td></tr>
+</table>
+
+
+<table align="center" cellpadding="5">
+<tr bgcolor="#f0f0f0"><td><b>Thursday 12 April 2007 - Motorola fix, French version</b></td></tr>
+<tr bgcolor="#ffffe0"><td>
+<p>
+	There was a problem on some Motorola phones where the down arrow didn't work in the <i>Go to</i> popup. This has now been fixed in version 2.2.3. Thanks to all of the people that reported the bug and also to Jed Hamilton for testing the fix.
+</p>
+
+<p>
+	A French version has also been posted.
+</p>
+
+<p>
+	I haven't had a lot of time to work on Go Bible lately. Thanks to all the people that have emailed me, if I haven't responded to you yet, I intend to at some point!
+</p>
+
+<p>
+	God bless you and thank you for your support!
+</p>
+
+</td></tr>
+</table>
+
+
+<table align="center" cellpadding="5">
+<tr bgcolor="#f0f0f0"><td><b>Friday 25 August 2006 - Arabic Fix, Romanian, and Tagalog translations</b></td></tr>
+<tr bgcolor="#ffffe0"><td>
+<p>
+	We finally have a fix for the reversed words appearing in the Arabic version on Nokia Series 60 phones! Magdi Haiman Nakhla and his brother Emad Haiman Nakhla discovered a 3 byte character in the OSIS file which was causing the problem. They have removed the 3 byte character (which occurred 5452 times) and made several other important fixes:
+</p>
+
+<ul>
+	<li>Translated the new user interface keywords into Arabic</li>
+	<li>Added the first verse to John 3 which was missing</li>
+	<li>Added a missing verse to 1 Timothy</li>
+</ul>
+
+<p>
+	This fix is a real blessing and I'm sure many users of the Arabic Bible will be very happy. The fix is in version 2.2.1.
+</p>
+
+<p>
+	Octavian Lupu has made a Romanian version which is now available on this website. Great work! Also Eflineses from the Philippines has pointed me to a full version of the Tagalog Bible available from <a href="http://unbound.biola.edu/index.cfm?method=downloads.showDownloadMain">The Unbound Bible website</a>. I have converted the Unbound Bible format to ThML and have made the Tagalog version available.
+</p>
+
+<p>
+	I'm still extremely busy at the moment with uni work but amazingly had some time this morning to post these changes. A few people have emailed me about the WAP site. It hasn't had any attention for a few years and really needs a good overhaul. Initially not many people used WAP because of the cost, but now it is cheaper and perhaps a simpler way to get the Bible on your phone. So somewhere down the track I would like to make what is available on this website also available on the WAP site.
+</p>
+
+<p>
+	God bless!
+</p>
+
+
+</td></tr>
+</table>
+
+
+
+<table align="center" cellpadding="5">
+<tr bgcolor="#f0f0f0"><td><b>Sunday 30 July 2006 - Go Bible 2.2.1 Released</b></td></tr>
+<tr bgcolor="#ffffe0"><td>
+<p>
+	Go Bible 2.2.1 is a minor update that overcomes a search bug in some Sony Ericsson phones. Sony Ericsson phones like the K600 and K750 have a bug in the pop-up menu where it doesn't correctly change its value. This affects the changes to the search window which were introduced in Go Bible 2.2 where the from and to books could be specified. Some will have noticed that changing the from and to books actually did nothing unless you did it twice. This is a Sony Ericsson bug and has been confirmed on their developer website. To get around this bug I have changed the way that the search books are specified. Now you can specify to search one of the following:
+</p>
+
+<ul>
+	<li>All books</li>
+	<li>Current book</li>
+	<li>New Testament</li>
+	<li>Old Testament</li>
+	<li>Gospels (Matthew-John)</li>
+	<li>Paul's Letters (Romans-Hebrews)</li>
+	<li>Other Letters (James-Jude)</li>
+	<li>Books of Moses (Genesis-Deuteronomy)</li>
+	<li>Historical books (Joshua-Esther)</li>
+	<li>Poetic books (Job-Song of Solomon)</li>
+	<li>Major Prophets (Isaiah-Daniel)</li>
+	<li>Minor Prophets (Hosea-Malachi)</li>
+</ul>
+
+<p>
+	So you can no longer specify a custom range of books, but I hope the preset ranges I have specified will be sufficient. I should also mention that these options only appear if you have the entire Bible in the one application, other smaller collections will only have the first two options (ie. All books and the Current book).
+</p>
+
+<p>
+	There is another bug in some Sony Ericsson phones where some list entries don't appear, this can affect the search results screen. I spent about two days writing a custom GUI for Go Bible to get around many of these bugs but unfortunately there are so many bugs in the phones that the custom GUI didn't work on Nokia phones! So at some point I would like to rewrite the Go Bible GUI from scratch and completely bypass the phone's implementation, but that will be a lot of work and I don't have much time for that at the moment. The new GUI looks quite nice but it will have to sit on the shelf for now.
+</p>
+
+<p>
+	I have only updated the KJV to Go Bible 2.2.1 at the moment, but I will update the other translations when I have some more time.
+</p>
+
+<p>
+	Once again, I am behind on emails, but I will get there, if the Lord wills!
+</p>
+
+<p>
+	God bless!
+</p>
+
+
+</td></tr>
+</table>
+
+
+<table align="center" cellpadding="5">
+<tr bgcolor="#f0f0f0"><td><b>Saturday 18 March 2006 - Go Bible 2.2 Released!</b></td></tr>
+<tr bgcolor="#ffffe0"><td>
+<p>
+	Well, it has been over a year since my last update on the news page! I have been extremely busy but work has been going on behind the scenes. The Arabic version is about as stable as it is going to get for now. The rendering problem on the Sony Ericsson phones was fixed by using the Shaped character set, unfortunately this breaks the search functionality, but it is the best we can do for now.
+</p>
+<p>
+	I am very behind on emails and I apologise if I haven't yet responded to your email. People have been working on new translations. I have just uploaded the Portuguese and Finnish versions. Thanks to Frank Melo for the Portuguese version and Pekka Manninen for the Finnish version. Others are also working on NET, Bulgarian, Spanish, and Vietnamese versions!
+</p>
+
+<p>
+	Two of the most common requests I get from people are bookmarks and the ability to change the screen colours, well I have finally had the time to add those features! Bookmarks are a really handy feature for keeping track of common verses. The screen colours can be changed through six predefined colour themes: Paper, Computer, Floral, Natural, Blue, and Sushine. The colours can also be reversed. I have also updated the Search screen to make it easier to search multiple books by allowing you to select the 'from' and 'to' books to search within.
+</p>
+
+<p>
+	Lastly, I have also made some changes to the website. I bought some web hosting space from <a href="http://godaddy.com">GoDaddy</a> so the website is now hosted in the US instead of Australia. I have also made the web pages a bit more Google friendly, so that the Go Bible website ranks higher with common search phrases. I registered the domain name <a href="http://go-bible.org">go-bible.org</a> which now points to the Go Bible website. Currently, go-bible.org simply redirects to <a href="http://gobible.jolon.org">gobible.jolon.org</a> where the website is residing. In the future jolon.org may be used for other projects.
+</p>
+
+<p>
+	Go Bible 2.2 is largely feature-complete now, as it embodies all of the features I had originally intended to be available on a phone. In the coming months I will focus on putting all of the new translations on the website. I may also make some more changes to the website, like updating the screen shots and possibly adding forums. 
+</p>
+
+<p>
+	My mobile phone contract runs out in June 2006, so I am looking at buying a new phone. Up to this point I have bought phones that are 'typical' mobile phones such as the Sony Ericsson T610 and Nokia 6230 because I wanted the average phone to be able to view the Bible. The challenge originally was getting the Bible onto phones with small screens (128x128), slow processors, and limited memory. Now the average phone has a high resolution screen (some of the new Nokias have screens of 320 x 416 pixels!) and essentially no memory limit (except for the Nokia Series 40 phones which still have unnecessary limits). So there is no longer any great challenge in getting the Bible onto the phone. Instead phones are becoming like mini-computers. So if there is a new direction for Go Bible it may be a full-featured Bible program comparable to desktop Bible programs. A full-featured Bible program is a large undertaking and one that I am not sure I am ready to commit to just yet. Nonetheless, my next phone will probably be a Symbian device that resembles a PDA. I would like the following features:
+</p>
+
+<ul>
+	<li>Symbian 9</li>
+	<li>Touchscreen (pretty much implies UIQ 3)</li>
+	<li>3G (ie. UMTS WCDMA)</li>
+	<li>High resolution screen (at least 240x320)</li>
+	<li>Built in QWERTY keypad</li>
+	<li>Bluetooth internet connection</li>
+	<li>Wi-Fi if possible</li>
+	<li>Memory card expansion</li>
+	<li>Compact form factor</li>
+</ul>
+
+<p>
+	Since I am after a Symbian touchscreen device it pretty much narrows it down to Sony Ericsson or Motorola. The Sony Ericsson P990 embodies all of the above features but is a little bulky. The Sony Ericsson M600 is a nice looking phone but lacks some of the features like Wi-Fi.
+</p>
+
+<p>
+	If you got this far then you must enjoy reading :) Thanks to all of the people who have and continue to support Go Bible.
+</p>
+
+<p>
+	Praise the Lord!
+</p>
+
+</td></tr>
+</table>
+
+
+<table align="center" cellpadding="5">
+<tr bgcolor="#f0f0f0"><td><b>Saturday 12 March 2005 - Go Bible Arabic 1.1.1 Released</b></td></tr>
+<tr bgcolor="#ffffe0"><td>
+<p>
+	Three people requested a MIDP 1.0 version of the Arabic translation. Initially I thought that it would be a lot of work producing a MIDP 1.0 version simply because Go Bible 1.0 doesn't support international character sets. However, I realised that I could use the new Go Bible 2.0 code and simply disable the MIDP 2.0 specific features. So we now have a MIDP 1.0 Arabic translation! Praise the Lord! This version includes the History feature but does not support full screen mode or SMS which are only available in Go Bible 2.0. I would like to thank the people who have helped test the Arabic version of Go Bible!
+</p>
+
+<p>
+	We are still having problems with Arabic Go Bible 2.1 on Sony Ericsson and Nokia Symbian phones where characters aren't being rendered correctly. I am now thinking of writing a completely new display form for the Arabic version which uses the MIDP built in user interface classes. This will take some time and may not be as slick as the current UI but hopefully will solve some of the problems we are experiencing. Thanks again to those people have helped test and are waiting patiently for a working Arabic version!
+</p>
+
+</td></tr>
+</table>
+
+
+<table align="center" cellpadding="5">
+<tr bgcolor="#f0f0f0"><td><b>Saturday 12 February 2005 - Go Bible Arabic 2.1 Released</b></td></tr>
+<tr bgcolor="#ffffe0"><td>
+<p>
+	The JAD problem that affected the Swedish version also affected the Arabic version and I have only just uploaded the fix due to being very busy.
+</p>
+
+<p>
+	I have also released Go Bible 2.1 but only in the Arabic translation so far. It includes two new features: History and Fullscreen support. The History feature automatically records each verse you go to through the "Go to" menu. The History menu allows you to view a list of those verses and go directly to them. The Fullscreen feature sets Go Bible to take over the entire screen. This feature is particularly useful for small screen phones such as the Nokia Series 40 phones. Switching to Fullscreen mode can be problematic on some phones which handle menus differently in Fullscreen mode (the Nokia 6600 with firmware earlier than 4.09.1 disables menu options when in fullscreen mode). If you are experiencing problems and are using a large screen phone then it is probably best not to use Fullscreen mode.
+</p>
+
+<p>
+	Some people have reported that the Arabic translation displays in reverse character order on the Nokia 6600 and Sony Ericsson K700. On the Nokia 6600 some people have reported that the character ordering is inconsistent from line to line which may indicate a bug in the Nokia 6600 firmware. The firmware version where this occurs is in the latest Nokia 6600 firmware 5.27. I will continue to investigate this problem to see if there is a solution.
+</p>
+
+<p>
+I have had a lot of interest in the Arabic Go Bible lately and I would like to thank all those people who have emailed me about it and spent time testing bug fixes. Your help is invaluable and greatly appreciated! God bless you all!
+</p>
+
+</td></tr>
+</table>
+
+
+<table align="center" cellpadding="5">
+<tr bgcolor="#f0f0f0"><td><b>Wednesday 15 December 2004 - Dutch Translation and Swedish Translation Fix</b></td></tr>
+<tr bgcolor="#ffffe0"><td>
+<p>
+	The Dutch translation is now available! <a href="http://users.telenet.be/MoBible/">Paul</a> produced the ThML file from <a href="http://bibledatabase.org">BibleDatabase.org</a> sources and provided book and collection name translations. Thanks Paul! 
+</p>
+
+<p>
+    There has also been a small fix to the Swedish version that Paul and Kim Westberg helped me find. The problem was that GoBibleCreator was writing properties to the JAD file but not the JAR file. Some phones like the Sony Ericssons don't require a JAD and therefore Go Bible was not able to find the property. This bug has now been fixed and the Swedish version should work.
+</p>
+
+<p>
+    I am going to be very busy for the next two months so I may not get too much done on Go Bible. After that I would like to release GoBibleCreator which is the same as Thml2GoBible 2.0 but also supports OSIS files, info properties, and right aligned text.
+</p>
+
+<p>
+    I would like to wish you all a Holy Christmas and a Great New Year! Thanks for your support of Go Bible, Praise the Lord!
+</p>
+</td></tr>
+</table>
+
+
+<table align="center" cellpadding="5">
+<tr bgcolor="#f0f0f0"><td><b>Sunday 5 December 2004 - Swedish Translation</b></td></tr>
+<tr bgcolor="#ffffe0"><td>
+<p>
+	Just a small update to the Swedish translation, I noticed that GoBibleCreator was including text within the title and reference tags, GoBibleCreator now skips these tags. I just received an email from Kim Westberg who is getting a Program Error when running the Swedish version on his Sony Ericsson K700i. I think it may be caused by the new Go-Bible-Info JAD property which includes a description of the particular Go Bible version.
+</p>
+</td></tr>
+</table>
+
+<table align="center" cellpadding="5">
+<tr bgcolor="#f0f0f0"><td><b>Saturday 4 December 2004 - Swedish Translation</b></td></tr>
+<tr bgcolor="#ffffe0"><td>
+<p>
+	The Swedish translation is now available! Thanks goes to Olov Ennerstam for providing book and collection name translation as well as additional testing.
+</p>
+
+<p>
+	I jumped the gun a bit in my last post linking to Paul's Dutch translation. Paul has set up the <a href="http://users.telenet.be/MoBible/">MoBible website</a> where the Dutch translation now resides, I have also changed the link in the last post to reflect the new address. I have also linked to MoBible from the main web page. Hopefully I will be making available a Dutch Go Bible 2.0 version too.
+</p>
+
+<p>
+	God bless you all!
+</p>
+
+</td></tr>
+</table>
+
+
+<table align="center" cellpadding="5">
+<tr bgcolor="#f0f0f0"><td><b>Sunday 28 November 2004 - Arabic Translation</b></td></tr>
+<tr bgcolor="#ffffe0"><td>
+<p>
+	I have been thinking about an Arabic translation for sometime. I couldn't find an Arabic translation in ThML, only in OSIS format. The translation I have is the Smith &amp; Van Dyke translation available from the <a href="whi.wts.edu/OSIS/Projects/Markup/docs/1Bibles/">OSIS Portal Bible Texts</a>. I have written a new program called GoBibleCreator to replace Thml2GoBible which supports both ThML and OSIS source files. I will make GoBibleCreator available in the next few weeks. Amir Fouad from Egypt asked about an Arabic version and has been helping me test the Arabic version on his phone. I found out that my Nokia 6230 also supports the Arabic character set! With help from Amir we now have an Arabic version of Go Bible, Praise the Lord!
+</p>
+
+<p>
+	I have received emails from other people interested in other translations. Olov Ennerstam is helping with a Swedish translation, Nordgård Oddmund is helping with a Norwegian version, and Paul has created a Dutch ThML file and created a Go Bible translation all on his own! The Dutch version of Go Bible 1.0.6 can be downloaded from <a href="http://users.telenet.be/MoBible/">Paul's website</a>. I will also be making up a Go Bible 2.0 version from Paul's ThML file for posting on this site. Thanks Amir, Olov, Nordgård, and Paul you are fellowlabourers in Christ!
+</p>
+
+</td></tr>
+</table>
+
+
+<table align="center" cellpadding="5">
+<tr bgcolor="#f0f0f0"><td><b>Saturday 25 September 2004 - Go Bible 2.0.1 and Thml2GoBible 2.0.1 Released</b></td></tr>
+<tr bgcolor="#ffffe0"><td>
+<p>
+	Well I'm a bit overdue for an update! James from Singapore emailed me some time ago about an Indonesian version. He pointed me to the most commonly used version, <a href="http://www.ccel.org/ccel/bible/idbar.all.html">Terjemahan Baru</a> (New Translation), available at the <a href="http://www.ccel.org">CCEL website</a>. One problem with the CCEL ThML file is that it uses English book names instead of Indonesian. James very kindly changed all of the English book names to Indonesian and also provided a Collections file with all of the Indonesian names, which was great! Thanks James! So now we have an Indonesian translation available, Praise the Lord!
+</p>
+
+<p>
+	Roman Wong from Hong Kong had some troubles getting Go Bible 2.0 to run properly on the new Alcatel OT756. It turned out to be a memory problem, and I have modified Thml2GoBible 2.0.1 to ensure that Go Bible data files are approximately 48KB in size. In Thml2GoBible 1.0.6 Go Bible data files contain only one chapter but in Thml2GoBible 2.0 an entire book was placed into a data file which created memory problems on the Alcatel OT756 since Go Bible 2.0 loads the entire data file into memory. Go Bible 2.0.1 now runs on the Alcatel OT756, however the slightly reduced data file size will impact compression slightly making the overall JAR size slightly larger. The increase in JAR size is, as I said, very slight, I think the change is worth it to support as many phones as possible.
+</p>
+
+<p>
+	Roman also pointed out that only the Simplified Chinese translation was available on the website. I have now also made the Traditional Chinese translation available. Roman and James also pointed out that the Chinese translation use English book names instead of Chinese. Roman was kind enough to provide a list of both Simplified and Traditional Chinese book names which I have inserted into the respective ThML files. The Chinese collection names now end in 'Zh' so that both English and Chinese versions can be present at the same time.
+</p>
+
+<p>
+	Mike from Canberra suggested that the contents of collections be available somewhere as it isn't completey obvious, for example, that Proverbs is found in the Solomon collection. What I've done is simply placed the Collections.txt file, which is used by Thml2GoBible, in the zip file that contains the collections, which I think will be sufficient. Mike also suggested the creation of a Table of Contents application which loads up each of the individual applications which is a great idea that I hadn't thought of. I will look into it to see if it is possible.
+</p>
+
+<p>
+	Chris from Conventry, England asked where Thml2GoBible 2.0 was. Good question! I was a little behind schedule but it is now available for download from the <a href="developer/Welcome.html">Developer page</a>.
+</p>
+
+<p>
+	Finally, there was a small bug in Go Bible 2.0 where search results would sometimes contain a square character. This character is actually used in the data file to indicate when Christ's words begin and end so that the text can be drawn in red. The red style character is now converted to a space before being displayed in the search results.
+</p>
+
+<p>
+	Glory to God in the highest!
+</p>
+
+</td></tr>
+</table>
+
+<table align="center" cellpadding="5">
+<tr bgcolor="#f0f0f0"><td><b>Thursday 1 July 2004 - Go Bible 1.0.6 Released</b></td></tr>
+<tr bgcolor="#ffffe0"><td>
+<p>
+I've posted a small update to Go Bible 1.0 with the following changes:
+</p>
+
+<ul>
+	<li>Christ's words in red appear slightly brighter</li>
+	<li>The search results begin with the book name again</li>
+</ul>
+
+<p>
+There is also a small change to Thml2GoBible which removes spaces from JAR and JAD names which was causing a problem for some phones. I've also divided the WAP page up into two separate pages as it was too large for some phones.
+</p>
+
+<p>
+<i>God bless you all, and thanks for your support of Go Bible!</i>
+</p>
+
+</td></tr>
+</table>
+
+
+<table align="center" cellpadding="5">
+<tr bgcolor="#f0f0f0"><td><b>Monday 28 June 2004 - Go Bible 2.0 Released</b></td></tr>
+<tr bgcolor="#ffffe0"><td>
+<p>
+	The first version of Go Bible 2.0 is now available for download. It includes a number of enhancements over Go Bible 1.0 including the ability to send SMSes and increased compression. Go Bible 2.0 requires MIDP 2.0 as well as support for the Wireless Messaging API (WMA JSR-120). Go Bible 2.0 is made up of collections that are smaller than 128 KB, therefore they are suitable for Nokia Series 40 Developer Platform 2.0 phones such as the Nokia 6230. KJV Go Bible 2.0 also includes one large 1.3 MB collection for phones that do not have a JAR size limit. Go Bible 1.0 is still provided for phones that can not run Go Bible 2.0 which will include non-MIDP 2.0 phones, phones with a JAR limit less than 128 KB, and phones that run slowly with the new compression technique.
+</p>	
+
+<p>
+	Go Bible 2.0 uses UTF-8 as its internal character encoding which has allowed for a Chinese translation to be provided. I'm also looking at doing an Arabic and possibly an Indonesian translation. The Arabic translation will require changes to the renderer to support right to left reading.
+</p>
+
+<p>
+	I'm also looking at adding support for bookmarks to Go Bible 2.0 as well.
+</p>
+
+<p>
+	Thml2GoBible 1.0 can not be used with Go Bible 2.0, I will be posting Thml2GoBible 2.0 shortly.
+</p>
+
+<p>
+	Also available with Go Bible 2.0 is the Apocrypha which is available as a separate download. Thanks to James from Singapore for helping put together the Apocrypha collection.
+</p>
+
+</td></tr>
+</table>
+
+
+
+<table align="center" cellpadding="5">
+<tr bgcolor="#f0f0f0"><td><b>Thursday 10 June 2004 - Go Bible and Thml2GoBible 1.05</b></td></tr>
+<tr bgcolor="#ffffe0"><td>
+<p>
+	On Tuesday I rang Vodafone to find out how much it would cost to terminate my contract 6 weeks early. The Vodafone sales consultant said that I had rang on the right day because starting that day, Vodafone were terminating all contracts without penalty and moving people over to red SIM plans. I asked him whether that meant that I could switch to Optus tomorrow without any penalty and he said yes. So yesterday I picked up the Nokia 6230 from All Phones at Australia Fair on the Gold Coast, $0 upfront, $55/month for 24 months. Surprisingly I can actually watch TV broadcasts from CNNi, ABC, and SBS on the phone through video streaming! 
+</p>	
+
+<p>	
+	I downloaded <a href="http://www.macmedia.sk">PhoneDirector</a> which allows Mac OS X to communicate with the Nokia 6230. Go Bible runs nicely except that the Nokia 6230 does not like ':' in the names of Java applications. The app is loaded onto the phone in the Collections folder but you can't see it (yikes!). So the app takes up space but there doesn't appear to be any way to run or delete it! Go Bible currently uses the naming convention 'Books: Go Bible'. I've now modified this naming convention to remove the colon so that it simply reads 'Books Go Bible'. The changes are in Thml2GoBible 1.05 and Go Bible 1.05.
+</p>
+
+<p>	
+	I noticed a bug with the latest version of Thml2GoBible which is also in the latest release of Go Bible that I put up on Monday. The problem is that Thml2GoBible doesn't convert the Unicode right single quotation character, which mobile phones can't display, to the apostrophe character, which mobiles can display.  The problem is not so much with Thml2GoBible but with Java, as it does not provide a nice conversion, instead it just inserts a question mark character. I've added special cases for the left and right, single and double quotation characters to ensure they are converted to the appropriate ISO Latin 1 characters. The changes are in Thml2GoBible 1.05 and Go Bible 1.05. You will only be affected by this bug if you downloaded Thml2GoBible or Go Bible files between Monday and today.
+</p>
+
+<p>
+	I also noticed that the Go Bible WAP site no longer works. A closer inspection found that OntheNet was no longer returning the correct MIME types for JAD and JAR files. After a quick email they responded quickly and fixed the problem immediately. I also rearranged some things on the WAP site so hopefully everything should be working smoothly now. The only problem is that the changes that I made to the WAP site to support '3' phones have increased the size of the page so that it is too large for my old Sony Ericsson T610 with Vodafone, so I may need to reduce the size of the WAP page in the future, perhaps by splitting it into multiple smaller pages.
+</p>
+
+<p>
+	Now that I have a MIDP 2.0 phone I can begin work on Go Bible 2.0 which is very exciting as it is 6 weeks earlier than I had expected. I'm not sure when the first release will be but I'll likely just implement a few features at a time and release it in a piecemeal fashion. The Nokia 6230 appears to support some sort of Chinese character set which may mean that I might be able to produce a Chinese translation of the Bible. Although I've heard that even though a phone may be Chinese, the J2ME VM rarely supports the Chinese character set, so we'll have to wait and see.
+</p>
+
+</td></tr>
+</table>
+
+
+
+<table align="center" cellpadding="5">
+<tr bgcolor="#f0f0f0"><td><b>Monday 7 June 2004 - Thml2GoBible Released</b></td></tr>
+<tr bgcolor="#ffffe0"><td>
+<p>
+	I've finally had some spare time to do some more work on Go Bible. Plenty of people have requested the source code to Go Bible so that they can release their own versions, hopefully the source will be available soon, however, most people only need the Thml2GoBible tool (previously known as ThmlConverter) which allows you to build any Go Bible collection from any compliant ThML file.
+</p>
+
+<p>
+	A new <a href="developer/Welcome.html">Developer</a> section has been added to this web site which contains info on the ThML format and the Thml2GoBible tool. Thml2GoBible is written in Java so most people should be able to run it, if you have any problems don't hesitate to let me know. 
+</p>
+
+<p>
+	Rob from Sydney is the first person that I know of in the world that has been able to get Go Bible onto a '3' phone via WAP download. He has <a href="http://www.aussie3g.com/modules.php?name=Forums&file=viewtopic&t=4677&sid=8ecd9c4a98ad228fd777d595d9c959f3">advised me</a> on how to configure my WAP site to also support '3' phones, or at least the NEC e616. I have updated the WAP site to support the '3' requirements and the changes are also in Thml2GoBible. I haven't been able to test it yet so if anyone is able to download Go Bible from wap.jolon.org, I'd be interested to know. Before you can access wap.jolon.org from a '3' phone you will need to <a href="http://www.aussie3g.com/modules.php?name=FAQ&myfaq=yes&id_cat=2&categories=NEC+e606+Handset#13">configure your phone for external internet access</a>. The basic steps for the NEC e606 are (taken directly from <a href="http://www.aussie3g.com/modules.php?name=FAQ&myfaq=yes&id_cat=2&categories=NEC+e606+Handset#13">this page</a>):
+</p>
+
+<ul>
+<li>press menu</li>
+<li>press 6... then 9 ... then 3.....</li>
+<li>you should see 3services in there somewhere</li>
+<li>press edit</li>
+<li>type ur code (should be 0000) change it to 3netaccess and save...</li>
+<li>turn off fone then back on again, go to services, menu, enter url, voila.!</li>
+<li>then to get services back change it to 3services again</li>
+</ul>
+
+<p>
+	I've also split up 2 Chronicles, Job, Isaiah, Jeremiah, and Ezekiel into 64KB collections so that they can be downloaded to Nokia phones.
+</p>
+
+<p>
+	My current phone contract runs out on July 17, 2004, so I'm currently looking around for a new phone. The Sony Ericsson K700 looks like a nice phone, but I'm thinking about going for the Nokia 6230 because it has the Bluetooth API (the Uni has a Bluetooth robot that I'd like to be able to control from my phone). Optus have the Nokia 6230 for $55/month on a 24 month contract. They also provide 1.1¢/KB GPRS on weekends which is good value. My next phone will be a MIDP 2.0 phone which means that I will be able to start work on Go Bible 2.0. The most interesting feature of Go Bible 2.0 will be the ability to send scriptures via SMS which I think will be extremely useful. Some users of Go Bible 1.0 already have MIDP 2.0 phones and will be able to upgrade to Go Bible 2.0 immediately when it becomes available. I may actually start work on Go Bible 2.0 even before I get the new phone, if the Lord wills.
+</p>
+
+</td></tr>
+</table>
+
+
+<table align="center" cellpadding="5">
+<tr bgcolor="#f0f0f0"><td><b>Saturday 21 February 2004 - Go Bible KJV 1.04 Released</b></td></tr>
+<tr bgcolor="#ffffe0"><td>
+<p>
+	I've finally posted Go Bible 1.04 with the KJV translation. Go Bible 1.04 was actually used for the Danish translation which was posted a few weeks ago but I needed to make some further changes to the ThmlConverter before releasing the KJV translation as the KJV is also downloadable via WAP so I've modified ThmlConverter so that it produces all of the WAP JAD files as well as a WAP page with links to the JAD files.
+</p>
+
+<p>
+	Go Bible KJV 1.04 now also includes some split Old Testament books. The books are Genesis, Exodus, Numbers, Deuteronomy, 1 Samuel, 1 and 2 Kings. I prayed about the split points and I feel that they are suitable. However, I didn't have a peace about splitting Chronicles, Isaiah, Jeremiah, or Ezekiel. I think it is mainly because I'm currently reading through the Old Testament and am only up to 1 Chronicles so I feel confident in choosing split points up to there but no further. So if anyone would like to suggest good split points for Chronicles, Isaiah, Jeremiah, or Ezekiel it would be much appreciated. Isaiah and Jeremiah will probably need to be split into three collections each.
+</p>
+
+<p>
+	A number of people have asked about the source for Go Bible so my next task is to begin to make the tools and source available on this website.
+</p>
+
+<p>
+	I'd like thank all of the people from around the world who have emailed me about Go Bible. So far I have received emails from the following countries:
+</p>
+
+<ul>
+	<li>Australia</li>
+	<li>Denmark</li>
+	<li>Germany</li>
+	<li>Ireland</i>
+	<li>New Zealand</li>
+	<li>Nigeria</li>
+	<li>Singapore</li>
+	<li>South Africa</li>
+	<li>USA</li>
+</ul>
+</td></tr>
+</table>
+
+
+<table align="center" cellpadding="5">
+<tr bgcolor="#f0f0f0"><td><b>Monday 2 February 2004 - Danish Go Bible Released!</b></td></tr>
+<tr bgcolor="#ffffe0"><td>
+<p>
+	A belated Merry Christmas and a Happy New Year! Since the last update I've received emails from Singapore, USA, Australia, and Germany who've successfully installed Go Bible on their phones! Thanks for your emails, encouragement, and suggestions.
+</p>
+
+<p>
+	With the help of Søren we've finally put the Danish version together! The ThmlConverter required some tweaks and I ended up giving it a complete overhaul. The Danish version also prompted some rendering changes to support the very long book names. The rendering changes are in Go Bible 1.04 which is the version of the Danish translation.
+</p>
+
+<p>
+	The KJV translation remains at version 1.03 as I need to spend a bit more time splitting up the books of the Old Testament into 64KB before releasing it. This my current plan of attack, if the Lord wills:
+</p>
+
+<ul>
+	<li>Split up the books of the Old Testament into 64KB chunks for the KJV translation (and also the Danish translation)</li>
+	<li>Update the overhauled ThmlConverter to output a WAP page for the KJV translation</li>
+	<li>Add a developers section to this website beginning with information on the ThML format required by Go Bible.</li>
+	<li>Tidy up the ThmlConverter program and make it available for download from this website so people can make their own translations.</li>
+	<li>Further tidy up the ThmlConverter program code and make the source code available on this website for people who want to modify it for their own purposes.</li>
+	<li>Make the Go Bible source code available.</li>
+</ul>
+
+<p>
+	There is also a bug in Go Bible that has been reported by a couple of people but only seems to occur on Nokia phones. When scrolling through a book sometimes Go Bible will generate a NullPointerException. Since I don't have a Nokia phone or the PC emulator (I'm currently using a Mac) I can't really look into it any further. Hopefully I will get a chance to use the PC emulator in a few months and track down the source of this bug.
+</p>
+
+<p>
+	Here is a summary of the changes in Go Bible 1.04 (Currently only the Danish translation is at version 1.04):
+</p>
+
+<ul>
+	<li>The reference line at the top of the screen now dynamically changes depending on how much room is available to display the book name, reference, and number of verses. The first change is that the reference is now right aligned against the number of verses. If there is not enough room to display the book name, reference, and number of verses then the number of verses is the first to go. If there is still not enough room then the book name is truncated. Previously the reference went off the edge of the screen making it impossible to the know the current chapter and verse for long book names.</li>
+	<li>
+		The loading screen now also truncates long book names so the reference doesn't go off the end of the screen.
+	</li>
+</ul>
+</td></tr>
+</table>
+
+<table align="center" cellpadding="5">
+<tr bgcolor="#f0f0f0"><td><b>Saturday 15 November 2003 - Go Bible 1.03 released</b></td></tr>
+<tr bgcolor="#ffffe0"><td>
+<p>
+	I've been meaning to fix a text rendering bug that Søren found a few weeks ago but with a computer crash and the flu I haven't been able to look at it until now. The bug is that some times the last word of a verse appears half off the bottom of the screen and when you scroll down it just skips to the next verse and the word is never fully seen. I've fixed this now so that the last word of a verse is never drawn if it can only be partially drawn.
+</p>
+
+<p>
+	Søren has been able to convert the Danish Bible into ThML format which is very handy, thanks! I haven't had a chance to look into producing Danish and Swedish translations yet but I'll hopefully have a chance this weekend or next. I wrote a little Java program called ThmlConverter that converts ThML files into Go Bible data files, but it may need a little tweaking to make it easier to support translations other than the KJV.
+</p>
+
+<p>
+	Here is a summary of the changes in Go Bible 1.03:
+</p>
+
+<ul>
+	<li>Fixed a bug where the last word of the verse may appear partially visible at the bottom of the screen.</li>
+</ul>
+</td></tr>
+</table>
+
+<table align="center" cellpadding="5">
+<tr bgcolor="#f0f0f0"><td><b>Saturday 25 October 2003 - Go Bible 1.02 released</b></td></tr>
+<tr bgcolor="#ffffe0"><td>
+<p>
+	I received a nice email from Søren Noer from Denmark who has successfully downloaded Go Bible to the Siemens S55 which I've now added to the list of <a href="phones.html">supported phones</a>. Søren also mentioned that the book names in the <i>Go to</i> screen go off the left of the screen for some long book names (which I've seen on some phones). So I've fixed the <i>Go to</i> screen so that if a book name is too long the right of the name is clipped so that the start of the name can still be read easily. I've also made the chapter and verse layout a bit smarter too so that more can fit in the <i>Go to</i> screen. 
+</p>
+
+<p>
+	Søren also suggested that I make Danish and Swedish translations available. A Swedish translation is available in ThML format so I should be able to make a Swedish translation available pretty easily. I don't know any Swedish so I will probably need some help verifying that it actually works! I found a Danish translation at the <a href="http://unbound.biola.edu">Unbound Bible</a> web site but it isn't in ThML format. It may not be too difficult to convert into ThML format, however there are no markings for Christ's words so they won't appear in red in Go Bible. Thanks for the helpful suggestions Søren, I'll see what I can do over the next few weekends.
+</p>
+
+<p>
+	My friend <a href="http://christian-faith.com/html/search/edwards">John Edwards</a> also made some suggestions a little while back on scrolling through verses. Version 1.01 and earlier used a scrolling scheme where it would scroll half a page at a time if the verse was larger than the screen, and if not it would simply scroll to the next verse so that it was at the top of the screen. This was a little inconsistent and hard to follow especially on the Nokia 7250 which has a slightly smaller display. I've taken John's suggestion to make scrolling always scroll one complete screen so there is no confusion as where to begin reading from next. This has required the scrolling code to be changed significantly and the complexity of the code has also increase so there may be some bugs in there that I haven't found yet. Even though scrolling forward occurs with one whole screen at a time scrolling backwards still just scrolls one verse at a time placing the verse at the top of the screen. Also, previously, if half a line of text could appear at the bottom of the screen Go Bible would render it, I've now changed it so that only full lines of text are displayed. If you don't like this, let me know and I'll change it back to display partial lines as well.
+</p>
+
+<p>
+	John also suggested that I split up Matthew, Luke, and Acts into two collections each so that they fit on Nokia phones (as whole books they are greater than 64KB each). So I've split up Matthew at chapter 14, and Luke and Acts at chapter 13. We tried to look for splits that cause the least discontinuity within the text. It wasn't easy, but I asked the Lord and I feel relatively comfortable with the splits we have chosen.
+</p>
+
+<p>
+	Here is a summary of the changes in Go Bible 1.02:
+</p>
+
+<ul>
+	<li>Tidied up the <i>Go to</i> screen so that more of the start of a book name will be readable.</li>
+	<li>Scrolling forward now occurs one whole page at a time. Backwards scrolling is still one verse at a time.</li>
+	<li>Partially visible lines at the bottom of the screen are no longer rendered.</li>
+	<li>Matthew, Luke, and Acts have been split into two books each so that they can fit on Nokia phones.</li>
+</ul>
+</td></tr>
+</table>
+
+<table align="center" cellpadding="5">
+<tr bgcolor="#f0f0f0"><td><b>Sunday 28 September 2003 - Go Bible 1.01 released</b></td></tr>
+<tr bgcolor="#ffffe0"><td>
+<p>
+	After writing Go Bible almost 2 months ago I'm finally getting it successfully downloaded to phones via this web site. I set up the domain name jolon.org which is significantly easier to remember and simpler to type into a phone than www.onthenet.com.au/~jolon. I transferred the domain from VeriSign to <a href="http://www.godaddy.com">GoDaddy</a> because they were cheaper and provide free domain forwarding. <a href="http://www.onthenet.com.au">OntheNet</a> have been helpful in setting up their web server with the MIME types for jar, jad, and wml files, which are required for phones to successfully browse the WAP site and download Go Bible to the phone. 
+</p>
+<p>
+	My friend <a href="http://christian-faith.com/html/search/edwards">John Edwards</a> has been very helpful in allowing me to use his Nokia 7250 to test out this web site and the Go Bible software. He has been using it extensively and has pointed out some bugs and possible improvements. Go Bible 1.0 has been on this web site for a few weeks. Go Bible 1.01 is now available with the following enhancements:
+</p>
+
+<ul>
+	<li>Fixed a bug where the first word of Christ's words in red would not wrap to the next line if it was over the right edge of the screen.</li>
+	<li>The name of each collection is suffixed with ": Go Bible" instead of prefixed with "Go Bible :" this allows the collection names to be more fully seen on mobile phone displays which generally must truncate Go Bible's collection names as they are generally too long for a mobile phone display.</li>
+	<li>The "of n" displayed in top right hand of the display is now only shown if there is room for it.</li>
+	<li>Books can now start at chapters greater than 1. This allows books like Psalms to be split up into its smaller five books whilst maintaining correct chapter numbers.</li>
+	<li>All of the books of the Old Testament have now been separated out into individual books, or collections of books that are smaller than 64KB. Psalms is available as five separate books which are all less than 64KB</li>
+	<li>Tidied up the search results. Previously 10 characters before and after the search string were extracted from the verse. This would result in characters being extracted from neighbouring verses as well as sometimes cutting words in half. Now the search results only display whole words from the verse where the search result was found. The old search results are shown on the left and new ones are on the right:</li>
+</ul>
+
+<p align="center">
+	<img src="ScreenResultsOld.png"/>
+	<img src="ScreenResults.png"/>
+</p>
+
+<p>
+	I've added two extra pages to this web site including this page. The other page is the <a href="phones.html">Supported Phones</a> page which contains information about phones that I've tried running Go Bible on. I'd be interested to know whether you have been able to successfully install Go Bible onto your phone too.
+</p>
+
+<p>
+	I received an email from a guy from Brisbane, Australia who had found this site (I live near the Gold Coast which is only 100km from Brisbane). I was intrigued how he had found out about the web site as I hadn't posted the domain jolon.org to any search engines yet, but it turns out if you go to <a href="http://www.google.com.au">Google's Australian web site</a> and select the Search only pages from Australia option and search for "Java Bible" the Go Bible web site appears as one of the results. I will probably register jolon.org with Google in the next few days after I have tested the latest WAP site changes with my phone and a few other phones. I've also been considering registering the domain name gobible.net.
+</p>
+</td></tr>
+
+<tr><td></td></tr>
+
+</table>
+
+</td>
+
+</tr>
+
+</table>
+
+</td>
+</tr>
+</table>
+
+</body>
+
+</html>
