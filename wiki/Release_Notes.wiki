@@ -4,7 +4,7 @@
 
 For version history up to 2.2.3, refer to [http://gobible.jolon.org/news.html Go Bible News]
 
-== 2.2.6 - 30 March 2008 ==
+== 2.2.6 - 31 March 2008 ==
 
   * _Details awaited_.
 
