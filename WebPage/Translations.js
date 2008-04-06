@@ -77,7 +77,7 @@ var packages =
 				"Description": '<p><i>Note: This version is for older MIDP 1.0 phones, most phones today are MIDP 2.0 and can use the standard Arabic version which includes more features such as SMS. This is a shaped version required by some Sony Ericsson phones such as the T610, T630, Z600. On other phones this version made not look as good as the unshaped Arabic version.</i></p><p><b>Smith Van Dyck Translation</b></p><p>Priest Ghubreen Jebara, a learned Greek ecclesiastic in Beirut, said in a public address, in 1865, "But for the American missionaries, the Word of God had well-nigh perished out of the language; but now, through the labors of Dr. Eli Smith and Dr. Van Dyck, they have given us a translation so pure, so exact, so clear, and so classical, as to be acceptable to all classes and all sects."</p><p align="right">From <a href="http://www.arabicbible.com/christian/work_me.htm">Arabic Bible Outreach</a></p>',
 				"FileName": "Arabic MIDP 1.0 Shaped",
 				"Variants": ["Full"]
-			},
+			}
 		},
 
 		"Bulgarian":
@@ -272,7 +272,7 @@ var packages =
 			// Translation
 			"Slovakian":
 			{
-				"FileName": "Slovakian",
+				"FileName": "Slovak",
 				"Variants": ["Full", "128KB", "512KB"]
 			}
 		},
