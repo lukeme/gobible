@@ -1,0 +1,38 @@
+body {
+  margin: 0;
+  padding: 0; 
+  padding-top: 10px;
+  background: #fff; 
+  text-align: left; 
+  font: 12px 'Lucida Grande', Geneva, Arial, Verdana, sans-serif; 
+  color: #000;
+}
+
+p {
+	font-size: 12px
+}
+
+table {
+	font-size: 12px;
+}
+
+a, a:hover, a:active {
+  color: #303080
+}
+
+a:hover {
+  background-color: #303080;
+  color: white;
+  text-decoration: none;
+}
+
+.infobox {
+	padding: 5;
+	border:dashed 1px grey;
+	background-color: #fffff0;
+}
+
+.invisible
+{
+	visibility: hidden;
+}

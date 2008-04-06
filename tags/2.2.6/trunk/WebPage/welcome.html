@@ -1,0 +1,370 @@
+<html>
+
+<head>
+<title>
+Go Bible
+</title>
+  <link rel="Stylesheet" href="style.css" type="text/css" media="screen" />
+<link rel="shortcut icon" href="http://go-bible.org/favicon.ico" type="image/vnd.microsoft.icon" />
+
+<META name="description" content="Free mobile phone Bible viewer. J2ME Bible for cell phones, mobile phones, and handy phones. Jolon Faichney.">
+<META name="keywords" content="Go Bible, GoBible, Bible, phone, mobile, java, J2ME, cell, free, KJV, NIV, phone bible, j2me bible, viewer, bible viewer, Jolon Faichney">
+
+</head>
+
+<body onload="load()">
+
+<script type="text/javascript" src="Translations.js"></script>
+
+<script type="text/javascript">
+
+// URLs to packages will take the form:
+// [baseURL]/Collections/[version]/Go Bible [FileName] [Variant] [version].zip
+
+var version = "2.2.6";
+var baseURL = "http://go-bible.org";
+
+var languageNames;
+
+// Called after the page loads, must be registered with the onload event in the
+// body tag. Sets up the pop-up menus with the translation names.
+function load()
+{
+	loadLanguages();
+}
+
+function loadLanguages()
+{
+	// Downloads table is initially invisible so that it is not seen
+	// by browsers which don't support JavaScript
+	downloadsTable = document.getElementById("DownloadsTable");
+	downloadsTable.className = "visible";
+
+	// Get the inputs
+	languagesInput = document.getElementsByName("LanguagesInput")[0];
+	translationsInput = document.getElementsByName("TranslationsInput")[0];
+	downloadForm = document.getElementsByName("DownloadForm")[0];
+	
+	languageNames = keys(getPackages());
+	
+	removeOptionsFromSelect(languagesInput);
+	
+	// Default to English language
+	englishIndex = 0;
+	
+	// Add in new Languages
+	for (i = 0; i < languageNames.length; i++)
+	{
+		appendOption(languagesInput, languageNames[i]);
+		
+		if (option.text == "English")
+		{
+			englishIndex = i;
+		}
+	}
+	
+	languagesInput.selectedIndex = englishIndex;
+	
+	loadTranslations();
+}
+
+// The LanguageInput has changed so load the relevant translations
+function loadTranslations()
+{
+	// Generate the translation numbers used for wap downloads
+	generateTranslationNumbers();
+	
+	// Get the inputs
+	languagesInput = document.getElementsByName("LanguagesInput")[0];
+	translationsInput = document.getElementsByName("TranslationsInput")[0];
+
+	// Get the selected language
+	languageIndex = languagesInput.selectedIndex;
+	
+	language = getPackages()[languageNames[languageIndex]];	
+	
+	propertyNames = keys(language);
+	removeOptionsFromSelect(translationsInput);
+	
+	addOptionsToSelect(translationsInput, propertyNames);
+	
+	translationsInput.selectedIndex = 0;
+	
+	loadVariants();
+}
+
+function loadVariants()
+{
+	languagesInput = document.getElementsByName("LanguagesInput")[0];
+	translationsInput = document.getElementsByName("TranslationsInput")[0];
+	variantsInput = document.getElementsByName("VariantsInput")[0];
+	translationDescription = document.getElementById("TranslationDescription");
+	
+	removeOptionsFromSelect(variantsInput);
+	
+	language = getPackages()[languageNames[languagesInput.selectedIndex]];
+	
+	translationNames = keys(language);
+	
+	translation = language[translationNames[translationsInput.selectedIndex]];
+	
+	var description = null;
+	
+	if (translation.hasOwnProperty("Description"))
+	{
+		translationDescription.className = "infobox";
+		description = "<p><i>About this translation:</i></p>" + translation.Description;
+	}
+	else
+	{
+		translationDescription.className = "invisible";
+		description = "";
+	}
+	
+	translationDescription.innerHTML = description;
+	
+	for (i = 0; i < translation.Variants.length; i++)
+	{
+		appendOption(variantsInput, variants.Variants[translation.Variants[i]].Description);
+	}
+	
+	variantsInput.selectedIndex = 0;
+	
+	setDownloadLink();
+}
+
+// URLs to packages will take the form:
+// [baseURL]/Collections/[version]/Go Bible [FileName] [Variant] [version].zip
+function setDownloadLink()
+{
+	languagesInput = document.getElementsByName("LanguagesInput")[0];
+	translationsInput = document.getElementsByName("TranslationsInput")[0];
+	variantsInput = document.getElementsByName("VariantsInput")[0];
+	downloadForm = document.getElementsByName("DownloadForm")[0];
+	downloadLink = document.getElementsByName("DownloadLink")[0];
+	wapLink = document.getElementById("WapLink");
+	translationNameSpans = document.getElementsByName("TranslationName");
+
+	if (variantsInput.selectedIndex != -1)
+	{
+		language = getPackages()[languageNames[languagesInput.selectedIndex]];
+		
+		translationNames = keys(language);
+		
+		translation = language[translationNames[translationsInput.selectedIndex]];
+	
+		fileName = translation.FileName;
+	
+		variant = translation.Variants[variantsInput.selectedIndex];
+		variantFileName = variants.Variants[variant].FileName;
+
+		// Construct the URL
+		url = baseURL + "/Collections/" + version + "/" + "Go Bible " + translation.FileName + " " + variantFileName + version + ".zip";
+		
+		downloadForm.action = url;
+		downloadLink.href = url;
+		
+		var wapUrl = "http://wap.jolon.org/" + (translation.WapNumber + variantsInput.selectedIndex);
+		wapLink.innerHTML = '<a href="' + wapUrl + '">' + wapUrl + '</a>';
+		
+		for (i in translationNameSpans)
+		{
+			translationNameSpans[i].innerHTML = translationNames[translationsInput.selectedIndex] + " " + variantFileName;
+		}
+	}
+}
+
+function removeOptionsFromSelect(select)
+{
+	// Remove all options
+	while (select.length > 0)
+	{
+		select.remove(0);
+	}
+}
+
+// select.add() doesn't work in FireFox or IE
+function appendOption(select, value)
+{
+	option = document.createElement("option");
+	option.text = value;
+	select.options[select.options.length] = option;
+}
+
+function addOptionsToSelect(select, values)
+{
+	for (i = 0; i < values.length; i++)
+	{
+		appendOption(select, values[i]);
+	}
+}
+
+</script>
+
+<table align="center" width="900" bgcolor="#CCFF66"> <tr><td>
+<p align="center">
+<b>Go Bible Home</b> | 
+<a href="news.html">News</a> | 
+<!-- <a href="documentation.html">Documentation</a> | -->
+<a href="http://jolon.org/vanillaforum/categories.php">Forum</a> | 
+<a href="about.html">About</a> | 
+<a href="contact.html">Contact</a> | 
+<a href="developer/welcome.html">Developer</a> 
+
+</p>
+</td></tr></table>
+
+<table cellspacing="10" width="900" align="center">
+
+<tr valign="top">
+
+
+<!-- Main content area -->
+
+<td>
+
+<table cellpadding="10">
+<tr>
+<td valign="top">
+<p align="center">
+	<img src="screenshot_border.gif"/>
+</p>
+</td>
+<td>
+
+<h1>Go Bible</h1>
+
+<i>For the glory of our Lord Jesus Christ and the furtherance of His Kingdom.</i>
+
+<p>
+Go Bible is a Free Bible viewer application for Java mobile phones (J2ME MIDP 1.0 and MIDP 2.0).	
+</p>
+
+<p>Go Bible 2.2.6 Features:</p>
+<ul>
+	<li>Christ's Words in red</li>
+	<li>SMS scriptures</li>
+	<li>Bookmarks</li>
+	<li>History</li>
+	<li>Coloured themes</li>
+	<li>Fast search</li>
+</ul>
+
+<p>
+If you have installation questions please visit the <b><a href="http://jolon.org/vanillaforum/categories.php">Go Bible Forums</a></b>.
+</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td>
+<h2>Download Go Bible:</h2>
+
+<noscript>
+<p style="color: red"><b><i>
+Note: This web browser either has JavaScript disabled or does not support JavaScript. To download Go Bible you can either enable JavaScript or download Go Bible from the static <a href="Downloads_static.html">Downloads</a> page.
+</i></b></p>
+</noscript>
+
+<div id="DownloadsTable" class="invisible">
+<table align="center" cellpadding="5">
+<tr bgcolor="#CCFF66"><td><b>Step 1 - Select a translation</b></td></tr>
+<tr bgcolor="#ffffe0"><td>
+<table>
+<tr>
+<td>Language:</td>
+<td>
+<select name="LanguagesInput" onchange="loadTranslations()">
+<option selected>English</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>
+Translation:
+</td>
+<td>
+<select name="TranslationsInput" onchange="loadVariants()">
+<option selected>King James Version 1611</option>
+</select>
+</td>
+</tr>
+</table>
+<table>
+<tr><td>
+<!--<p><i>About this translation:</i></p>-->
+<div class="invisible" id="TranslationDescription"></div>
+</td></tr>
+</table>
+</td>
+</tr>
+
+<tr bgcolor="#CCFF66"><td><b>Step 2 - Select an edition</b></td></tr>
+<tr bgcolor="#ffffe0"><td>
+
+<select name="VariantsInput" size="3" onchange="setDownloadLink()">
+<option selected>Full Bible - Full Bible in one application</option>
+<option>512KB - Bible split into 512KB applications for some Nokia phones</option>
+<option>128KB - Bible split into 128KB applications for some Nokia phones</option>
+</select>
+
+<p>Some Nokia phones limit the application size to 512KB or 128KB which is smaller than the full Go Bible size of approximately 1.4MB. To support these phones we also provide Go Bible split into multiple applications of 512KB or 128KB. To find out the max JAR limit of your Nokia phone go to the <a href="http://forum.nokia.com/devices/matrix_all_1.html">Forum Nokia</a> website, select your phone model, and look for the "Max JAR Size" in the table of the resulting page.</p>
+</td>
+</tr>
+
+<tr bgcolor="#CCFF66"><td><b>Step 3 - Download</b></td></tr>
+<tr bgcolor="#FFFFe0"><td>
+
+<p>Click the download button to begin downloading <b>Go Bible <span name="TranslationName"></span></b> to your computer:</p>
+
+<form name="DownloadForm" action="">
+<input type="Submit" value="Download"/>
+</form>
+<p>The file you download is a ZIP file. You will need to decompress this file which will result in some JAD and JAR files. The JAR file is the actual application which needs to be loaded onto the phone. The JAD file is a smaller descriptor file that some phone application loaders may require to be able to install the JAR file.</p>
+<p>
+<a name="DownloadLink" href="">Link to file (if the Download button doesn't work)</a>
+</p>
+
+</td>
+</tr>
+
+<tr><td></td></tr>
+
+
+<tr bgcolor="#FFCCFF"><td><b>Alternatively: Download directly to phone</b></td></tr>
+<tr bgcolor="#ffffe0"><td>
+	<p>
+		<b>Go Bible <span name="TranslationName"></span></b> can be downloaded directly on your phone using your phone's browser.
+	</p>
+	
+	<p>
+		To do so enter the following link into your phone's browser: 
+	</p>
+	<div id="WapLink"><a href="http://wap.jolon.org">http://wap.jolon.org</a></div>
+	<p>
+		Note: Downloading via your phone may incur data charges. You may want to find out how much you pay for data before downloading Go Bible over the air as it is a 1.4MB download.
+	</p>
+</td>
+
+</tr>
+
+
+</table> <!-- Downloads table -->
+</div>
+
+</td>
+
+
+
+</tr>
+
+</table>
+</table>
+
+<p align="center">
+<i><a href="mailto:jolon@onthenet.com.au">Jolon Faichney 2008</a></i>
+</p>
+
+</body>
+
+</html>
