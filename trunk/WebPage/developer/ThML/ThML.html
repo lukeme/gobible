@@ -1,0 +1,144 @@
+<html>
+
+<head>
+<title>
+Go Bible: ThML
+</title>
+  <link rel="Stylesheet" href="../../style.css" type="text/css" media="screen" />
+</head>
+
+<body>
+
+<table align="center" width="900" bgcolor="#CCFF66"> <tr><td>
+<p align="center">
+<a href="../../welcome.html">Go Bible Home</a> | 
+<a href="../../news.html">News</a> | 
+<!-- <a href="documentation.html">Documentation</a> | -->
+<a href="http://jolon.org/vanillaforum/categories.php">Forum</a> | 
+<a href="../../about.html">About</a> | 
+<a href="../../contact.html">Contact</a> | 
+<a href="../welcome.html">Developer</a> 
+
+</p>
+</td></tr></table>
+
+<table cellspacing="20">
+<tr>
+<td>
+<img align="middle" alt="Go Bible Logo" src="../../GoBibleLogo.png"/>
+</td>
+<td>
+<h1>Go Bible</h1>
+
+<i>For the glory of our Lord Jesus Christ and the furtherance of His Kingdom.</i>
+</td>
+</tr>
+</table>
+
+<table cellspacing="10">
+
+<tr valign="top">
+
+<!-- Left menu -->
+
+<td>
+
+	<a href="../welcome.html">Developer</a>
+	<ul>
+		<li><a href="../GoBibleCreator/GoBibleCreator.html">GoBibleCreator</a></li>
+		<li><a href="../OSIS/OSIS.html">OSIS</a></li>
+		<li><b>ThML</b></li>
+	</ul>
+
+</td>
+
+<!-- Main content area -->
+
+<td>
+
+<h1>ThML</h1>
+
+<p>
+	Theological Markup Language (ThML) is an XML-based format for describing theological texts by including tags for scripture references, etc. The official ThML specification can be found at the <a href="http://www.ccel.org/ThML">CCEL web site</a>. 
+</p>
+
+<p>
+	A Bible consists of sections (eg. Preface, Old Testament, New Testament), books, chapters and verses. There are ThML tags that represent each of these. The ThML specification details many tags that can be used within a ThML file, however, only those required by GoBibleCreator are described here. To begin with, a ThML file must have a &lt;ThML&gt; pair of tags. GoBibleCreator will only use content that is within the &lt;ThML&gt; tag. Next the &lt;ThML&gt; tag must contain a &lt;ThML.body&gt; pair of tags. Again, only content within the &lt;ThML.body&gt; tag will be used by GoBibleCreator. Next there are ThML tags for each type of section in the Bible:
+</p>
+
+<table cellspacing="10">
+<ul>
+	<tr bgcolor="#f0f0f0"><td><b>&lt;div1&gt;</b> </td><td> The div1 tag is used to represent the top-level sections within the Bible such as the Preface, Old Testament, and New Testament. GoBibleCreator doesn't actually use the div1 tags perse but since most encodings of the Bible will identify the Old and New Testaments by div1 tags then GoBibleCreator assumes that they will be there.</td></tr>
+	<tr bgcolor="#f0f0f0"><td><b>&lt;div2&gt;</b> </td><td> div2 tags represent individual books of the Bible. The way GoBibleCreator handles Book names is quite flexible but a little complex. This is due to different parts of Go Bible only supporting certain types of character sets. For example, Book data is stored in the Go Bible JAR file by the name of the Book, however the JAR file format only reliably supports the Latin character set, therefore the Book name must have a Latin version. ThML supports two attributes in the div2 tag that identify the Book. The first is the title attribute which is usually a more descriptive attribute and may be in a non-Latin character set (eg. 'The Gospel of Saint John'). The second is the id attribute which is usually a short basic Latin identifier of the book (eg. 'John'). Therefore is the id attribute exists GoBibleCreator will use it for the file names and the title attribute for the Book name referred to in the Collections.txt file. However, if the id attribute does not exist, GoBibleCreator will attempt to convert the title attribute to US-ASCII, which will work for most European languages which extend the basic Latin character set, but may have unpredictable results for other languages such as Chinese. If the div2 tag does not have a title attribute then GoBibleCreator will try to use the id attribute for the Book name. This mode of operation should support most existing ThML files. If you are creating a new ThML file then follow these rules:
+
+		<ul>
+			<li>title - The title will be the name of the Book displayed to the user in the Go Bible application unless overridden by the Book-Name-Map property of the Collections.txt file.</li>
+			<li>id - The id is usually a shortened basic-Latin version of the title attribute. See an existing ThML file for id conventions (eg. 'Gen', 'Ex', etc.).</li>
+		</ul>
+	</td></tr>
+	<tr bgcolor="#f0f0f0"><td><b>&lt;div3&gt;</b> </td><td> The div3 tag identifies a chapter. The div3 tag must contain the following attributes:
+		<ul>
+			<li>title - The title will contain the chapter of the book in the form "Chapter 2". The chapter number must be the number after the last space in the title attribute.</li>
+				</ul>
+			</li>
+		</ul>
+	</td></tr>
+	<tr bgcolor="#f0f0f0"><td><b>&lt;p&gt;</b> </td><td> All verses must appear within the p tag. A chapter can have only one p tag with all verses within the one p tag. However, most ThML files will have one p tag for every new paragraph within a chapter. Whether one or more p tags are used will not affect GoBibleCreator as Go Bible has no way of representing paragraphs. However, at least one p tag must be present per chapter to encase the verses.</td></tr>
+	<tr bgcolor="#f0f0f0"><td><b>&lt;scripture&gt;</b> </td><td> The scripture tag must appear before each verse. However, the scripture does not encase the verse. Instead, scripture tags and verse data alternate throughout the p tag (an example is available below).
+	</td></tr>
+	<tr bgcolor="#f0f0f0"><td><b>&lt;span&gt;</b> </td><td> The span tag is not mandatory but is used to detect Christ's words in red. The span tag will encase verse data. GoBibleCreator currently assumes that when a span tag is present the encased verse is Christ's words in red so for now no further attributes are required. However, the KJV translation uses the following format: &lt;span class="red"&gt;.</td></tr>
+</table>
+
+<h3>File Format</h3>
+<p>
+	XML files are often in UTF-8 format and this is mostly true for ThML files as well. GoBibleCreator requires that all input files are in UTF-8 format, if a file isn't then it will need to be converted to UTF-8 first before being processed by GoBibleCreator. The ThML file should begin with the following tag:
+</p>
+<ul><li>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</li></ul>
+
+<h3>Example</h3>
+
+<p>
+	Below is a simple example of the minimum ThML tags required by GoBibleCreator.
+</p>
+
+<ul>
+	<li>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</li>
+	<li>&lt;ThML&gt;</li>
+	<ul>
+		<li>&lt;ThML.body&gt;</li>
+			<ul>
+				<li>&lt;div1&gt;</li>
+					<ul>
+						<li>&lt;div2 title="Genesis" id="Gen"&gt;</li>
+							<ul>
+								<li>&lt;div3 title="Chapter 1"&gt;</li>
+									<ul>
+										<li>&lt;p&gt;</li>
+											<ul>
+												<li>&lt;scripture/&gt;</li>
+												<li>In the beginning God created the heaven and the earth.</li>
+												<li>&lt;scripture/&gt;</li>
+												<li>And the earth was without form, and void; and darkness was upon the face of the deep. And the Spirit of God moved upon the face of the waters.</li>
+											</ul>
+										<li>&lt;/p&gt;</li>
+									</ul>
+								<li>&lt;/div3&gt;</li>
+							</ul>
+						<li>&lt;/div2&gt;</li>
+					</ul>
+				<li>&lt;/div1&gt;</li>
+			</ul>
+		<li>&lt;/ThML.body&gt;</li>
+	</ul>
+	<li>&lt;/ThML&gt;</li>
+</ul>
+
+</td>
+
+</tr>
+
+</table>
+
+</body>
+
+</html>

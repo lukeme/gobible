@@ -1,0 +1,292 @@
+<html>
+
+<head>
+<title>
+Go Bible: GoBibleCreator
+</title>
+  <link rel="Stylesheet" href="../../style.css" type="text/css" media="screen" />
+
+</head>
+
+<body>
+
+<table align="center" width="900" bgcolor="#CCFF66"> <tr><td>
+<p align="center">
+<a href="../../welcome.html">Go Bible Home</a> | 
+<a href="../../news.html">News</a> | 
+<!-- <a href="documentation.html">Documentation</a> | -->
+<a href="http://jolon.org/vanillaforum/categories.php">Forum</a> | 
+<a href="../../about.html">About</a> | 
+<a href="../../contact.html">Contact</a> | 
+<a href="../welcome.html">Developer</a> 
+
+</p>
+</td></tr></table>
+
+
+<table cellspacing="20">
+<tr>
+<td>
+<img align="middle" alt="Go Bible Logo" src="../../GoBibleLogo.png"/>
+</td>
+<td>
+<h1>Go Bible</h1>
+
+<i>For the glory of our Lord Jesus Christ and the furtherance of His Kingdom.</i>
+</td>
+</tr>
+</table>
+
+<table cellspacing="10">
+
+<tr valign="top">
+
+<!-- Left menu -->
+
+<td>
+
+	<a href="../welcome.html">Developer</a>
+	<ul>
+		<li><b>GoBibleCreator</b></li>
+		<li><a href="../OSIS/OSIS.html">OSIS</a></li>
+		<li><a href="../ThML/ThML.html">ThML</a></li>
+	</ul>
+
+</td>
+
+<!-- Main content area -->
+
+<td>
+
+<h1>GoBibleCreator</h1>
+
+<p>
+	GoBibleCreator is a tool for converting ThML and OSIS Bible texts into Go Bible Java applications that can be loaded onto phones. GoBibleCreator is a Java application and requires a <a href="http://java.sun.com">Java Runtime Environment</a>.
+</p>
+
+<h3>Download GoBibleCreator</h3>
+<p>
+	Simply click on the link below and decompress the zip file.
+</p>
+
+<ul>
+	<li><a href="GoBibleCreator 2.2.5.zip">Download GoBibleCreator 2.2.5.zip (112KB)</a></li>
+</ul>
+
+<p>
+	Here is a description of the files in GoBibleCreator 2.2.5.zip:
+</p>
+
+<ul>
+	<li>GoBibleCreator.jar - The GoBibleCreator Java program.</li>
+	<li>GoBibleCore - A directory containing two GoBibleCores, one for MIDP 1.0 and another for MIDP 2.0.</li>
+	<li>Collections - A directory containing a sample collections file for use with Hebrews.thml.</li>
+	<li>Welcome.html - Documentation, same as this web page.</li>
+	<li>Hebrews.thml - Sample ThML file containing only the KJV book of Hebrews.</li>
+</ul>
+
+<h3>Before Running GoBibleCreator</h3>
+
+<p>
+	Before GoBibleCreator can be used you will need a ThML file or an OSIS file in UTF-8 format. A sample ThML file for the book of Hebrews is provided. Other ThML files can be downloaded from <a href="http://www.ccel.org">CCEL</a>.
+</p>
+
+<h3>Running GoBibleCreator</h3>
+
+<p>
+	GoBibleCreator is run with the following command line from the directory containing the GoBibleCreator.jar file:
+</p>
+
+<ul><li>java -Xmx128m -jar GoBibleCreator.jar <i>[PathToCollectionsFile | PathToXmlFile]+</i></li></ul>
+
+<p>
+To make a Go Bible collection you need to make a <a href="#CollectionsFile">Collections.txt file</a> which describes the collection and the books that will be in it. GoBibleCreator can automatically generate a Collections.txt file for you by specifying the path to the ThML/OSIS file on the command line. For example the following line will generate a Collections.txt file in the same directory as the ThML file:
+</p>
+
+<ul><li>java -Xmx128m -jar GoBibleCreator.jar Hebrews.thml</li></ul>
+
+<p>
+The <a href="#CollectionsFile">format of the Collections.txt file</a> is described below. Note that invoking GoBibleCreator with a ThML/OSIS file does not generate any JAD/JAR files only a Collections.txt file. To produce the JAD/JAR files you will need to run GoBibleCreator again but this time with the Collections.txt file as the only parameter. However, you will probably need to customise the Collections.txt file before doing that.
+</p>
+
+<p>
+To produce the JAD and JAR files run GoBibleCreator with the Collections.txt file. This example uses the Hebrews Collections.txt file included with GoBibleCreator:
+</p>
+
+<ul><li>java -Xmx128m -jar GoBibleCreator.jar Hebrews/Collections.txt</li></ul>
+
+<p>
+GoBibleCreator will generate JAD and JAR files and place them in the same directory as the Collections.txt file.
+</p>
+
+<h4>The -Xmx128m parameter</h4>
+<p>
+	GoBibleCreator loads the entire XML file into memory and therefore requires the -Xmx128m attribute to increase the total memory available to 128MB. GoBibleCreator can process multiple files at once by specifying multiple files on the command line.
+</p> 
+
+<a name="CollectionsFile"><h3>The Collections File</h3></a>
+
+<p>
+	The Collections file contains the configuration of the collections. The file describes the location of the source text and each collection, which books it contains, and which chapters from each book. The Collections file must be in UTF-8 character encoding so that all character sets are supported. A simple Collections file is shown below:
+</p>
+
+<ul>
+	<li>Source-Text: ../Hebrews.thml
+	<li>Collection: Hebrews
+	<li>Book: Hebrews</li>
+	</li>
+</ul>
+
+<p>
+	The first line is mandatory and specifies the location of the source text used to generate this collection. The path can be relative as seen above, and is relative to the location of the Collections.txt file.
+</p>
+<p>
+	The next line indicates that a new collection named 'Hebrews' is required. This name will determine the JAD and JAR file names that are produced as well as the application name that appears on the phone. Below the Collection property are the books that will be contained within the collection. In this example, only the book of Hebrews will be added to the collection.
+</p>
+
+<p>
+	The collections files used to generate the collections on the Go Bible website are available in the <a href="http://code.google.com/p/gobible">Go Bible Google Project</a> source code repository under the <a href="http://code.google.com/p/gobible/source/browse/trunk/Collections">Collections directory in the trunk</a>. You may want to use one of these as a starting point if you are looking at modifying an existing translation.
+</p>
+
+<h4>The Info Property</h4>
+
+<p>
+	The Go Bible application includes an About screen which provides information to the user about the Go Bible application. The optional Info property in the Collections.txt file can be used to append additional information about the particular translation, for example:
+</p>
+
+<ul>
+<li>Source-Text: ../Hebrews.thml
+<li>Info: This Collection contains the book of Hebrews from http://ccel.org.</li>
+<li>Collection: Hebrews</li>
+<li>Book: Hebrews</li>
+</ul>
+
+<p>
+	The contents of the Info property will now appear in the About screen. This is a good place to put information about the source of the translation.
+</p>
+
+<h4>Using Non-English Book Names</h4>
+
+<p>
+	Most ThML files and OSIS files use English book names even though the text is in the native language. GoBibleCreator supports changing the book names using the Book-Name-Map property. A Book-Name-Map property is listed for every book whose English name must be mapped to another name, for example:
+</p>
+
+<ul>
+<li>Source-Text: ../Hebrews.thml
+<li>Book-Name-Map: Hebrews, The Book of Hebrews
+<li>Collection: Hebrews</li>
+<li>Book: Hebrews</li>
+</ul>
+
+<p>
+The first string "Hebrews" is the name of the book as it appears in the XML file while the second string "The Book of Hebrews" is what will appear to the user. Note: The Book-Name-Map property does not change the usage of book names in the rest of the Collections.txt file, they must still use the XML book names.
+</p>
+
+<h4>Right Aligned Text</h4>
+
+<p>
+	Some languages such as Arabic and Hebrews are read from right to left this also requires text to be aligned to the right rather than the left. Go Bible by default aligns text to the left. The alignment can be changed using the Align property:
+</p>
+
+<ul>
+<li>Source-Text: Arabic.thml
+<li>Language-Code: Ar</li>
+<li>Align: Right</li>
+<li>Collection: Hebrews</li>
+<li>Book: Hebrews</li>
+</ul>
+
+<p>
+	The text will now appear aligned to the right of the screen and the verse numbers will also start on the right of the screen.
+</p>
+
+<h4>Splitting Books</h4>
+
+<p>
+	Some phones have JAR limits that prevent some of the larger books from fitting on the phone. Nokia Series 40 MIDP 1.0 phones for example have a 64KB JAR limit. This would prevent some books such as Psalms from loading onto the phone. GoBibleCreator allows books to split up by indicating which chapters will appear in each collection. The following example creates two collections, the first contains the first 5 chapters of Hebrews and the second contains the remaining 6 chapters:
+</p>
+
+<ul>
+<li>Source-Text: ../Hebrews.thml
+<li>Info: This Collection contains the book of Hebrews split in two.</li>
+<li>Collection: Hebrews 1-5</li>
+<li>Book: Hebrews, 1, 5</li>
+<li>Collection: Hebrews 6-13</li>
+<li>Book: Hebrews, 6, 13</li>
+</ul>
+
+<p>
+The commas (,) are mandatory and the first number indicates the first chapter to include and the second number indicates the last chapter to include.
+Note that we have changed the collection name to indicate to the user which chapters are in each collection, however, any collection name can be used.
+</p>
+
+<h4>Supporting MIDP 1.0</h4>
+
+<p>
+	By default GoBibleCreator produces MIDP 2.0 compatible JAD and JAR files. These files will not run on MIDP 1.0 devices. To support MIDP 1.0 devices the MIDP property needs to be defined in the Collections.txt file as follows:
+</p>
+
+<ul>
+<li>Source-Text: ../Hebrews.thml
+<li>Info: This Collection will run on MIDP 1.0 phones.</li>
+<li>MIDP: MIDP-1.0</li>
+<li>Collection: Hebrews 1-5</li>
+<li>Book: Hebrews, 1, 5</li>
+<li>Collection: Hebrews 6-13</li>
+<li>Book: Hebrews, 6, 13</li>
+</ul>
+
+<p>
+	Note that specifying MIDP 1.0 will result in only MIDP 1.0 files being produced.   These files contain less functionality than the MIDP 2.0 files such as no support for fullscreen viewing or SMS.
+</p>
+
+<h4>Language Codes</h4>
+
+<p>
+	Since Go Bible supports multiple translations it is possible that a user may wish to have both the KJV and Chinese translations on their phone at the same time. If the collection names are the same for both translations then the phone won't allow both to be stored simultaneously. A simple solution to this problem is to use the Language-Code property which will be appended to the name of every collection, for example:
+</p>
+
+<ul>
+<li>Source-Text: ../Hebrews.thml
+<li>Info: This Collection contains the book of Hebrews split in two.</li>
+<li>Language-Code: En</li>
+<li>Collection: Hebrews 1-5</li>
+<li>Book: Hebrews, 1, 5</li>
+<li>Collection: Hebrews 6-13</li>
+<li>Book: Hebrews, 6, 13</li>
+</ul>
+
+<p>
+	Every collection will now have 'En' appended to its name. GoBibleCreator also appends 'Go Bible' to every collection name by default so the generated application names for the above example will be 'Hebrews 1-5 En Go Bible' and 'Hebrews 6-13 En Go Bible'. It should also be noted that GoBibleCreator strips spaces from the generated JAD and JAR file names as these can cause problems on some phones. The generated file name is the collection name plus the language code. The following files would be generated for the above example:
+</p>
+
+<ul>
+<li>Hebrews1-5En.jad</li>
+<li>Hebrews1-5En.jar</li>
+<li>Hebrews6-13En.jad</li>
+<li>Hebrews6-13En.jar</li>
+</ul>
+
+<h4>Creating Files for WAP Download</h4>
+
+<p>
+	Go Bible is most commonly downloaded from PC to phone. However, Java applications can also be downloaded via a WAP browser. This method is less commonly used since it is expensive and sometimes difficult. To ease the process of creating files for WAP download the Wap-site property can be used in the Collections.txt file. If the Wap-site property is declared then a separate 'wap' subdirectory is generated containing JAD and JAR files ready for uploading to a WAP site. In addition, a Welcome.html file is generated containing links to all of the JAD files. The Wap-site property contains the full URL to the directory that will contain the JAD files. This URL is used within the Welcome.html file as well as for setting the MIDlet-Jar-URL property of the JAD file. WAP site example:
+</p>
+
+<ul>
+	<li>Source-Text: ../Hebrews.thml
+	<li>Wap-site: http://wap.jolon.org/KJV/</li>
+	<li>Collection: Hebrews
+	<li>Book: Hebrews</li>
+	</li>
+</ul>
+
+<h3>Help</h3>
+
+<p>
+	If you need any help with using GoBibleCreator please see the <a href="http://groups.google.com/group/go-bible">Go Bible Google Group</a>.
+</p>
+
+</body>
+
+</html>

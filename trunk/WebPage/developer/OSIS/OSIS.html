@@ -1,0 +1,135 @@
+<html>
+
+<head>
+<title>
+Go Bible: OSIS
+</title>
+  <link rel="Stylesheet" href="../../style.css" type="text/css" media="screen" />
+</head>
+
+<body>
+
+<table align="center" width="900" bgcolor="#CCFF66"> <tr><td>
+<p align="center">
+<a href="../../welcome.html">Go Bible Home</a> | 
+<a href="../../news.html">News</a> | 
+<!-- <a href="documentation.html">Documentation</a> | -->
+<a href="http://jolon.org/vanillaforum/categories.php">Forum</a> | 
+<a href="../../about.html">About</a> | 
+<a href="../../contact.html">Contact</a> | 
+<a href="../welcome.html">Developer</a> 
+
+</p>
+</td></tr></table>
+
+<table cellspacing="20">
+<tr>
+<td>
+<img align="middle" alt="Go Bible Logo" src="../../GoBibleLogo.png"/>
+</td>
+<td>
+<h1>Go Bible</h1>
+
+<i>For the glory of our Lord Jesus Christ and the furtherance of His Kingdom.</i>
+</td>
+</tr>
+</table>
+
+<table cellspacing="10">
+
+<tr valign="top">
+
+<!-- Left menu -->
+
+<td>
+
+	<a href="../welcome.html">Developer</a>
+	<ul>
+		<li><a href="../GoBibleCreator/GoBibleCreator.html">GoBibleCreator</a></li>
+		<li><b>OSIS</b></li>
+		<li><a href="../ThML/ThML.html">ThML</a></li>
+	</ul>
+
+</td>
+
+<!-- Main content area -->
+
+<td>
+
+<h1>OSIS</h1>
+
+<p>
+	OSIS is an XML-based format for describing theological texts by including tags for scripture references, etc. A Bible consists of sections (eg. Preface, Old Testament, New Testament), books, chapters and verses. There are OSIS tags that represent each of these. The OSIS specification details many tags that can be used within an OSIS file, however, only those required by GoBibleCreator are described here. To begin with, an OSIS file must have an &lt;osis&gt; pair of tags. GoBibleCreator will only use content that is within the &lt;osis&gt; tag. Next the &lt;osis&gt; tag must contain an &lt;osisText&gt; pair of tags. Again, only content within the &lt;osisText&gt; tag will be used by GoBibleCreator. Next there are OSIS tags for each type of section in the Bible:
+</p>
+
+<table cellspacing="10">
+<ul>
+	<tr bgcolor="#f0f0f0"><td><b>&lt;div&gt; (top level)</b> </td><td> The outer div tag is used to represent the top-level sections within the Bible such as the Preface, Old Testament, and New Testament. GoBibleCreator doesn't actually use the div tags perse but since most encodings of the Bible will identify the Old and New Testaments by div tags then GoBibleCreator assumes that they will be there.</td></tr>
+	<tr bgcolor="#f0f0f0"><td><b>&lt;div&gt; (second level)</b> </td><td> Second level div tags represent individual books of the Bible. OSIS provides the <b>&lt;osisID&gt;</b> attribute to identify each book. This attribute is a standardised attribute with identifiers for each book of the Bible. The identifiers are abbreviated English book names (eg. 'Gen', 'Ex', etc.), which are not suitable for display, especially for non-English translations. Therefore when working with OSIS file it is desirable to use the Book-Name-Map property of the Collections.txt file to provide presentable book names. 
+	</td></tr>
+	<tr bgcolor="#f0f0f0"><td><b>&lt;div&gt; or &lt;chapter&gt;</b> </td><td> Chapters are represented either in chapter tags or third level div tags. The Chapter tag must contain the following attribute:
+		<ul>
+			<li>osisID - The osisID will contain the chapter of the book in the form "Gen.2". Where the first part 'Gen' is the Book osisID and the number of the dot is the chapter number.</li>
+				</ul>
+			</li>
+		</ul>
+	</td></tr>
+	<tr bgcolor="#f0f0f0"><td><b>&lt;verse&gt;</b> </td><td> Each verse is contained within the verse tag.</td></tr>
+	<tr bgcolor="#f0f0f0"><td><b>&lt;span&gt;</b> </td><td> The <a href="../ThML/ThML.html">ThML</a> format supports the span tag to indicate Christ's words in red, however, GoBibleCreator does not currently support Christ's words in red in OSIS files. This may be added in a later version.</td></tr>
+</table>
+
+<h3>File Format</h3>
+<p>
+	XML files are often in UTF-8 format and this is mostly true for OSIS files as well. GoBibleCreator requires that all input files are in UTF-8 format, if a file isn't then it will need to be converted to UTF-8 first before being processed by GoBibleCreator. The OSIS file should begin with the following tag:
+</p>
+<ul><li>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</li></ul>
+
+<h3>Example</h3>
+
+<p>
+	Below is a simple example of the minimum OSIS tags required by GoBibleCreator.
+</p>
+
+<ul>
+	<li>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</li>
+	<li>&lt;osis&gt;</li>
+	<ul>
+		<li>&lt;osisText&gt;</li>
+			<ul>
+				<li>&lt;div&gt;</li>
+					<ul>
+						<li>&lt;div osisID="Gen"&gt;</li>
+							<ul>
+								<li>&lt;chapter osisID="Gen.1"&gt;</li>
+									<ul>
+										<li>&lt;verse&gt;</li>
+											<ul>
+												<li>In the beginning God created the heaven and the earth.</li>
+											</ul>
+										<li>&lt;/verse&gt;</li>
+										<li>&lt;verse&gt;</li>
+											<ul>
+												<li>And the earth was without form, and void; and darkness was upon the face of the deep. And the Spirit of God moved upon the face of the waters.</li>
+											</ul>
+										<li>&lt;/verse&gt;</li>
+									</ul>
+								<li>&lt;/chapter&gt;</li>
+							</ul>
+						<li>&lt;/div&gt;</li>
+					</ul>
+				<li>&lt;/div&gt;</li>
+			</ul>
+		<li>&lt;/osisText&gt;</li>
+	</ul>
+	<li>&lt;/osis&gt;</li>
+</ul>
+
+</td>
+
+</tr>
+
+</table>
+
+</body>
+
+</html>
