@@ -1,0 +1,12 @@
+#summary Go Bible development roadmap
+#labels Phase-Requirements
+
+= Introduction =
+
+  _Page under construction_
+Use this page to outline proposals for developing the Go Bible application. 
+
+== Details ==
+
+  * Please do not merely duplicate detailed enhancement issues
+  * Just list major proposals for the way Go Bible might be developed
