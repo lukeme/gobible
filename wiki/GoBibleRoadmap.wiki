@@ -16,5 +16,5 @@ _Some of these are copied from the [http://gobible.jolon.org/news.html Go Bible 
   * A version of Go Bible written in [http://mobile.processing.org/ Mobile Processing] (this also supports custom fonts) 
   * A version of Go Bible for [http://code.google.com/android/ Android]. 
   * A version of Go Bible for the [http://developer.apple.com/iphone/ iPhone] 
-  * A PHP script which converts source text into GoBibleDataFormat 
-  * A GUI for GoBibleCreator?
+  * A [http://en.wikipedia.org/wiki/PHP PHP] script which converts source text into GoBibleDataFormat 
+  * A [http://en.wikipedia.org/wiki/Graphical_user_interface GUI] for GoBibleCreator?
