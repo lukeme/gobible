@@ -3,10 +3,18 @@
 
 = Introduction =
 
-  _Page under construction_
-Use this page to outline proposals for developing the Go Bible application. 
+Use this page to outline proposals for developing the *Go Bible* application. 
 
-== Details ==
+== Guidelines for editing this page ==
 
   * Please do not merely duplicate detailed enhancement issues
-  * Just list major proposals for the way Go Bible might be developed
+  * Just list major proposals for the way GoBible might be developed
+
+== Possible projects ==
+_Some of these are copied from the [http://gobible.jolon.org/news.html Go Bible News] page_
+  * Rewriting Go Bible to use [http://www.j2mepolish.org/ J2ME Polish] which provides lots of nice user interface features and custom fonts 
+  * A version of Go Bible written in [http://mobile.processing.org/ Mobile Processing] (this also supports custom fonts) 
+  * A version of Go Bible for [http://code.google.com/android/ Android]. 
+  * A version of Go Bible for the [http://developer.apple.com/iphone/ iPhone] 
+  * A PHP script which converts source text into GoBibleDataFormat 
+  * A GUI for GoBibleCreator?
