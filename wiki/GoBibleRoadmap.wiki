@@ -18,3 +18,4 @@ _Some of these are copied from the [http://gobible.jolon.org/news.html Go Bible 
   * A version of Go Bible for the [http://developer.apple.com/iphone/ iPhone] 
   * A [http://en.wikipedia.org/wiki/PHP PHP] script which converts source text into GoBibleDataFormat 
   * A [http://en.wikipedia.org/wiki/Graphical_user_interface GUI] for GoBibleCreator?
+  * Integrate a Bible Reading Calendar, to read through the whole Bible in a year
