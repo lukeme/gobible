@@ -18,4 +18,4 @@ _Some of these are copied from the [http://gobible.jolon.org/news.html Go Bible 
   * A version of Go Bible for the [http://developer.apple.com/iphone/ iPhone] 
   * A [http://en.wikipedia.org/wiki/PHP PHP] script which converts source text into GoBibleDataFormat 
   * A [http://en.wikipedia.org/wiki/Graphical_user_interface GUI] for GoBibleCreator?
-  * Integrate a [http://code.google.com/p/gobible/downloads/detail?name=M%27Cheyne%27sDailyBread2.2.4.zip&can=2&q=#makechanges Bible Reading Calendar], to read through the whole Bible in a year
+  * Integrate a [http://gobible.googlecode.com/files/M%27Cheyne%27sDailyBread2.2.4.zip Bible Reading Calendar], to read through the whole Bible in a year
