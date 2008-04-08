@@ -1,0 +1,14 @@
+#summary Comments on how to improve the Go Bible website.
+#labels Phase-Support
+
+= Introduction =
+
+Please use this page to propose useful improvements to the main [http://go-bible.org/ Go Bible] website.
+
+
+== Details ==
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
