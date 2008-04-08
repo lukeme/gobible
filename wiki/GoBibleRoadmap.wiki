@@ -1,5 +1,5 @@
 #summary Go Bible development roadmap
-#labels Phase-Requirements
+#labels Phase-Requirements,Featured
 
 = Introduction =
 
