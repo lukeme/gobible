@@ -35,11 +35,9 @@ _Please update or extend this with further details._
 ||Ukrainian|| ||Y|| || || ||
 ||Vietnamese||Cadman 1934||Y|| || || ||
 
-
-
-== Details ==
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+=== Notes ===
+  # Need to improve the descriptions of the translations
+  # Need to distinguish between translation and download format
+  # Add column to show booknames language
+  # Add column to show user interface (UI) language
+  # Add column to show copyright status
