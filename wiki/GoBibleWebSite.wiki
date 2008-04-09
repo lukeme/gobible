@@ -7,6 +7,8 @@ Please use this page to propose useful improvements to the main [http://go-bible
 
 == Table of Go Bible downloads ==
 
+_Please update or extend this with further details._
+
 || *Language* || *Translation* || *Full Bible* || *512KB* || *128KB* || *MIDP 1.0* || *Other* ||
 ||Afrikaans||1933||Y||Y|| || ||
 ||Arabic||SVD||Y||Y||Y||Y||
