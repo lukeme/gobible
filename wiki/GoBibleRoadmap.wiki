@@ -7,8 +7,8 @@ Use this page to outline proposals for developing the *Go Bible* application.
 
 == Guidelines for editing this page ==
 
-  * Please do not merely duplicate detailed enhancement issues
-  * Just list major proposals for the way GoBible might be developed
+  * _Please do not merely duplicate detailed enhancement issues_
+  * _Just list major proposals for the way GoBible might be developed_
 
 == Possible projects ==
 _Some of these are copied from the [http://gobible.jolon.org/news.html Go Bible News] page_
