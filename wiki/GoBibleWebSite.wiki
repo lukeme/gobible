@@ -7,7 +7,8 @@ Please use this page to propose useful improvements to the main [http://go-bible
 
 == Table of Go Bible downloads ==
 
-This section surveys which downloads are available from the main [http://go-bible.org/ Go Bible] site. It shows the existing coverage for the different JAR filesize options as MIDP 2.0 applications and of the Full Bible as earlier MIDP 1.0 applications.
+This section surveys which downloads are available from the main [http://go-bible.org/ Go Bible] site.
+It shows the coverage for the different JAR filesize options as MIDP 2.0 applications and of the Full Bible as earlier MIDP 1.0 applications.
 
 _Please update or extend this with further details. Remember to edit this page if further downloads are checked in._
 
