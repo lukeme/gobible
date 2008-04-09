@@ -5,6 +5,35 @@
 
 Please use this page to propose useful improvements to the main [http://go-bible.org/ Go Bible] website.
 
+== Table of Go Bible downloads ==
+
+||*Language*||*Translation*||*Full Bible*||*512KB*||*128KB*||*MIDP 1.0*||*Other*||
+||Afrikaans||1933||Y||Y|| || ||
+||Arabic||SVD||Y||Y||Y||Y||
+||Arabic (shaped)||SVD||Y|| || ||Y||
+||Bulgarian|| ||Y||Y||Y|| ||
+||Chinese Simplified|| ||Y||Y||Y|| ||
+||Chinese Traditional|| ||Y||Y||Y|| ||
+||Danish|| ||Y|| ||Y|| ||
+||Dutch|| ||Y|| ||Y|| ||
+||English||KJV||Y||Y||Y||Y||Apocrypha||
+||Finnish|| ||Y|| ||Y||Y||
+||French||Louis Segond||Y|| || || ||
+||German||Luther||Y||Y||Y|| ||
+||Hungarian|| ||Y||Y||Y|| ||
+||Indonesian||Terjemahan Bahu||Y|| ||Y|| ||
+||Norwegian|| ||Y|| || || ||
+||Portuguese|| ||Y||Y||Y|| ||
+||Romani (Gypsy)||NT only||Y|| || || ||
+||Romanian|| ||Y||Y||Y|| ||
+||Russian|| ||Y||Y||Y|| ||
+||Spanish|| ||Y||Y||Y|| ||
+||Swedish|| ||Y|| || || ||
+||Tagalog (Filipino)|| ||Y||Y||Y|| ||
+||Ukrainian|| ||Y|| || || ||
+||Vietnamese||Cadman 1934||Y|| || || ||
+
+
 
 == Details ==
 
