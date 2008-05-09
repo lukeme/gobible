@@ -23,3 +23,4 @@ _Some of these are copied from the [http://gobible.jolon.org/news.html Go Bible 
   * A [http://en.wikipedia.org/wiki/Graphical_user_interface GUI] for GoBibleCreator?
   * Integrate a [http://gobible.googlecode.com/files/M%27Cheyne%27sDailyBread2.2.4.zip Bible Reading Calendar], to read through the whole Bible in a year
   * Combine two Bible translations/versions into one application, with synchronized scrolling/navigation and left/right keys to switch between them 
+  * Add support for Bible cross-references, with hotlinks?
