@@ -18,7 +18,6 @@ _Some of these are copied from the [http://gobible.jolon.org/news.html Go Bible 
   * Show a list of books which can be scrolled through when selecting a book in the "Go to" menu
   * Rewriting Go Bible to use [http://www.j2mepolish.org/ J2ME Polish] which provides lots of nice user interface features and custom fonts 
   * A version of Go Bible written in [http://mobile.processing.org/ Mobile Processing] (this also supports custom fonts) 
-  * A [http://en.wikipedia.org/wiki/PHP PHP] script which converts source text into GoBibleDataFormat 
   * A [http://en.wikipedia.org/wiki/Graphical_user_interface GUI] for GoBibleCreator?
   * Integrate a [http://gobible.googlecode.com/files/M%27Cheyne%27sDailyBread2.2.4.zip Bible Reading Calendar], to read through the whole Bible in a year
   * Combine two Bible translations/versions into one application, with synchronized scrolling/navigation and left/right keys to switch between them 
@@ -28,3 +27,6 @@ _Some of these are copied from the [http://gobible.jolon.org/news.html Go Bible 
   * A version of Go Bible for [http://code.google.com/android/ Android]. 
   * A version of Go Bible for the [http://developer.apple.com/iphone/ iPhone] 
   * A version of Go Bible for the [http://wiki.openmoko.org/wiki/Main_Page OpenMoko] platform
+
+=== Preprocessing ===
+  * A [http://en.wikipedia.org/wiki/PHP PHP] script which converts source text into GoBibleDataFormat 
