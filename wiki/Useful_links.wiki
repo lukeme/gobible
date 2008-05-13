@@ -3,17 +3,17 @@
 
 = Introduction =
 
-For discussions on all aspects of Go Bible, the must visit link is 
+For discussions on all aspects of *Go Bible*, the must visit link is 
   * [http://jolon.org/vanillaforum/ Go Bible Forum]
 
-For an unbiased description of Go Bible, see
+For an unbiased description of *Go Bible*, see
   * [http://en.wikipedia.org/wiki/Go_Bible Go Bible Wikipedia article]
 
 For users of the *Go Bible Creator* developer kit and contributors to the *source code*, see
   * [http://gobible.blogspot.com/ Go Bible Team blog]
 
 == Other useful links are ==
-  * [http://ebible.org/usfx/Bible-encoding.htm Bible File Encoding for Bible Translators, Publishers, and Software Developers] by Kahunapule Michael Johnson
+  * [http://ebible.org/usfx/Bible-encoding.htm Bible File Encoding for Bible Translators, Publishers, and Software Developers] _by Kahunapule Michael Johnson_
   * [http://dfhmch.googlepages.com/home David's Go Bible Repository]
   * [http://www.box.net/shared/7pemx6xzcb/rss.xml RSS feed to David's box.net shared files and folders]
   * [http://www.datamystic.com/ TextPipe] - _useful for converting text files_
