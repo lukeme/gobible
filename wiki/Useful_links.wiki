@@ -1,4 +1,5 @@
 #summary Some useful links relating to the Go Bible project
+#labels Phase-Support
 
 = Introduction =
 
@@ -8,7 +9,11 @@ For discussions on all aspects of Go Bible, the must visit link is
 For an unbiased description of Go Bible, see
   * [http://en.wikipedia.org/wiki/Go_Bible Go Bible Wikipedia article]
 
+There is a team blog for users of the Go Bible Creator developer kit and contributors to the Go Bible source code. See
+  * [http://gobible.blogspot.com/]
+
 == Other useful links are ==
+  * [http://ebible.org/usfx/Bible-encoding.htm Bible File Encoding for Bible Translators, Publishers, and Software Developers] by Kahunapule Michael Johnson
   * [http://dfhmch.googlepages.com/home David's Go Bible Repository]
   * [http://www.box.net/shared/7pemx6xzcb/rss.xml RSS feed to David's box.net shared files and folders]
   * [http://www.datamystic.com/ TextPipe] - _useful for converting text files_
