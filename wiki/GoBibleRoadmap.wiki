@@ -17,10 +17,15 @@ _Some of these are copied from the [http://gobible.jolon.org/news.html Go Bible 
   * Specify and provide support for *Psalm titles* in the [GoBibleDataFormat]
   * Provide support for [http://en.wikipedia.org/wiki/T9_(predictive_text) T9 input] when selecting a book in the "Go to" menu
   * Show a list of books which can be scrolled through when selecting a book in the "Go to" menu
-  * Provide support for non-Western canonical ordering of books, to improve search feature
   * Integrate a [http://gobible.googlecode.com/files/M%27Cheyne%27sDailyBread2.2.4.zip Bible Reading Calendar], to read through the whole Bible in a year
   * Combine two Bible translations/versions into one application, with synchronized scrolling/navigation and left/right keys to switch between them 
   * Add support for Bible cross-references, with hotlinks?
+
+=== Search feature improvements ===
+_Search range (radio button) options are hard coded only for the complete Western canon_
+  * Provide support for source text files with other than 66 books
+  * Provide support for non-Western canonical ordering of books
+  * Provide support for the Deuterocanonical books
 
 === Source code rewrites? ===
   * Rewrite Go Bible using [http://www.j2mepolish.org/ J2ME Polish] which provides lots of nice user interface features and custom fonts 
