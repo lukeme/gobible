@@ -15,3 +15,6 @@ _This has been moved to the new GoBibleDownloadsTable page._
 At present the only image is an animated GIF generated using microemulator.
 The image contains no keyboard and nothing to suggest it is a cellphone display.
 To catch and retain visitors' attention, the image should be replaced by one that is more immediately obvious as being that of the Go Bible application being used on a mobile phone.
+
+== Provide installation help for special phone brands and models ==
+  * Blackberry
