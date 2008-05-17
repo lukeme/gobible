@@ -3,11 +3,11 @@
 
 = Introduction =
 
-Currently the UserInterfaceTranslations are managed in a piecemeal manner or not at all.
+Currently the UserInterfaceTranslations are managed in a piece-meal manner or not at all.
 
 
 = Ini Translator =
 
 [http://initranslator.sourceforge.net/wiki/index.php/Main_Page Ini Translator] is a utility program to translate ini-style language files and has a look and feel reminiscent of poEdit (a great language editor for gnu gettext files). Ini-style language files are pretty common in Windows and are used by programs like Inno Setup, ISTool, FlashGet and Wallpaper Sequencer to name a few. The program runs on Windows 98/Me/XP/2000.
 
-I wonder if this could be easily adapted to manage the Go Bible UI translations?
+_I wonder if this could be easily adapted to manage the Go Bible UI translations?_
