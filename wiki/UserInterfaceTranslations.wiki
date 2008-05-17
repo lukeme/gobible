@@ -7,7 +7,7 @@ The *User Interface* (UI) for Go Bible consists of just over 70 short phrases li
 
 Currently the UserInterfaceTranslations are managed in a piece-meal manner or not at all.
 
-One member even started a Google Docs spreadsheet, but this has not been updated since July 2007.
+One member even started a [http://spreadsheets.google.com/ Google Docs Spreadsheet], but this has not been updated since July 2007.
 
 
 = Ini Translator? =
