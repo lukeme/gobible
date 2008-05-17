@@ -5,7 +5,7 @@
 
 The *User Interface* (UI) for Go Bible consists of just over 70 short phrases listed in the [http://gobible.jolon.org/developer/GoBibleCreator/GoBibleCreator.html Go Bible Creator] page on the main Go Bible website.
 
-Currently the UserInterfaceTranslations are managed in a piece-meal manner or not at all.
+Currently the UserInterfaceTranslations are managed in a piece-meal manner or not at all. One member even started a Google Docs spreadsheet, but this has not been updated since July 2007.
 
 
 = Ini Translator? =
