@@ -1,7 +1,7 @@
 #summary Table of Go Bible downloads.
 #labels Featured,Phase-Implementation,Phase-Support
 
--Content moved from the GoBibleWebSite page_
+_Content moved from the GoBibleWebSite page_
 
 == Table of Go Bible downloads ==
 
