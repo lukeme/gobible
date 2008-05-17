@@ -7,7 +7,7 @@ Please use this page to propose useful improvements to the main [http://go-bible
 
 == Table of Go Bible downloads ==
 
-_This has been moved to the new GoBibleDownloadsTable page._
+I have made a survey of the downloads that are provided from the Go Bible site. There are some gaps in the table. _This has been moved to the new GoBibleDownloadsTable page._
 
 
 == Provide a more attractive image on the Go Bible home page ==
