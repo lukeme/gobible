@@ -26,6 +26,12 @@ _Search range (radio button) options are hard coded only for the complete Wester
   * Provide support for source text files with other than 66 books
   * Provide support for non-Western canonical ordering of books
   * Provide support for the Deuterocanonical books
+_Search is currently only for the exact text as edited. Possible enhancements might be as follows:_
+  * Whole word searches (as a tick option)
+  * Case-sensitive search text (as a tick option)
+  * Boolean operators in the search pattern
+  * Proximity matching in the search pattern
+  * Regular expressions in the search pattern
 
 === Source code rewrites? ===
   * Rewrite Go Bible using [http://www.j2mepolish.org/ J2ME Polish] which provides lots of nice user interface features and custom fonts 
