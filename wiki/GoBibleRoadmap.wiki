@@ -48,3 +48,6 @@ _Search is currently only for the exact text as edited. Possible enhancements mi
   * An [http://en.wikipedia.org/wiki/XLST XSL Transformation] which converts any valid OSIS Bible source text file to become usable by GoBibleCreator, no matter what was used to generate the original OSIS file
   * A [http://en.wikipedia.org/wiki/Graphical_user_interface GUI] for GoBibleCreator?
   * A [http://en.wikipedia.org/wiki/PHP PHP] script which converts source text into GoBibleDataFormat 
+
+=== Build automation ===
+  * Develop an [http://en.wikipedia.org/wiki/Apache_Ant Apache Ant] utility to automate the build of multiple Go Bibles from source text files on any platform.
