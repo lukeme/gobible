@@ -21,6 +21,7 @@ _Some of these are copied from the [http://gobible.jolon.org/news.html Go Bible 
   * Combine two Bible translations/versions into one application, with synchronized scrolling/navigation and left/right keys to switch between them 
   * Add support for Bible cross-references, with hotlinks?
   * Add support for poetry, making use of the Line Feed character, ASCII(10)
+  * Support the title attribute in XML elements, to display titles where appropriate
   * Enhancements to take advantage of MIDP 3.0 ([http://www.jcp.org/en/jsr/detail?id=271 JSR 271])?
 
 === Search feature improvements ===
