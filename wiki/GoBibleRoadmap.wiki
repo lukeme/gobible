@@ -20,6 +20,7 @@ _Some of these are copied from the [http://gobible.jolon.org/news.html Go Bible 
   * Integrate a [http://gobible.googlecode.com/files/M%27Cheyne%27sDailyBread2.2.4.zip Bible Reading Calendar], to read through the whole Bible in a year
   * Combine two Bible translations/versions into one application, with synchronized scrolling/navigation and left/right keys to switch between them 
   * Add support for Bible cross-references, with hotlinks?
+  * Add support for poetry, making use of ASCII(10) Line Feed character
   * Enhancements to take advantage of MIDP 3.0 ([http://www.jcp.org/en/jsr/detail?id=271 JSR 271])?
 
 === Search feature improvements ===
