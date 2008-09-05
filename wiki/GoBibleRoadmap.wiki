@@ -40,6 +40,7 @@ _Search is currently only for the exact text as edited. Possible enhancements mi
 === Source code rewrites? ===
   * Rewrite Go Bible using [http://www.j2mepolish.org/ J2ME Polish] which provides lots of nice user interface features and custom fonts 
   * Rewrite Go Bible using [http://mobile.processing.org/ Mobile Processing] (this also supports custom fonts) 
+  * Adapt Go Bible to work on the [http://en.wikipedia.org/wiki/OpenMoko OpenMoko] platform
   * Adapt Go Bible to make use of [http://en.wikipedia.org/wiki/Scalable_Vector_Graphics SVG Tiny] in order to provide custom font support for scripts such as Burmese
 
 === Ports to other mobile platforms? ===
