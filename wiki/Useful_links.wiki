@@ -17,3 +17,4 @@ For users of the *Go Bible Creator* developer kit and contributors to the *sourc
   * [http://dfhmch.googlepages.com/home David's Go Bible Repository]
   * [http://www.box.net/shared/7pemx6xzcb/rss.xml RSS feed to David's box.net shared files and folders]
   * [http://www.datamystic.com/ TextPipe] - _useful for converting text files_
+  * [http://unicodemidlet.googlecode.com Unicode midlet] - _to check font coverage in a cell phone_
