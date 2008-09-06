@@ -52,8 +52,10 @@ _Search is currently only for the exact text as edited. Possible enhancements mi
   * A [http://en.wikipedia.org/wiki/Graphical_user_interface GUI] for GoBibleCreator?
   * A [http://en.wikipedia.org/wiki/PHP PHP] script which converts source text into GoBibleDataFormat 
 
-=== GoBibleCreator ===
+=== Go Bible Creator ===
   * Enhance GoBibleCreator to build directly from USFM files, in addition to the existing ThML and OSIS formats
+  * Provide support for specifying JAD properties other than existing defaults
+  * Provide support for alternative icon and application title, where the existing ones may present a cultural stumbling block
 
 === Build automation ===
   * Develop an [http://en.wikipedia.org/wiki/Apache_Ant Apache Ant] utility to automate the build of multiple Go Bibles from source text files on any platform.
