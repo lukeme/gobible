@@ -37,6 +37,9 @@ _Search is currently only for the exact text as edited. Possible enhancements mi
   * Proximity matching in the search pattern
   * Regular expressions in the search pattern
 
+=== Preferences ===
+  * Add a limited number of User Interface (UI) languages as a user selection
+
 === Source code rewrites? ===
   * Rewrite Go Bible using [http://www.j2mepolish.org/ J2ME Polish] which provides lots of nice user interface features and custom fonts 
   * Rewrite Go Bible using [http://mobile.processing.org/ Mobile Processing] (this also supports custom fonts) 
