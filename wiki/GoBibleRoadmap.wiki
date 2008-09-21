@@ -36,6 +36,8 @@ _Search is currently only for the exact text as edited. Possible enhancements mi
   * Boolean operators in the search pattern
   * Proximity matching in the search pattern
   * Regular expressions in the search pattern
+_Search results_
+  * Display the total number of search results at the top of the results list
 
 === Go Bible Preferences ===
   * Restructure preferences to use sub-menus, to alleviate scrolling.
