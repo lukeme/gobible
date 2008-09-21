@@ -39,8 +39,8 @@ _Search is currently only for the exact text as edited. Possible enhancements mi
 _Search results_
   * Display the total number of search results at the top of the results list
 
-=== Go Bible Preferences ===
-  * Restructure preferences to use sub-menus, to alleviate scrolling.
+=== Go Bible preferences ===
+  * Restructure the preferences menu to use sub-menus, to alleviate scrolling.
   * Provide a choice of languages for the User Interface (UI).
   * Provide a choice of languages for the Bible book names.
 
