@@ -37,8 +37,10 @@ _Search is currently only for the exact text as edited. Possible enhancements mi
   * Proximity matching in the search pattern
   * Regular expressions in the search pattern
 
-=== Preferences ===
-  * Add a limited number of User Interface (UI) languages as a user selection
+=== Go Bible Preferences ===
+  * Restructure preferences to use sub-menus, to alleviate scrolling.
+  * Provide a choice of languages for the User Interface (UI).
+  * Provide a choice of languages for the Bible book names.
 
 === Source code rewrites? ===
   * Rewrite Go Bible using [http://www.j2mepolish.org/ J2ME Polish] which provides lots of nice user interface features and custom fonts 
