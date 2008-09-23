@@ -14,6 +14,7 @@ Use this page to outline proposals for developing the *Go Bible* application.
 _Some of these are copied from the [http://gobible.jolon.org/news.html Go Bible News] page_
 === Enhancements and improvements ===
   * Provide support for secure [http://en.wikipedia.org/wiki/Digital_signature digital signatures]
+  * Provide options for encryption and password protection of Go Bible applications
   * Specify and provide support for *Psalm titles* in the [GoBibleDataFormat]
   * Provide support for [http://en.wikipedia.org/wiki/T9_(predictive_text) T9 input] when selecting a book in the "Go to" menu
   * Show a list of books which can be scrolled through when selecting a book in the "Go to" menu
