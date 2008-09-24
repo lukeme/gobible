@@ -69,4 +69,5 @@ _Search results_
   * Permit the book-name-map to map all books (without causing an error message), even when the collection has fewer books
 
 === Build automation ===
-  * Develop an [http://en.wikipedia.org/wiki/Apache_Ant Apache Ant] utility to automate the build of multiple Go Bibles from source text files on any platform.
+  * Develop an [http://en.wikipedia.org/wiki/Apache_Ant Apache Ant] utility to automate the build of multiple Go Bibles from source text files on any platform
+  * Facilitate the compilation of both GoBible and GoBibleCreator together using a single make command
