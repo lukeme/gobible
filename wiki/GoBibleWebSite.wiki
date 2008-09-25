@@ -20,3 +20,6 @@ To catch and retain visitors' attention, the image should be replaced by one tha
 
 == Provide installation help for special phone brands and models ==
   * Blackberry
+
+== Go Bible Creator ==
+References to UTF-8 as the required encoding for source text files and collection text files should state clearly that these must be UTF-8 *without BOM* (byte order marker)
