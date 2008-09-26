@@ -15,6 +15,7 @@ import java.util.*;
 import java.util.jar.*;
 import javax.imageio.*;
 import jolon.xml.*;
+import java.util.zip.*;
 
 /**
  * Creates Go Bible JAR files from XML Bible texts. Supports both OSIS and
@@ -61,7 +62,7 @@ public abstract class GoBibleCreator
 	 * Version of Go Bible to be written to JAR and JAD files. Major version will
 	 * be the MIDP version. eg. MIDP 2.0 version will be 2.x.x.
 	 **/
-	public final static String SUB_VERSION = "2.6";
+	public final static String SUB_VERSION = "3.2";
 
 	/** Style changes are written out as flags in a single byte. **/
 	public final static char STYLE_RED = 1;
@@ -126,7 +127,7 @@ public abstract class GoBibleCreator
 
 	/** Contains the contents of the English UI properties file and
 		non-English UI strings specified in the Collections file.
-     **/	
+        **/	
 	protected static HashMap uiProperties = new HashMap();
 	
 	/** Identical to the keys used in the books HashMap except retains the order
@@ -140,6 +141,37 @@ public abstract class GoBibleCreator
 	 */
 	protected static String baseSourceDirectory = null;
 
+        // the extension that is used by the USFM files
+        // introduced in version 2.3
+        protected static String usfmSourceFileExtension = null;        
+        // the file path (relative to the baseSource directory) to an alternate 
+        // icon that will display on the phone
+        // introduced in version 2.3
+        protected static String phoneIconFilepath = null;        
+        //the USFM file codepage for the source files
+        // introduced in version 2.3
+        protected static String fileCodepage = null;
+        // alternate name for the application that will be displayed in the 
+        // phone's title
+        // introduced in version 2.3
+        protected static String applicationName = null;
+        // flag to determine if red lettering is used
+        // introduced in version 2.3
+	protected static boolean useRedLettering = true;
+        // listing of the possible types of supported source file formats
+        // introduced in version 2.3
+        protected static String sTitleTag = "\\h";
+        public enum SourceFormatType
+        {
+            osis,
+            thml,
+            usfm,
+            unknown  
+        };
+        // introduced in version 2.3
+        protected static SourceFormatType sourceFormatType;
+        
+        
 	/** 
 	 * The starting point. 
 	 * @param args The first argument is optional and specifies whether MIDP 1.0
@@ -148,8 +180,12 @@ public abstract class GoBibleCreator
 	 * argument is the collections file as specified above.
 	 **/
     public static void main(String args[]) throws IOException
-	{
-		if (args.length < 1)
+    {
+        System.out.println("----------------------------------");
+        System.out.println("GoBibleCreator Version: " + versionString);
+        System.out.println("----------------------------------");
+        
+        if (args.length < 1)
 		{
 			System.out.println("Usage: java -jar CollectionsFilePath");
 		}
@@ -223,16 +259,43 @@ public abstract class GoBibleCreator
 			// Extract xml file from the collectionsFile property: Source-Text
 			String sourceTextPath = extractSourceTextPath(collectionsFile);
 
+                        // Extract the source file type from the collectionsFile property: SourceFormat
+                        sourceFormatType = extractSourceFormatType(collectionsFile);
+                        if (sourceFormatType.equals(SourceFormatType.unknown))
+                        {
+                            //do extra testing on the file to see if the format can be determined
+                            //this is for backward compatibility for GBC 2.2.6 version and prior
+                            //which did not specify the Source-Format property
+                            sourceFormatType = SourceFormatTypeRetry(baseSourceDirectory, sourceTextPath);
+                        }
+
 			// Base source directory can be overridden with the -d argument
 			if (baseSourceDirectory == null)
 			{
 				// By default the sourceTextPath is relative to the collectionsFile
-				baseSourceDirectory = collectionsFile.getParent();
+				//baseSourceDirectory = "" + collectionsFile.getParent();
+                                baseSourceDirectory = collectionsFile.getAbsolutePath();
+                                baseSourceDirectory = baseSourceDirectory.substring(0, baseSourceDirectory.length() - collectionsFile.getName().length());
 			}
 			
-			File xmlFile = new File(baseSourceDirectory, sourceTextPath);
-		
-			books = parseXml(xmlFile);
+                        if (sourceFormatType == SourceFormatType.osis || sourceFormatType == SourceFormatType.thml)
+                        {
+                            File xmlFile = new File(baseSourceDirectory, sourceTextPath);
+                            books = parseXml(xmlFile);
+                        }
+                        else if (sourceFormatType == SourceFormatType.usfm)
+                        {
+                            //make sure that the file extension is retrieved
+                            extractUSFMfields(collectionsFile);
+                            books = parseUSFM(baseSourceDirectory, sourceTextPath, sTitleTag);
+                        }
+                        else
+                        {
+                            //dump out message saying that it cannot determine the file format type
+                            System.out.println("Error: Could not determine Bible format type.  Please use the 'Source-Format'");           
+                            System.out.println("property in your collections file.");
+                            return;
+                        }
 		}
 		
 		if (books != null || updateOnly)
@@ -300,8 +363,6 @@ public abstract class GoBibleCreator
 		// Open the file for reading one line at a time in UTF-8 character encoding
 		LineNumberReader reader = new LineNumberReader(new InputStreamReader(new FileInputStream(collectionsFile), "UTF-8"));
 		
-		Vector collections = new Vector();
-		Collection collection = null;
 		String line = null;
 		String sourceTextPropertyName = "Source-Text:";
 		
@@ -312,6 +373,7 @@ public abstract class GoBibleCreator
 			if (line.startsWith(sourceTextPropertyName))
 			{
 				sourceTextPath = line.substring(sourceTextPropertyName.length()).trim();
+                                break;
 			}
 		}
 		
@@ -330,7 +392,119 @@ public abstract class GoBibleCreator
 		return sourceTextPath;
 	}
 
-	/**
+       /*
+	 * @return the enum of the source file format (i.e., Thml/osis/usfm)
+	 */
+	public static SourceFormatType extractSourceFormatType(File collectionsFile) throws IOException
+	{
+		SourceFormatType sourceFormatType = SourceFormatType.unknown;
+		
+		// Open the file for reading one line at a time in UTF-8 character encoding
+		LineNumberReader reader = new LineNumberReader(new InputStreamReader(new FileInputStream(collectionsFile), "UTF-8"));
+		
+		String line = null;
+		String sourceTextPropertyName = "Source-Format:";
+		
+		// Read the collections in the file
+		while ((line = reader.readLine()) != null)
+		{
+			// Test if line contains the source text property
+			if (line.startsWith(sourceTextPropertyName))
+			{
+                            String sFormat =  line.substring(sourceTextPropertyName.length()).trim().toLowerCase();
+                            
+                            if (sFormat.equals("osis")) 
+                                { sourceFormatType = SourceFormatType.osis; }
+                            else if (sFormat.equals("thml")) 
+                                { sourceFormatType = SourceFormatType.thml; }
+                            else if (sFormat.equals("usfm")) 
+                                { sourceFormatType = SourceFormatType.usfm; }
+                            else 
+                                { sourceFormatType = SourceFormatType.unknown; }
+                            break;
+           		}
+		}
+		reader.close();
+		return sourceFormatType;
+	}
+
+        /*
+	 * @return the extension of the the USFM files
+	 */
+	public static void extractUSFMfields(File collectionsFile) throws IOException
+	{
+		// Open the file for reading one line at a time in UTF-8 character encoding
+		LineNumberReader reader = new LineNumberReader(new InputStreamReader(new FileInputStream(collectionsFile), "UTF-8"));
+		
+		String line = null;
+		// Read the collections in the file
+		while ((line = reader.readLine()) != null)
+		{
+                    // Test if line contains the source text property
+                    if (line.startsWith("Source-FileExtension:"))
+                    {
+                        usfmSourceFileExtension =  line.substring("Source-FileExtension:".length()).trim().toLowerCase();
+                        //check for starting period and strip off
+                        usfmSourceFileExtension = usfmSourceFileExtension.replaceAll("\\.", "");
+                    }
+                    if (line.startsWith("USFM-TitleTag:"))
+                    {
+                        sTitleTag  =  line.substring("USFM-TitleTag:".length()).trim().toLowerCase();
+                    }
+                    if (line.startsWith("RedLettering:"))
+                    {
+                        //defaults to true
+                        if (line.toLowerCase().indexOf("false") > 0 || line.toLowerCase().indexOf("no") > 0)
+                        {
+                            useRedLettering = false;
+                        }
+                    }
+		}
+		reader.close();
+                
+		return;
+	}
+        
+        
+	/*
+	 * tries one last time to parse the source file to determine the file format
+	 */
+	public static SourceFormatType SourceFormatTypeRetry(String baseSourceDirectory, String sourceTextPath) throws IOException
+	{
+            SourceFormatType sourceFormatType = SourceFormatType.unknown;
+            try
+            {
+                //convert source text to file
+                File fIn = new File(baseSourceDirectory, sourceTextPath);
+                //read in up to the first 200 lines and see if you can spot the tags
+                BufferedReader readerIn = new BufferedReader(new FileReader(fIn));
+                String lineIn;
+                int iRowCount = 0;
+                while ((lineIn = readerIn.readLine()) != null || iRowCount < 200)
+                {
+                    lineIn = lineIn.toLowerCase();
+                    if (lineIn.indexOf(OsisConverter.OSIS_TAG.toLowerCase()) > 0)
+                    {
+                        sourceFormatType = SourceFormatType.osis;
+                        break;
+                    }
+                    if (lineIn.indexOf(ThmlConverter.THML_TAG.toLowerCase()) > 0)
+                    {
+                        sourceFormatType= SourceFormatType.thml;
+                        break;
+                    }
+                    iRowCount++;
+                }
+                readerIn.close();
+            }
+            catch(Exception e)
+            {
+                System.out.println("Error: " + e.getMessage());
+            }
+            return sourceFormatType;
+        }
+        
+        /**
 	 * Parses the XML file as OSIS or ThML format and extracts and returns
 	 * books as a HashMap.
 	 */
@@ -381,7 +555,66 @@ public abstract class GoBibleCreator
 		
 		return books;
 	}
-	
+
+        /*
+	 * Parses the USFM files format and extracts and returns
+	 * books as a HashMap.
+	 */
+	public static HashMap parseUSFM(String baseSourceDirectory, String sourceTextPath, String sTitleTag) throws IOException
+	{
+            //iterate through the source file directory and get the filenames present
+            //USFM uses a predefined file format of:
+            // 01GENxxxx.ptx
+            HashMap books = new HashMap();
+            if (baseSourceDirectory == null)
+            {
+                baseSourceDirectory = "";
+            }
+            
+            try
+            {
+                System.out.println("Base Dir: " + baseSourceDirectory);
+                System.out.println("Source Path: " + sourceTextPath);
+                
+                //get the list of files in the directory
+                File folder = new File(baseSourceDirectory, sourceTextPath);
+                File[] listOfFiles = folder.listFiles();
+
+                for (int i = 0; i < listOfFiles.length; i++) 
+                {
+                  if (listOfFiles[i].isFile()) 
+                  {
+                      String sFileName = listOfFiles[i].getName();
+                      if (sFileName.toLowerCase().endsWith("." + usfmSourceFileExtension))
+                      {
+                          System.out.println("File " + listOfFiles[i].getName());
+                          String sFilename = folder.toString() + "\\" + listOfFiles[i].getName();
+                          // Create a new book
+                          Book book = new Book(sFilename, STYLE_RED, fileCodepage, useRedLettering, sTitleTag);
+                          book.fileName = listOfFiles[i].getName();
+
+                          // Add book to the lookup table
+                          try
+                          {
+                            books.put(book.name, book);
+                          }
+                          catch (Exception e)
+                          {
+                              System.out.println("Error: " + e.getMessage());
+                          }
+                          bookNames.add(book.name);
+                      }
+                  } 
+                }
+            }
+            catch (Exception e)
+            {
+              System.out.println("Error: " + e.getMessage());
+            }
+            return books;
+	}
+        
+        
 	/**
 	 * No collections file was specified so generating collections file.
 	 */
@@ -462,7 +695,13 @@ public abstract class GoBibleCreator
 	 */
 	public static void parseUiProperties() throws IOException
 	{
-		File uiFile = new File(getJarDirectory(), "GoBibleCore/ui.properties");
+                
+                File uiFile = new File(getJarDirectory(), "GoBibleCore/ui.properties");
+                boolean bRet = uiFile.exists();
+                String sFileExists = "False";
+                if (bRet)
+                    sFileExists = "True";
+                System.out.println(uiFile.getAbsolutePath() + "  exists:" + sFileExists);
 		// Open the file for reading one line at a time in UTF-8 character encoding
 		LineNumberReader reader = new LineNumberReader(new InputStreamReader(new FileInputStream(uiFile), "UTF-8"));
 		
@@ -505,15 +744,66 @@ public abstract class GoBibleCreator
 		// Read the collections in the file
 		while ((line = reader.readLine()) != null)
 		{
+                    //ignore blank lines
+                    if (!line.trim().equals(""))
+                    {
+                        //test to see if the line is a comment line
+                        if (line.startsWith("//") || line.startsWith("rem") || line.startsWith("REM"))
+                        {
+                            //do nothing - ignore line
+                        }
 			// Test if line specifies a WAP site for the JAD files
-			if (line.startsWith("Wap-site:"))
+                        else if (line.startsWith("Wap-site:"))
 			{
 				wapSite = line.substring(9).trim();
 			}
 			// Source-Text is ignored here but is retrieved earlier from within extractSourceTextPath()
 			else if (line.startsWith("Source-Text:"))
 			{
+			}		
+			// Source-FileExtension is the extension of the USFM files in the format ptx,ltn,uz..
+                        // retrieved earlier
+			else if (line.startsWith("Source-FileExtension:"))
+			{
+ 			}		
+			// Source-Format is ignored here but is retrieved earlier
+                        // Added in version > 2.2.6
+			else if (line.startsWith("Source-Format:"))
+			{
 			}			
+			// USFM-TitleTag is ignored here but is retrieved earlier
+                        // Added in version > 2.2.6
+			else if (line.startsWith("USFM-TitleTag:"))
+			{
+			}			
+			// Phone-Icon-Filepath is the filepath to the alternate icon
+                        // to be displayed by the application
+                        // Added in version > 2.2.6
+			else if (line.startsWith("Phone-Icon-Filepath:"))
+			{
+                            phoneIconFilepath = line.substring("Phone-Icon-Filepath:".length()).trim();
+                        }
+                        else if (line.startsWith("Codepage:"))
+			{
+                            fileCodepage = line.substring("Codepage:".length()).trim();
+                        }
+                        // alternate name for the application that will be displayed in the 
+                        // phone title
+                        // introduced in version > 2.2.6
+  			else if (line.startsWith("Application-Name:"))
+			{
+                            applicationName = line.substring("Application-Name:".length()).trim();
+			}
+                        // Check to see if the user wants to use red lettering
+                        // brought in earlier
+                        else if (line.startsWith("RedLettering:"))
+                        {
+                            //defaults to true
+                            if (line.toLowerCase().indexOf("false") > 0 || line.toLowerCase().indexOf("no") > 0)
+                            {
+                                useRedLettering = false;
+                            }
+                        }
 			// Test if line specifies Info property
 			else if (line.startsWith("Info:"))
 			{
@@ -650,17 +940,21 @@ public abstract class GoBibleCreator
 				
 				// Trim whitespace from around the book name
 				bookName = bookName.trim();
+                                //clean up the extranous characters in the book name
+                                if(sourceFormatType == SourceFormatType.usfm)
+                                {
+                                    bookName = USFM_Utilities.CleanBookName(bookName);
+                                }
 				
 				// If the start and end chapters aren't specified then get them from the XML book.
 				// We can only do this if updateOnly isn't set, otherwise the source text
 				// won't have been parsed.
 				if (startChapter == -1 && !updateOnly)
 				{
-					Book xmlBook = (Book) books.get(bookName);
-					
+                                        Book xmlBook = (Book) books.get(bookName);
 					if (xmlBook == null)
 					{
-						System.out.println("Couldn't find book: " + bookName);
+                                            System.out.println("Couldn't find book: " + bookName);
 					}
 					
 					startChapter = xmlBook.startChapter;
@@ -682,12 +976,13 @@ public abstract class GoBibleCreator
 			{
 				System.out.println("Error parsing collections file. Can't understand line:\n" + line);
 			}
+                    }
 		} // While
 		
 		// Close the file
 		reader.close();
 		
-		return collections;
+            return collections;
 	}
 	
 	/**
@@ -695,7 +990,7 @@ public abstract class GoBibleCreator
 	 * A directory with the name of the collection will be created for each collection
 	 * and the Go Bible data files will be placed therein.
 	 * @param directory Directory to place data files.
-	 * @param collections Vector of collections that have been read from the collections file.
+	 * @param collections Vector of collections that have been read from the collec`tions file.
 	 * @param books HashMap of books that have been read from the XML file.
 	 * @param goBibleJar JAR containing the Go Bible classes.
 	 **/
@@ -747,8 +1042,18 @@ public abstract class GoBibleCreator
 		Attributes attributes = manifest.getMainAttributes();
 		
 		attributes.putValue("Manifest-Version", "1.0");
-		attributes.putValue("MIDlet-Name", collection.name + NAME_APPENDAGE);
-		attributes.putValue("MIDlet-1", collection.name + NAME_APPENDAGE + ", Icon.png, GoBible");
+                if (applicationName != null)
+                {
+        		attributes.putValue("MIDlet-Name", collection.name + " " + applicationName);
+                        attributes.putValue("MIDlet-1", collection.name + " " + applicationName + ", Icon.png, GoBible");
+                }
+                else
+                {
+           		attributes.putValue("MIDlet-Name", collection.name + NAME_APPENDAGE);
+                        attributes.putValue("MIDlet-1", collection.name + NAME_APPENDAGE + ", Icon.png, GoBible");
+                }
+                //attributes.putValue("MIDlet-Name", collection.name + NAME_APPENDAGE);
+                //attributes.putValue("MIDlet-1", collection.name + NAME_APPENDAGE + ", Icon.png, GoBible");
 		attributes.putValue("MIDlet-Icon", "Icon.png");
 		attributes.putValue("MIDlet-Vendor", "Jolon Faichney");
 		attributes.putValue("MIDlet-Version", versionString);
@@ -893,28 +1198,59 @@ public abstract class GoBibleCreator
 			//System.out.println("Reading entry from GoBible.jar: " + jarEntry.getName());
 			
 			String entryName = jarEntry.getName();
-			
+			String sFilepath = "";
 			// Ignore existing manifest, and ui.properties file if
 			// the Collections file has specified UI properties
 			if (!entryName.startsWith("META-INF") && !entryName.equals(UI_PROPERTIES_FILE_NAME) && (name == null || entryName.startsWith(name)))
 			{
-				// Add entry to new JAR file
-				jarOutputStream.putNextEntry(jarEntry);
-				
-				InputStream inputStream = new BufferedInputStream(jar.getInputStream(jarEntry));
-				
-				// Read all of the bytes from the Go Bible JAR file and write them to the new JAR file
-				byte[] buffer = new byte [100000];
-				int length;
-				
-				while ((length = inputStream.read(buffer)) != -1)
-				{
-					jarOutputStream.write(buffer, 0, length);
-				}
-				
-				// Close the input stream
-				inputStream.close();
-			}
+                            boolean bNewIcon = false;
+                            if (entryName.equals("Icon.png") && phoneIconFilepath != null)
+                            {
+                                //check for file existance first
+                                File oFile = new File(baseSourceDirectory, phoneIconFilepath);
+                                if (oFile.exists())
+                                {
+                                    bNewIcon = true;
+                                    sFilepath = oFile.getPath();
+                                }
+                            }
+                            
+                            InputStream inputStream;
+                            if (!bNewIcon)
+                            {
+                                 // Add entry to new JAR file
+                                jarOutputStream.putNextEntry(jarEntry);
+                               //copy over the resource from the jar
+                                inputStream = new BufferedInputStream(jar.getInputStream(jarEntry));
+                                // Read all of the bytes from the Go Bible JAR file and write them to the new JAR file
+                                byte[] buffer = new byte [100000];
+                                int length;
+
+                                while ((length = inputStream.read(buffer)) != -1)
+                                {
+                                jarOutputStream.write(buffer, 0, length);
+                                }
+
+                                // Close the input stream
+                                inputStream.close();
+                           }
+                            else
+                            {
+                                //add in the replacement icon
+                                byte[] buffer = new byte[100000]; 
+                                FileInputStream fi = new FileInputStream(sFilepath); 
+                                inputStream = new BufferedInputStream(fi, 100000) ; 
+                                ZipEntry entry = new ZipEntry("Icon.png"); 
+                                jarOutputStream.putNextEntry ( entry ) ; 
+
+                                int count; 
+                                while ((count=inputStream.read(buffer, 0, 100000)) != -1 )
+                                {  
+                                   jarOutputStream.write ( buffer, 0, count  ) ; 
+                                }  
+                                inputStream.close(); 
+                            }
+                        }
 		}		
 	}
 	
@@ -934,17 +1270,27 @@ public abstract class GoBibleCreator
 		
 		PrintWriter writer = new PrintWriter(new BufferedWriter(new OutputStreamWriter(new FileOutputStream(jadFile), "UTF-8")));
 		
-		writer.println("MIDlet-1: " + collection.name + NAME_APPENDAGE + ", Icon.png, GoBible");
-		writer.println("MIDlet-Icon: Icon.png");
+                if (applicationName != null)
+                {
+        		writer.println("MIDlet-1: " + collection.name + " " + applicationName + ", Icon.png, GoBible");
+                	writer.println("MIDlet-Name: " + collection.name + applicationName);
+                }
+                else
+                {
+        		writer.println("MIDlet-1: " + collection.name + NAME_APPENDAGE + ", Icon.png, GoBible");
+        		writer.println("MIDlet-Name: " + collection.name + NAME_APPENDAGE);
+                }
+       		//writer.println("MIDlet-1: " + collection.name + NAME_APPENDAGE + ", Icon.png, GoBible");
+                //writer.println("MIDlet-Name: " + collection.name + NAME_APPENDAGE);
+ 		writer.println("MIDlet-Icon: Icon.png");
 		writer.println("MIDlet-Jar-Size: " + jarFileLength);
 		writer.println("MIDlet-Jar-URL: " + url);
 		writer.println("MIDlet-Info-URL: http://wap.jolon.org");
-		writer.println("MIDlet-Name: " + collection.name + NAME_APPENDAGE);
 		writer.println("MIDlet-Vendor: Jolon Faichney");
 		writer.println("MIDlet-Version: " + versionString);
 		writer.println("MIDlet-Data-Size: 100");
 		writer.println("MicroEdition-Profile: " + midpVersion);
-		
+
 		// Write out info property
 		if (infoString != null)
 		{
@@ -979,9 +1325,7 @@ public abstract class GoBibleCreator
 		for (Enumeration e = collection.books.elements(); e.hasMoreElements(); )
 		{
 			Book collectionBook = (Book) e.nextElement();
-			
 			Book thmlBook = (Book) books.get(collectionBook.name);
-			
 			// Write the book name
 			output.writeUTF(thmlBook.name);
 			
@@ -1475,6 +1819,7 @@ class Book
 		this.endChapter = endChapter;
 	}
 	
+        //used by osis & thml file format
 	public Book(XMLObject book, GoBibleCreator creator, String primaryBookNameAttribute, String secondaryBookNameAttribute)
 	{
 		// Grab the book's name
@@ -1496,7 +1841,6 @@ class Book
 		}
 		
 		// Convert the short name to US-ASCII
-		
 		try
 		{
 			byte[] shortNameBytes = name.getBytes("US-ASCII");
@@ -1540,10 +1884,154 @@ class Book
 			}
 		}
 	}
+
+        //USFM file format
+	public Book(String sFilename, char cSTYLE_RED, String fileCodepage, boolean useRedLettering, String sTitleTag)
+	{
+            //open up the filename for parsing through line-by-line
+            try
+            {
+                //convert source text to file
+                File fIn = new File(sFilename);
+                if (fileCodepage == null)
+                {
+                    fileCodepage = "UTF-8";
+                }
+                fileName = fIn.getName();
+                //read in up to the first 200 lines and see if you can spot the tags
+                BufferedReader readerIn = new BufferedReader(new InputStreamReader(new FileInputStream(fIn), fileCodepage));
+                String lineIn;
+                StringBuffer strBuff = new StringBuffer();
+                
+                while ((lineIn = readerIn.readLine()) != null)
+                {
+                    //check if it is line we want to keep or not
+                    if(USFM_Utilities.CheckIfWeKeepLine(lineIn))
+                    {
+                        if (lineIn.startsWith("\\"))
+                        {
+                            //some line that starts with a verse
+                            strBuff.append(lineIn);
+                        }
+                        else
+                        {
+                            //probably a verse continuation line so append a space
+                            strBuff.append(" " + lineIn);
+                        }
+                    }
+                }
+                readerIn.close();
+                
+                //find the book name from the tags
+                String sHtag = "";
+                int iStart = strBuff.indexOf(sTitleTag);
+                if (iStart != -1)
+                {
+                    //grab a section of text
+                    if(strBuff.length() >= iStart + 200)
+                    {
+                        sHtag = strBuff.substring(iStart + 2, iStart + 200);
+                    }
+                    else
+                    {
+                        sHtag = strBuff.substring(iStart + 2);
+                    }
+                    //parse out the actual information by finding the next tag
+                    //and grabbing the text between
+                    iStart = sHtag.indexOf("\\");
+                    name = USFM_Utilities.CleanBookName(sHtag.substring(1, iStart).trim());
+                }
+                
+                if (sHtag.equals(""))
+                {
+                    System.out.println("ERROR: Can not process the following book as there are no " + sTitleTag + " tags");
+                    System.out.println("Filename:" + sFilename);
+                    System.out.println("Please remove the book from the collection or fix the tags...");
+                }
+                //split up the book into chapters
+                String[] sChapters = strBuff.toString().split("\\\\c ");
+                //the [0] index should be header information that we can
+                //just ignore - we can check for sure by finding the first
+                //index that starts with "1" 
+                for (int i = 0; i < sChapters.length; i++)
+                {
+                    if (sChapters[i].trim().startsWith("1"))
+                    {
+                        iStart = i;
+                        break;
+                    }
+                }
+                
+                //loop through each chapter pulling out the verses
+                int iChapter = 0;
+                for (int i = iStart; i < sChapters.length; i++)
+                {
+                    if (startChapter == -1)
+                    {
+                        startChapter = i;
+                    }
+                    iChapter++;
+                    //create a new chapter
+                    Chapter chapter = new Chapter();
+                    //get rid of all the singular tags in the text that do
+                    //not have an ending tag e.g. \p
+                    String sTmp = sChapters[i].toString();
+                    sTmp = USFM_Utilities.RemoveChapterHeaders(sTmp);
+                    sTmp = USFM_Utilities.RemoveSingularMarkerTags(sTmp);
+                    //remove all the double tags that we need to blow away
+                    //the text between the verses
+                    sTmp = USFM_Utilities.RemoveDoubleMarkerTagsFull(sTmp);
+                    //remove all the double tags that we can just blow away
+                    sTmp = USFM_Utilities.RemoveDoubleMarkerTags(sTmp);
+                    //remove all the double tags that we can just blow away
+                    sTmp = USFM_Utilities.ReplaceWordsOfJesus(sTmp, cSTYLE_RED, useRedLettering);
+                    
+                    //we should have just verse tags left
+                    //parse out all the verses into individual ones
+                    String[] sVerses = sTmp.split("\\\\v ");
+                    String verseString = "";
+                    for (int j = 0; j < sVerses.length; j++)
+                    {
+                        //System.out.println("Chap:[" + i + "]  Verse:[" + j + "]");
+                        verseString = sVerses[j];
+                        if (!verseString.equals(""))
+                        {
+                            //parse out the verse number in the beginning
+                            //of the verse
+                            verseString = USFM_Utilities.RemoveVerseNumbering(verseString);
+                            //check for any remaining USFM tags...
+                            if (verseString.indexOf("\\") != -1)
+                            {
+                                int iTagStart = verseString.indexOf("\\");
+                                int iTagEnd = verseString.indexOf(" ", iTagStart);
+                                if (iTagEnd == -1)
+                                {
+                                    iTagEnd = verseString.length();
+                                }
+                                System.out.println("EXTRA UNPROCESSED TAGS: [" + verseString.substring(iTagStart, iTagEnd)
+                                        + "] " + name + " " + String.valueOf(iChapter) + ":" + String.valueOf(j) 
+                                        + " in file: " + sFilename);
+                            }
+
+                            //add the parsed verses to the chapter object
+                            chapter.verses.addElement(verseString);
+                            chapter.allVerses.append(verseString);		
+                        }
+                    }
+                    
+                    chapters.addElement(chapter);            
+                }
+            }
+            catch(Exception e)
+            {
+                System.out.println("Error: " + e.getMessage());
+            }
+	}
 }
 
 class Chapter
 {
+    //
 	public Vector verses = new Vector();
 	public StringBuffer allVerses = new StringBuffer();
 	public int fileNumber;
