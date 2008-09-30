@@ -10,7 +10,8 @@ import java.io.*;
 
 public class CombinedChapterBibleSource extends BibleSource
 {
-	private GoBible goBible;
+	private GoBible goBible = null;
+	private Class resourceLoader;
 	
 	// Current chapter loaded
 	private int currentBookIndex = -1;
@@ -50,12 +51,18 @@ public class CombinedChapterBibleSource extends BibleSource
 	
 	public CombinedChapterBibleSource(GoBible goBible) throws IOException
 	{
-		// We record the midlet as it may be required to access resources
+		this(goBible.getClass());
 		this.goBible = goBible;
+	}
+	
+	public CombinedChapterBibleSource(Class resourceLoader) throws IOException
+	{
+		// We record the midlet as it may be required to access resources
+		this.resourceLoader = resourceLoader;
 
 		// Read in the main index
 		
-		DataInputStream input = new DataInputStream(goBible.getClass().getResourceAsStream("Bible Data/Index"));
+		DataInputStream input = new DataInputStream(resourceLoader.getResourceAsStream("Bible Data/Index"));
 		
 		// Read in the number of books
 		numberOfBooks = input.read();
@@ -108,6 +115,8 @@ public class CombinedChapterBibleSource extends BibleSource
 		input.close();
 	}
 	
+	
+	
 	public char[] getChapter(int bookIndex, int chapterIndex) throws IOException
 	{
 		// Load the chapter if it isn't loaded
@@ -133,7 +142,7 @@ public class CombinedChapterBibleSource extends BibleSource
 			if (currentBookIndex != bookIndex || combinedChapterIndex[bookIndex][chapterIndex << 2] != currentFileIndex)
 			{
 				// If the bible canvas is displayed then indicate that we are loading a chapter
-				if (goBible.display.getCurrent() == goBible.bibleCanvas)
+				if (goBible != null && goBible.display.getCurrent() == goBible.bibleCanvas)
 				{
 					// Notify the application that we'll be spending some time loading
 					goBible.bibleCanvas.enterLoadingMode();
@@ -150,7 +159,7 @@ public class CombinedChapterBibleSource extends BibleSource
 				// Load the chapter as it will be different if either the chapter or book changed
 				//start = System.currentTimeMillis();
 				
-				DataInputStream input = new DataInputStream(goBible.getClass().getResourceAsStream("Bible Data/" + shortBookNames[bookIndex] + "/" + shortBookNames[bookIndex] + " " + currentFileIndex));
+				DataInputStream input = new DataInputStream(resourceLoader.getResourceAsStream("Bible Data/" + shortBookNames[bookIndex] + "/" + shortBookNames[bookIndex] + " " + currentFileIndex));
 
 				int length = input.readInt();
 				
@@ -226,7 +235,7 @@ public class CombinedChapterBibleSource extends BibleSource
 		
 		currentBookIndex = bookIndex;
 		
-		DataInputStream input = new DataInputStream(goBible.getClass().getResourceAsStream("Bible Data/" + shortBookNames[bookIndex] + "/Index"));
+		DataInputStream input = new DataInputStream(resourceLoader.getResourceAsStream("Bible Data/" + shortBookNames[bookIndex] + "/Index"));
 		
 		// Read each verse length in for each chapter
 		for (int chapter = 0; chapter < numberOfChapters; chapter++)
