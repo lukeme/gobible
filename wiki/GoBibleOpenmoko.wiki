@@ -8,7 +8,10 @@ A GoBible port is available for the [http://wiki.openmoko.org Openmoko]
 = Installation =
 
   * If your distribution feeds contains java (ASU currently does), then use it.  If not (FSO does currently not), [http://wiki.evolvis.org/jalimo/index.php/Packages#OpenMoko add Jalimo feeds]
-  * Copy the gobibleswt package from the Downloads section to the Openmoko and run {{{ opkg install gobibleswt_2.2.6-0openmoko-2007.11-r0_armv4t.ipk}}}
+  * Copy the gobibleswt package from the Downloads section to the Openmoko and run
+    {{{
+    opkg install gobibleswt_2.2.6-0openmoko-2007.11-r0_armv4t.ipk
+    }}}
   * Download a bible from http://go-bible.org/ in your preferred language, unpack the zip and copy the .jar file to the Openmoko. 'Full bible' downloads work fine.
   * Start 'GoBible' using the launcher, go to the Preferences panel and type the path to the downloaded .jar file. Press 'Save Preferences'. Now you are able to read the bible in your preferred language.
 
