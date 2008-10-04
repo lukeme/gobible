@@ -18,3 +18,4 @@ For users of the *Go Bible Creator* developer kit and contributors to the *sourc
   * [http://www.box.net/shared/7pemx6xzcb/rss.xml RSS feed to David's box.net shared files and folders]
   * [http://www.datamystic.com/ TextPipe] - _useful for converting text files_
   * [http://unicodemidlet.googlecode.com Unicode midlet] - _to check font coverage in a cell phone_
+  * [http://www.crosswire.org/ The CrossWire Bible Society] - _Home of the open source SWORD Project_
