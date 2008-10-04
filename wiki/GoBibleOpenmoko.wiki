@@ -13,9 +13,9 @@ A GoBible port is available for the [http://wiki.openmoko.org Openmoko]
     opkg install gobibleswt_2.2.6-0openmoko-2007.11-r0_armv4t.ipk
     }}}
   * Download a bible from http://go-bible.org/ in your preferred language, unpack the zip and copy the .jar file to the Openmoko.
-  'Full bible' downloads work fine.
+  _'Full bible' downloads work fine._
   * Start 'GoBible' using the launcher, go to the Preferences panel and type the path to the downloaded .jar file. Press 'Save Preferences'.
-  Now you are able to read the bible in your preferred language.
+  _Now you are able to read the bible in your preferred language._
 
 = Usage instructions =
 
