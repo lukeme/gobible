@@ -45,3 +45,4 @@ _Unless otherwise stated, all these versions were built from public domain sourc
   # Added column for booknames language
   # Added column for user interface (UI) language
   # Add column to show copyright status
+  # Add column to show red letter edition for WoC (Words of Christ)
