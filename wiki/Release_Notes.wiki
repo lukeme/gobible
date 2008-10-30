@@ -12,7 +12,7 @@ For version history up to 2.2.3, refer to [http://gobible.jolon.org/news.html Go
 == 2.2.6 - 31 March 2008 ==
 
   * Issue 17 - GoBibleCore should now work on BlackBerry phones now that there is no longer any reference to the Nokia UI API in the created JAR files. BlackBerry phones may require JAR files smaller than 512KB.
-  * Issue 2 - GoBibleCreator now ignores tags <span class="chap"> and their contents which was causing a problem specifically with the ASV text where additional chapter numbers were being displayed in Go Bible. GoBibleCreator now also requires that Christ's words in red have the "red" class, eg. <span class="red">
+  * Issue 2 - GoBibleCreator now ignores tags {{{<span class="chap">}}} and their contents which was causing a problem specifically with the ASV text where additional chapter numbers were being displayed in Go Bible. GoBibleCreator now also requires that Christ's words in red have the "red" class, eg. {{{<span class="red">}}}
   * Issue 30 - "of" has been added to the ui.properties file and is correctly utilised by GoBibleCore (thanks to Erik Lundun for fixing this)
   * Issue 3 - The Search form title now correctly uses the UI-Search property.
   * Indonesian translation source should now have the correct translation for James 3.
