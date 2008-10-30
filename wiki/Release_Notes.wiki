@@ -6,7 +6,8 @@
 For version history up to 2.2.3, refer to [http://gobible.jolon.org/news.html Go Bible News]
 
 == 2.3.2 (beta) - 24 September 2008 ==
-  * Supports USFM as source text format, refer to [http://groups.google.com/group/go-bible-dev/browse_thread/thread/d981b332a952c285 Go Bible Dev] for details
+  * GoBibleCreator now supports USFM as source text format, refer to [http://groups.google.com/group/go-bible-dev/browse_thread/thread/d981b332a952c285 Go Bible Dev] for details
+  * Several additional options in GoBibleCreator
   * Issue 36 - Java NullPointerException error solved by prior recompile of 2.2.6
 
 == 2.2.6 - 31 March 2008 ==
