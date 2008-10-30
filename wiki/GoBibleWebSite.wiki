@@ -23,3 +23,10 @@ To catch and retain visitors' attention, the image should be replaced by one tha
 
 == Go Bible Creator ==
 References to UTF-8 as the required encoding for source text files and collection text files should state clearly that these must be UTF-8 *without BOM* (byte order marker)
+
+=== Version 2.2.6 ===
+  * Replace the download by the recompiled version
+
+=== Version 2.3.2 ===
+  * Add description of the new features, with a link to a new page to describe USFM
+  * Update the download
