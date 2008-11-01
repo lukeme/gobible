@@ -20,3 +20,4 @@ For users of the *Go Bible Creator* developer kit and contributors to the *sourc
   * [http://unicodemidlet.googlecode.com Unicode midlet] - _to check font coverage in a cell phone_
   * [http://www.crosswire.org/ The CrossWire Bible Society] - _Home of the open source SWORD Project_
   * [http://notepad-plus.sourceforge.net/ Notepad++] - _a free source code editor and Notepad replacement that supports several languages_
+  * [http://xml-copy-editor.sourceforge.net/ XML Copy Editor] - _a fast, free, validating XML editor_
