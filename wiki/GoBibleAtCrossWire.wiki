@@ -3,7 +3,7 @@
 
 = Introduction =
 
-In Summer 2008, an agreement was made between the director of the *Crosswire Bible Society* and the author of Go Bible for Crosswire to adopt it as its Java ME application.
+In Summer 2008, an agreement was made between the director of the *Crosswire Bible Society* and the author of Go Bible for [http://crosswire.org/ Crosswire] to adopt Go Bible as its Java ME application.
 
 
 = Details =
