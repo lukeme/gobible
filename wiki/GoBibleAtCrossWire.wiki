@@ -1,13 +1,16 @@
-#summary CrossWire Bible Society to adopt Go Bible as its Java ME application.
+#summary Crosswire Bible Society to adopt Go Bible as its Java ME application.
 #labels Featured
 
 = Introduction =
 
-In Summer 2008, an agreement was made between the director of the *CrossWire Bible Society* and the author of Go Bible for CrossWire to adopt it as its Java ME application.
+In Summer 2008, an agreement was made between the director of the *Crosswire Bible Society* and the author of Go Bible for Crosswire to adopt it as its Java ME application.
 
 
 = Details =
 
 _This page is under construction._
 
-Related pages under construction at CrossWire may be viewed at [http://crosswire.org/gobible].
+Related pages under construction at Crosswire may be viewed at [http://crosswire.org/gobible].
+
+==Note==
+  # Crosswire should have an upper-case W, but Google wiki interprets camel case words as links.
