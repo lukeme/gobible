@@ -2,7 +2,7 @@
 
 = Introduction =
 
-GoBibleCreator is a java command line tool for converting ThML or OSIS Bible texts into mobile phone applications.
+GoBibleCreator is a java command line tool for converting ThML, OSIS or USFM Bible texts into mobile phone applications.
 
 
 = Details =
