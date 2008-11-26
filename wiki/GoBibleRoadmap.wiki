@@ -34,6 +34,7 @@ _Search range (radio button) options are hard coded only for the complete Wester
 _Search is currently only for the exact text as edited. Possible enhancements might be as follows:_
   * Whole word searches (as a tick option)
   * Case-sensitive search text (as a tick option)
+  * Full support for cases in Cyrillic and other non-Latin scripts
   * Boolean operators in the search pattern
   * Proximity matching in the search pattern
   * Regular expressions in the search pattern
