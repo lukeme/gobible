@@ -1,0 +1,11 @@
+#summary RedLetterMarkup is a method of tagging the Words of Christ in the New Testament such that suitable Bible software can display them in a different colour, such as red.
+
+= Introduction =
+
+GoBibleCreator supports RedLetterMarkup for ThML and USFM source text, but not yet for the WoC tags in OSIS.
+
+
+== Details ==
+
+_To be added later_
+
