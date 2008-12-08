@@ -65,8 +65,8 @@ _Search results_
   * ~~Enhance GoBibleCreator to build directly from USFM files, in addition to the existing ThML and OSIS formats~~ This task is now complete, and available in version 2.3.2
   * ~~Provide support for alternative icon and application title, where the existing ones may present a cultural stumbling block~~ This task is now complete, and available in version 2.3.2
   * Enhance GoBibleCreator to build directly from SFM files (the non-unified variety)
-  * Make RedLetterMarkup for WordsOfChrist a build option in the collections text syntax
-  * Enhance GoBibleCreator to facilitate RedLetterMarkup for WordsOfChrist (WoC) tags in OSIS files. Implementing RedLetterMarkup is currently supported only in ThML and USFM source text format
+  * Make RedLetterMarkup for Words of Christ a build option in the collections text syntax
+  * Enhance GoBibleCreator to facilitate RedLetterMarkup for Words of Christ (WoC) tags in OSIS files. Implementing RedLetterMarkup is currently supported only in ThML and USFM source text format
   * Provide support for specifying JAD properties other than existing defaults
   * Allow a user interface translation to be specified as a path to a separate text file
   * Allow a book-name-map to be specified as a path to a separate text file
