@@ -62,7 +62,7 @@ _Search results_
   * A [http://en.wikipedia.org/wiki/PHP PHP] script which converts source text into GoBibleDataFormat 
 
 === Go Bible Creator ===
-  * Enhance GoBibleCreator to build directly from USFM files, in addition to the existing ThML and OSIS formats
+  * ~~Enhance GoBibleCreator to build directly from USFM files, in addition to the existing ThML and OSIS formats~~ This task is now complete, and available in version 2.3.2
   * Provide support for specifying JAD properties other than existing defaults
   * Provide support for alternative icon and application title, where the existing ones may present a cultural stumbling block
   * Allow a user interface translation to be specified as a path to a separate text file
