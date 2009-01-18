@@ -12,6 +12,9 @@ For an unbiased description of *Go Bible*, see
 For users of the *Go Bible Creator* developer kit and contributors to the *source code*, see
   * [http://gobible.blogspot.com/ Go Bible Team blog]
 
+There is now an IRC channel for *Go Bible* where you can chat with team members
+  * [http://embed.mibbit.com/?server=irc.freenode.net&channel=%23gobible #gobible chat]
+
 == Other useful links are ==
   * [http://ebible.org/usfx/Bible-encoding.htm Bible File Encoding for Bible Translators, Publishers, and Software Developers] _by Kahunapule Michael Johnson_
   * [http://dfhmch.googlepages.com/home David's Go Bible Repository]
