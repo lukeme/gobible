@@ -75,6 +75,7 @@ _Search results_
   * Allow a user interface translation to be specified as a path to a separate text file
   * Allow a book-name-map to be specified as a path to a separate text file
   * Permit the book-name-map to map all books (without causing an error message), even when the collection has fewer books
+  * Add option to specify different book order at build, e.g. as used in the Eastern canon for the New Testament, such that search scope options still work
 
 === Build automation ===
   * Develop an [http://en.wikipedia.org/wiki/Apache_Ant Apache Ant] utility to automate the build of multiple Go Bibles from source text files on any platform
