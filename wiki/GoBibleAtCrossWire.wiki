@@ -1,4 +1,4 @@
-#summary The !CrossWire Bible Society to adopt Go Bible as its Java ME application.
+#summary The CrossWire Bible Society to adopt Go Bible as its Java ME application.
 #labels Featured
 
 = Introduction =
