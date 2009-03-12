@@ -29,6 +29,7 @@ _Some of these are copied from the [http://gobible.jolon.org/news.html Go Bible 
   * Add scrolling & user interface support for [http://en.wikipedia.org/wiki/Touchscreen touchscreen] only phones (e.g. Samsung SGH-F488)
   * Add feature to *Send verses by email*, for phones that have email capability
   * Add UI support for non-Latin [http://www.code2000.net/numbersutf.htm numerals]
+  * Add landscape orientation support for slide phones with full QWERTY keyboard (e.g. LG KS360)
 
 === Search feature improvements ===
 _Search range (radio button) options are hard coded only for the complete Western canon_
