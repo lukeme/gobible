@@ -1,0 +1,14 @@
+#summary This page describes how to convert a !CrossWire SWORD module to Go Bible.
+#labels Phase-Implementation
+
+= Introduction =
+
+_Page under construction. Intend to copy the content of latest comment in issue 15._
+
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
