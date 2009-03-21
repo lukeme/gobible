@@ -1,5 +1,5 @@
 #summary This page describes how to convert a CrossWire SWORD module to Go Bible.
-#labels Phase-Implementation
+#labels Phase-Implementation,Featured
 
 = Introduction =
 
@@ -16,6 +16,8 @@ GoBibleCreator.
 After some work, I managed to create a file that was correctly read by GoBibleCreator. 
 
 I post the steps here in case someone else is struggling with the same problems and finds this thread.
+
+_Comment 8 was posted by [http://code.google.com/u/gbdjoh/ gbdjoh]._
 
 == Requirements ==
 
