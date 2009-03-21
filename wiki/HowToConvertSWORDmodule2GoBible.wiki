@@ -1,4 +1,4 @@
-#summary This page describes how to convert a !CrossWire SWORD module to Go Bible.
+#summary This page describes how to convert a CrossWire SWORD module to Go Bible.
 #labels Phase-Implementation
 
 = Introduction =
