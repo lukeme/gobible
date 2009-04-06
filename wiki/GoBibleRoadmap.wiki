@@ -30,6 +30,7 @@ _Some of these are copied from the [http://gobible.jolon.org/news.html Go Bible 
   * Add feature to *Send verses by email*, for phones that have email capability
   * Add UI support for non-Latin [http://www.code2000.net/numbersutf.htm numerals]
   * Add landscape orientation support for slide phones with full QWERTY keyboard (e.g. LG KS360)
+  * Include an abbreviation for the Bible version along with Send Verses by MMS/SMS
 
 === Search feature improvements ===
 _Search range (radio button) options are hard coded only for the complete Western canon_
