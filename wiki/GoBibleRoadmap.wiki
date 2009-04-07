@@ -67,6 +67,7 @@ _Search results_
   * An [http://en.wikipedia.org/wiki/XLST XSL Transformation] which converts any valid OSIS Bible source text file to become usable by GoBibleCreator, no matter what was used to generate the original OSIS file
   * A [http://en.wikipedia.org/wiki/Graphical_user_interface GUI] for GoBibleCreator, possibly making use of [http://en.wikipedia.org/wiki/Swing_(Java) Swing]?
   * A [http://en.wikipedia.org/wiki/PHP PHP] script which converts source text into GoBibleDataFormat 
+  * A utility to convert a !CrossWire SWORD module directly to a Go Bible application
 
 === Go Bible Creator ===
   * ~~Enhance GoBibleCreator to build directly from USFM files, in addition to the existing ThML and OSIS formats~~ This task is now complete, and available in version 2.3.2
