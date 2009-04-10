@@ -53,6 +53,9 @@ _Search results_
   * Provide a choice of languages for the User Interface (UI).
   * Provide a choice of languages for the Bible book names.
 
+=== Traceability ===
+  * Rebuild GoBibleCore with all links to Jolon replaced by links to !CrossWire
+
 === Source code rewrites? ===
   * Rewrite Go Bible using [http://www.j2mepolish.org/ J2ME Polish] which provides lots of nice user interface features and custom fonts 
   * Rewrite Go Bible using [http://mobile.processing.org/ Mobile Processing] (this also supports custom fonts) 
