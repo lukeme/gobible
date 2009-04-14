@@ -60,7 +60,7 @@ _Search results_
   * Rewrite Go Bible using [http://www.j2mepolish.org/ J2ME Polish] which provides lots of nice user interface features and custom fonts 
   * Rewrite Go Bible using [http://mobile.processing.org/ Mobile Processing] (this also supports custom fonts) 
   * Adapt Go Bible to make use of [http://en.wikipedia.org/wiki/Scalable_Vector_Graphics SVG Tiny] in order to provide custom font support for scripts such as Burmese
-  * Rewrite Go Bible to become a SWORD frontend, separating the Java ME application from the data files holding the Bible text.
+  * Rewrite Go Bible to become a [http://crosswire.org/sword/ SWORD] frontend, separating the Java ME application from the data files holding the Bible text.
 
 === Ports to other mobile platforms? ===
   * A version of Go Bible for the [http://code.google.com/android/ Android] platform 
