@@ -74,6 +74,7 @@ _Search results_
   * A utility to convert a !CrossWire SWORD module directly to a Go Bible application
 
 === Go Bible Creator ===
+  * Enhance GoBibleCreator to be capable of processing SWORD modules directly, making use of the [http://www.crosswire.org/jsword/ JSword] API to extract the Biblical text
   * Enhance GoBibleCreator to be capable of processing OSIS files in which chapter and verse XML tags are in the milestone form. Currently it supports only the container form for chapter and verse tags
   * ~~Enhance GoBibleCreator to build directly from USFM files, in addition to the existing ThML and OSIS formats~~ This task is now complete, and available in version 2.3.2
   * ~~Provide support for alternative icon and application title, where the existing ones may present a cultural stumbling block~~ This task is now complete, and available in version 2.3.2
