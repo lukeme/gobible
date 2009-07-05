@@ -72,6 +72,7 @@ _Search results_
   * A [http://en.wikipedia.org/wiki/Graphical_user_interface GUI] for GoBibleCreator, possibly making use of [http://en.wikipedia.org/wiki/Swing_(Java) Swing]?
   * A [http://en.wikipedia.org/wiki/PHP PHP] script which converts source text into GoBibleDataFormat 
   * A utility to convert a !CrossWire SWORD module directly to a Go Bible application
+  * Document how to make the shaped Arabic Go Bible applications for Sony Ericsson phones
 
 === Go Bible Creator ===
   * Enhance GoBibleCreator to be capable of processing SWORD modules directly, making use of the [http://www.crosswire.org/jsword/ JSword] API to extract the Biblical text
