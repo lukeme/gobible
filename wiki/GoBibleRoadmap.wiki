@@ -16,6 +16,7 @@ _Some of these are copied from the [http://gobible.jolon.org/news.html Go Bible 
   * Provide support for secure [http://en.wikipedia.org/wiki/Digital_signature digital signatures]
   * Provide options for encryption and password protection of Go Bible applications
   * Specify and provide support for *Psalm titles* in the [GoBibleDataFormat]
+  * Specify and provide support for *colophons* (at the end of each Pauline epistle) in the [GoBibleDataFormat]
   * Provide support for [http://en.wikipedia.org/wiki/T9_(predictive_text) T9 input] when selecting a book in the "Go to" menu
   * Show a list of books which can be scrolled through when selecting a book in the "Go to" menu
   * Two dimensional "Go to" menu with book abbreviations in a 6x11 table?
