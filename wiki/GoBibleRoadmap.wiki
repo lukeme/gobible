@@ -53,6 +53,8 @@ _Search results_
   * Restructure the preferences menu to use sub-menus, to alleviate scrolling.
   * Provide a choice of languages for the User Interface (UI).
   * Provide a choice of languages for the Bible book names.
+  * Provide a choice of either search scope (radio buttons) or search range (first to last book).
+  * Provide a choice for maximum number of search results.
 
 === Traceability ===
   * Rebuild GoBibleCore with all links to Jolon replaced by links to !CrossWire
