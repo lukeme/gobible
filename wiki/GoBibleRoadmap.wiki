@@ -94,6 +94,7 @@ _Search results_
   * Allow a book-name-map to be specified as a path to a separate text file
   * Permit the book-name-map to map all books (without causing an error message), even when the collection has fewer books
   * Add option to specify different book order at build, e.g. as used in the Eastern canon for the New Testament, such that search scope options still work
+  * Permit three letter ISO language codes to be used with Language-Code: in a collections text file. GoBibleCreator currently accepts only two letters.
 
 === Build automation ===
   * Develop an [http://en.wikipedia.org/wiki/Apache_Ant Apache Ant] utility to automate the build of multiple Go Bibles from source text files on any platform
