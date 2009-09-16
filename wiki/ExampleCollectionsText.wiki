@@ -5,7 +5,7 @@
 This text file is included with GoBibleCreator version 2.3.5
 
 
-= Details =
+== Details ==
 
 _The colors are an artefact of the Google wiki software._
 
