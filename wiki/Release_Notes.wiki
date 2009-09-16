@@ -3,7 +3,9 @@
 
 = Introduction =
 
-The latest version of GoBibleCreator is v2.3.5. This page is not fully up to date.
+The latest version of GoBibleCreator is v2.3.5. 
+
+This page is not fully up to date. Please refer to GoBibleCreatorReadMe.
 
 _For version history up to 2.2.3, refer to [http://gobible.jolon.org/news.html Go Bible News]_
 
