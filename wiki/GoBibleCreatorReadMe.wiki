@@ -10,6 +10,17 @@ This is a copy of the contents of the readme text file included with Go Bible Cr
 _The colors are an artefact of Google wiki software._
 
 {{{
+
+GoBibleCreator 2.3.6 Notes 
+October 1, 2009
+
+Fixed the following: (USFM source text)
+- missing \d, \k, \mr tags - these should now be processed (list updated below with these entries)
+- added in the new USFM version 2.2 standard tags of \xot, \xnt, and \iqt  (list updated below with these entries)
+- fixed the hanging \q problem where this tag was on a line by itself
+
+
+
 GoBibleCreator 2.3.5 Notes 
 July 10, 2009
 
@@ -33,15 +44,14 @@ April 27, 2009
 
 The new version primarily fixes these things: (USFM source text)
  
-- BUG FIX: Exclamation points were being removed from the text when they appeared as the final character in a chapter.  This mostly happens in the Psalms.
+- BUG FIX: Exclamation marks were being removed from the text when they appeared as the final character in a chapter.  This mostly happens in the Psalms.
 - BUG FIX: The tag parsing was reordered to make sure that short tags (e.g., \q or \p) were processed after longer tags which started with those same characters (e.g., \qa or \pi).  This prevents the longer tag from being truncated early by the short tag and leaving residue behind.  For example, \pi would leave behind the "i" character because \p was previously processed.
 - BUG FIX: Modified the code to better handle spaces after tags.  Several of the tag parses would leave an extra space in the text.
- 
- 
+
  
  
 GoBibleCreator 2.3 Notes
-September 17, 2008
+September 28, 2009
 
 This version adds in the following new abilities:
 --------------------------------------------------
@@ -87,27 +97,32 @@ This version adds in the following new abilities:
         below.  Set to the \h tag by default
 
 ===================================================================
-USFM TAG HANDLING IN GBC
+USFM TAG HANDLING IN Go Bible Creator
 ===========================================================================
 USFM files are marked by using tags.  Some tags are free standing and some
 have ending tags.  The conversion program handles the tags in the following
 ways.
 
 1. Throws out the whole line for the following tags:
-   "\cl","\cp","\cd", "\qa", "\s"
+   "\\cl", "\\cp", "\\cd", "\\qa", "\\sr", "\\ms", 
+   "\\mte", "\\mt", "\\mr ", "\\sr ", "\\s", "\\r ", "\\d ", "\\sp"
 2. Removal of the USFM tags only for tags that do not have an end tag:
-   "\p","\m", "\pmo", "\pm", "\pmc", "\pmr", "\mi", "\nb", "\cls", "\pc", 
-   "\pr", "\b", "\qr", "\qc", "\pb", "\z"
+   "\\pi", "\\ph", "\\pmo", "\\pm", "\\pmc",
+   "\\pmr", "\\mi", "\\nb", "\\cls", "\\pc", "\\pr", 
+   "\\qr", "\\qc", "\\pb", "\\b", "\\m", "\\p", "\\z"
+   "\\li", "\\qm", "\\q"
 3. Removal of the USFM tags only for tags that do not have an end tab but are
    supposed to be followed with a number (e.g., \q1):
    "\pi", "\li", "\ph", "\q", "\qm"
 4. Removal of the USFM tags which have a start and end tag but we want to keep
    the text inside of the markers (i.e., formatting type tags for bold, etc):
-   "\qs", "\qac", "\add", "\dc", "\nd", "\ord", "\pn", "\qt", "\sig", "\sls", 
-   "\tl", "\em", "\bd", "\it", "\bdit", "\no", "\sc"
+   "\\qs", "\\qac", "\\add", "\\dc", 
+   "\\nd", "\\ord", "\\pn", "\\qt", "\\sig", "\\sls", 
+   "\\tl", "\\em", "\\bd", "\\it", "\\bdit", "\\no", "\\sc", "\\k"
 5. Removal of the USFM tags which have a start and end tag and all the text
    that lies between (i.e., comment type tags):
-   "\ca", "\va", "\vp", "\f", "\fe", "\bk", "\xdc", "\fdc", "\fm", "\x", 
-   "\fig", "\ndx", "\pro", "\w", "\wg", "\wh"
+   "\\ca", "\\va", "\\vp", "\\fe", "\\bk", 
+   "\\xdc", "\\fdc", "\\fm", "\\fig", "\\ndx", "\\pro", 
+   "\\wg", "\\wh", "\\f", "\\w", "\\x", "\\rq", "\\xot", "\\xnt", "\\iqt"
 
 }}}
