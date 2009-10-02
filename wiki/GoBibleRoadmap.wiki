@@ -81,12 +81,16 @@ _Search results_
   * Document how to make the shaped Arabic Go Bible applications for Sony Ericsson phones
 
 === Go Bible Creator ===
-  * Enhance GoBibleCreator to be capable of processing SWORD modules directly, making use of the [http://www.crosswire.org/jsword/ JSword] API to extract the Biblical text
-  * Enhance GoBibleCreator to be capable of processing OSIS files in which chapter and verse XML tags are in the milestone form. Currently it supports only the container form for chapter and verse tags
+==== Implemented ====
   * ~~Enhance GoBibleCreator to build directly from USFM files, in addition to the existing ThML and OSIS formats~~ This task is now complete, and available in version 2.3.2
   * ~~Provide support for alternative icon and application title, where the existing ones may present a cultural stumbling block~~ This task is now complete, and available in version 2.3.2
+  * ~~Update GoBibleCreator to build directly from USFM files that conform to version 2.2 of usfm.sty~~ This task is now complete, and available in version 2.3.6 
+
+==== Proposals ====
+  * Enhance GoBibleCreator to be capable of processing SWORD modules directly, making use of the [http://www.crosswire.org/jsword/ JSword] API to extract the Biblical text
+  * Enhance GoBibleCreator to be capable of processing OSIS files in which chapter and verse XML tags are in the milestone form. Currently it supports only the container form for chapter and verse tags
+  * Add option for GoBibleCreator to supply a specified MissingVerseText marker.
   * Extend the alternative icon support to have a separate icon for each collection
-  * Update GoBibleCreator to build directly from USFM files that conform to version 2.2 of usfm.sty
   * Make RedLetterMarkup for Words of Christ a build option in the collections text syntax. This is now done for USFM, but not for ThML source text format.
   * Enhance GoBibleCreator to facilitate RedLetterMarkup for Words of Christ (WoC) tags in OSIS files. Implementing RedLetterMarkup is currently supported only in ThML and USFM source text format
   * Provide support for specifying JAD properties other than existing defaults
@@ -95,6 +99,7 @@ _Search results_
   * Permit the book-name-map to map all books (without causing an error message), even when the collection has fewer books
   * Add option to specify different book order at build, e.g. as used in the Eastern canon for the New Testament, such that search scope options still work
   * Permit three letter ISO language codes to be used with Language-Code: in a collections text file. GoBibleCreator currently accepts only two letters.
+
 
 === Build automation ===
   * Develop an [http://en.wikipedia.org/wiki/Apache_Ant Apache Ant] utility to automate the build of multiple Go Bibles from source text files on any platform
