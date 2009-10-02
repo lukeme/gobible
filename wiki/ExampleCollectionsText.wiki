@@ -12,30 +12,36 @@ _The colors are an artefact of the Google wiki software._
 _Ignore any spelling mistakes or typos._
 
 {{{
-// ==============================================================
-// This is an example collections file
+
+// =========================================================================
+// This is an example collections file - text encoded as UTF-8 (without BOM)
 // You may add in comments to this file by starting a line
 // with either '//' or with REM.  Blank lines are ignored as well
-// ==============================================================
-//REQUIRED: information about the bible
-Info: My People Group's Bible, Copywrite: 2008 My Bible Society
-//
+// This collections file is not an exhaustively complete example
+// =========================================================================
+
+//REQUIRED: information about the bible (this line can be as long as you want - take full advantage of it)
+//  Tip: State clearly the distribution terms and conditions, where applicable.
+//  Tip: Include a URL where your Go Bible application is available (the one below is made up).
+//  Tip: For other languages, repeat the English sentences in translation.
+Info: My People Group's Bible, Copyright © 2008 My Bible Society. Download from http://www.my-bs.org/mobile/
+
 //REQUIRED: 
-// for OSIS/THML this is the path to the source file
-// for USFM files this is the directory path to where the USFM files are located
+// for OSIS/THML this is the [relative] path to the source file
+// for USFM files this is the [relative] path to the directory where the USFM files are located
 Source-Text: \Bible_USFM
-//
+
 //REQUIRED for USFM: the source file format: osis | thml | usfm
 Source-Format: usfm
 
 //REQUIRED for USFM:  the USFM source file extension - do not add the '.' prefix 
 Source-FileExtension: uzl
 
-//OPTIONAL: The path to a new 20x20 png icon if you want to replace the default cross
+//OPTIONAL: The path to a new 20x20 png icon if you want to replace the default cross icon
 Phone-Icon-Filepath: new_logo.png
 
-//OPTIONAL: A new application name that will show up in the phone's menu - normally 'GoBible'
-Application-Name: GoMyReader
+//OPTIONAL: Customize the application name that will show up in the phone's menu - normally 'Go Bible'
+Application-Name: MyGBReader
 
 //REQUIRED for USFM: the codepage in which the source files are formatted
 //  examples:
@@ -65,9 +71,12 @@ USFM-TitleTag: \h
 //REQUIRED: Collections/Books
 //Note: for USFM these book names must match the header text tag (\h) or the 
 //  USFM-TitleTag:if specified above.  You will need to make sure that all 
-//  punctuation marks or accents are not present in the header tag or in this 
-//  book list.  Delete them or replace them with a space or dash
-Collection: NewTestiment
+//  punctuation marks or accents that are an individual characters (e.g., !?%,'` etc) are not present
+//  in the header tag or in this  book list.  Delete them or replace them with a space or dash
+//  Many times these characters will not display properly on the cell phone and could cause problems.
+//  It is allowed to include several collections here (e.g. to split Bibles into < 512KB files).
+//  The collection name may include spaces. The derived JAR/JAD filenames will omit the spaces.
+Collection: New Testament
 Book: MATTO
 Book: MARK
 Book: LUQO
@@ -95,4 +104,45 @@ Book: IKKINCHI YUHANNO
 Book: UCHINCHI YUHANNO
 Book: YAHUDO
 Book: VAHIY
+
+//OPTIONAL for changing how book names are displayed in the phone
+//  Remember that the display area on a typical phone is quite narrow
+Book-Name-Map: MATTO, Matto
+Book-Name-Map: MARK, Mark
+Book-Name-Map: LUQO, Luqo
+Book-Name-Map: YUHANNO, Yuhanno
+Book-Name-Map: HAVORIYLAR, Havoriylar
+Book-Name-Map: RIMLIKLARGA, Rimliklarga
+Book-Name-Map: BIRINCHI KORINFLIKLARGA, 1 Korinfliklarga
+Book-Name-Map: IKKINCHI KORINFLIKLARGA, 2 Korinfliklarga
+Book-Name-Map: GALATIYALIKLARGA, Galatiyaliklarga
+Book-Name-Map: EFESLIKLARGA, Efesliklarga
+Book-Name-Map: FILIPPILIKLARGA, Filippiliklarga
+Book-Name-Map: KOLOSALIKLARGA, Kolosaliklarga
+Book-Name-Map: BIRINCHI SALONIKALIKLARGA, 1 Salonikaliklarga
+Book-Name-Map: IKKINCHI SALONIKALIKLARGA, 2 Salonikaliklarga
+Book-Name-Map: BIRINCHI TIMOTIYGA, 1 Timotiyga
+Book-Name-Map: IKKINCHI TIMOTIYGA, 2 Timotiyga
+Book-Name-Map: TITUSGA, Titusga
+Book-Name-Map: FILIMONGA, Filimonga
+Book-Name-Map: IBRONIYLARGA, Ibroniylarga
+Book-Name-Map: YOQUB, Yoqub
+Book-Name-Map: BIRINCHI BUTRUS, 1 Butrus
+Book-Name-Map: IKKINCHI BUTRUS, 2 Butrus
+Book-Name-Map: BIRINCHI YUHANNO, 1 Yuhanno
+Book-Name-Map: IKKINCHI YUHANNO, 2 Yuhanno
+Book-Name-Map: UCHINCHI YUHANNO, 3 Yuhanno
+Book-Name-Map: YAHUDO, Yahudo
+Book-Name-Map: VAHIY, Vahiy
+
+// =============================================================================
+// For further information on collections files, see
+//   http://gobible.jolon.org/developer/GoBibleCreator/GoBibleCreator.html
+//   e.g. To include a localized translation of the Go Bible user interface (UI)
+//   e.g. For how to implement for right to left languages, etc.
+
+// If you have any questions, please visit the Go Bible Forum
+//   http://jolon.org/vanillaforum/
+// =============================================================================
+
 }}}
