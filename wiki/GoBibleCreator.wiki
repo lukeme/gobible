@@ -9,6 +9,6 @@ GoBibleCreator is a java command line tool for converting ThML, OSIS or USFM Bib
 
 Please see http://go-bible.org/developer
 
-See also ExampleCollectionsText
+See also ExampleCollectionsText and GoBibleCreatorReadMe
 
 _More to come..._
