@@ -21,10 +21,11 @@ _Some of these are copied from the [http://gobible.jolon.org/news.html Go Bible 
   * Show a list of books which can be scrolled through when selecting a book in the "Go to" menu
   * Two dimensional "Go to" menu with book abbreviations in a 6x11 table?
   * Enable keys 3 & 6 to scroll up & down by 10 verses (useful for long chapters)
+  * Enable joystick left/right to scroll through History for speedier navigation
   * Add a Help option to the Menu, to display how keys are used for navigation
   * Add a Reset option to the Menu, to clear History, Bookmarks & Search Results and set all Preferences to the as installed defaults
   * Integrate a [http://gobible.googlecode.com/files/M%27Cheyne%27sDailyBread2.2.4.zip Bible Reading Calendar], to read through the whole Bible in a year
-  * Combine two Bible translations/versions into one application, with synchronized scrolling/navigation and left/right keys to switch between them 
+  * Combine two Bible translations/versions into one application, with synchronized scrolling/navigation, and use the # key to switch between them 
   * Add support for Bible cross-references, with hotlinks?
   * Add support for formatting poetry
   * Add support for displaying text as paragraphs
