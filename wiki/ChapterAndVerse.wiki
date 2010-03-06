@@ -1,6 +1,6 @@
-Using numeric keys for chapter and verse in Go to
+#summary Using numeric keys for chapter and verse in Go to
 
-= Introduction =
+== Introduction ==
 
 An undocumented feature of Go Bible is that you can use the numeric keys to enter chapter and verse value during "Go to", providing the cursor is highlighting one of these items.
 
