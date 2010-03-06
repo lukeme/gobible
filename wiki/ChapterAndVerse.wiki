@@ -1,4 +1,4 @@
-# Using numeric keys for chapter and verse in "Go to"
+Using numeric keys for chapter and verse in Go to
 
 = Introduction =
 
