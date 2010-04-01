@@ -1,0 +1,10 @@
+#summary Development tools for Go Bible tasks
+
+= Introduction =
+
+Ideas for further tools should be added to this page.
+
+
+== Ideas ==
+
+  * Convert GoBibleDataFormat to VersePerLine text format
