@@ -1,4 +1,4 @@
-#summary A description of *Verse Per Line* (VPL) text format suitable for some Bibles
+#summary A description of Verse Per Line (VPL) text format suitable for some Bibles
 #labels Phase-Implementation
 
 = Introduction =
