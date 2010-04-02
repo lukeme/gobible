@@ -98,7 +98,7 @@ _Search results_
   * Provide support for specifying JAD properties other than existing defaults
   * Allow a user interface translation to be specified as a path to a separate text file
   * Allow a book-name-map to be specified as a path to a separate text file
-  * Permit the book-name-map to map all books (without causing an error message), even when the collection has fewer books
+  * Permit the Book-Name-Map to map an unused book, without causing an error message
   * Add option to specify different book order at build, e.g. as used in the Eastern canon for the New Testament, such that search scope options still work
   * Permit three letter ISO language codes to be used with Language-Code: in a collections text file. GoBibleCreator currently accepts only two letters.
 
