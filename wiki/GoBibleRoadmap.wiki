@@ -86,8 +86,8 @@ _Search results_
 
 === Ports to other mobile platforms? ===
   * A version of Go Bible for the [http://code.google.com/android/ Android] platform, possibly by means of [http://www.assembla.com/wiki/show/j2ab J2ME Android Bridge] 
-  * A version of Go Bible for the [http://developer.apple.com/iphone/ iPhone] 
-  * A version of Go Bible for the [http://wiki.openmoko.org/wiki/Main_Page OpenMoko] platform
+  * A version of Go Bible for the [http://developer.apple.com/iphone/ iPhone] _Not required. We recommend [http://crosswire.org/pocketsword/ PocketSword] instead._
+  * A version of Go Bible for the [http://wiki.openmoko.org/wiki/Main_Page OpenMoko] platform. _Was done in 2008, though OpenMoko is now dead in the water_
 
 === Preprocessing ===
   * An [http://en.wikipedia.org/wiki/XLST XSL Transformation] which converts any valid OSIS Bible source text file to become usable by GoBibleCreator, no matter what was used to generate the original OSIS file
