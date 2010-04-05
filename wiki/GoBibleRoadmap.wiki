@@ -52,7 +52,8 @@ _Search is currently only for the exact text as edited. Possible enhancements mi
   * Proximity matching in the search pattern
   * Regular expressions in the search pattern
 _Search results_
-  * Display the total number of search results at the top of the results list
+  * ~~Display the total number of search results at the top of the results list.~~ This task is now complete, and available in version 2.4.0
+  * Send search results by SMS
 
 === Go Bible preferences ===
   * Restructure the preferences menu to use sub-menus, to alleviate scrolling.
