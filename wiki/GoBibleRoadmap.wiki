@@ -13,10 +13,7 @@ Use this page to outline proposals for developing the *Go Bible* application.
 == Possible projects ==
 _Some of these are copied from the [http://gobible.jolon.org/news.html Go Bible News] page_
 === Enhancements and improvements ===
-  * Provide support for secure [http://en.wikipedia.org/wiki/Digital_signature digital signatures]
-  * Provide options for encryption and password protection of Go Bible applications
-  * Specify and provide support for *Psalm titles* in the [GoBibleDataFormat]
-  * Specify and provide support for *colophons* (at the end of each Pauline epistle) in the [GoBibleDataFormat]
+_User Interface_
   * Provide support for [http://en.wikipedia.org/wiki/T9_(predictive_text) T9 input] when selecting a book in the "Go to" menu. _This technique is patented, so we will not implement it._
   * Show a list of books which can be scrolled through when selecting a book in the "Go to" menu
   * Two dimensional "Go to" menu with book abbreviations in a 6x11 table?
@@ -24,19 +21,33 @@ _Some of these are copied from the [http://gobible.jolon.org/news.html Go Bible 
   * Enable joystick left/right to scroll through *History* for speedier navigation
   * Add a Help option to the Menu, to display how keys are used for navigation
   * Add a Reset option to the Menu, to clear History, Bookmarks & Search Results and set all Preferences to the as installed defaults
-  * Integrate a [http://gobible.googlecode.com/files/M%27Cheyne%27sDailyBread2.2.4.zip Bible Reading Calendar], to read through the whole Bible in a year
-  * Combine two Bible translations/versions into one application, with synchronized scrolling/navigation, and use the # key to switch between them 
+  * Add scrolling & user interface support for [http://en.wikipedia.org/wiki/Touchscreen touchscreen] only phones (e.g. Samsung SGH-F488)
+  * Add landscape orientation support for slide phones with full QWERTY keyboard (e.g. LG KS360)
+  * Include an abbreviation for the Bible version along with Send Verses by MMS/SMS
+
+_Localization_
+  * Add UI support for non-Latin [http://www.code2000.net/numbersutf.htm numerals]
+
+_Security_
+  * Provide support for secure [http://en.wikipedia.org/wiki/Digital_signature digital signatures]
+  * Provide options for encryption and password protection of Go Bible applications
+
+_Bible translation features_
+  * Specify and provide support for *Psalm titles* in the [GoBibleDataFormat]
+  * Specify and provide support for *colophons* (at the end of each Pauline epistle) in the [GoBibleDataFormat]
   * Add support for Bible cross-references, with hotlinks?
   * Add support for formatting poetry
   * Add support for displaying text as paragraphs
   * Add support for italics as a font attribute (for Bibles that use the Latin alphabet)
   * Support the title attribute in XML elements, to display titles where appropriate
+
+_Integration_
+  * Integrate a [http://gobible.googlecode.com/files/M%27Cheyne%27sDailyBread2.2.4.zip Bible Reading Calendar], to read through the whole Bible in a year
+  * Combine two Bible translations/versions into one application, with synchronized scrolling/navigation, and use the # key to switch between them 
+
+_Further features_
   * Enhancements to take advantage of MIDP 3.0 ([http://www.jcp.org/en/jsr/detail?id=271 JSR 271])?
-  * Add scrolling & user interface support for [http://en.wikipedia.org/wiki/Touchscreen touchscreen] only phones (e.g. Samsung SGH-F488)
   * Add feature to *Send verses by email*, for phones that have email capability
-  * Add UI support for non-Latin [http://www.code2000.net/numbersutf.htm numerals]
-  * Add landscape orientation support for slide phones with full QWERTY keyboard (e.g. LG KS360)
-  * Include an abbreviation for the Bible version along with Send Verses by MMS/SMS
   * Add support for *printing* (e.g. for modern phones that can connect to a wireless printer)
 
 === Search feature improvements ===
