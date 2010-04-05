@@ -51,10 +51,11 @@ _Further features_
   * Add support for *printing* (e.g. for modern phones that can connect to a wireless printer)
 
 === Search feature improvements ===
-_Search range (radio button) options are hard coded only for the complete Western canon_
+_Search scope (radio button) options are hard coded only for the complete Western canon_
   * Provide support for source text files with other than 66 books
   * Provide support for non-Western canonical ordering of books
   * Provide support for the Deuterocanonical books
+  * Provide a workaround for Bibles with the General Epistles before the Pauline Epistles (e.g. Slavic Bibles that follow the NT book order of the Russian Synodal Translation)
 _Search is currently only for the exact text as edited. Possible enhancements might be as follows:_
   * Whole word searches (as a tick option)
   * Case-sensitive search text (as a tick option)
