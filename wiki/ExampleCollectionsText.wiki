@@ -2,7 +2,7 @@
 
 = Introduction =
 
-This text file is included with GoBibleCreator version 2.3.6
+This text file is included with GoBibleCreator version 2.4.0
 
 
 == Details ==
@@ -42,6 +42,12 @@ Phone-Icon-Filepath: new_logo.png
 
 //OPTIONAL: Customize the application name that will show up in the phone's menu - normally 'Go Bible'
 Application-Name: MyGBReader
+
+//OPTIONAL: Customize the name of the vendor that appears in the JAD file
+MIDlet-Vendor: My GB Vendor
+
+//OPTIONAL: Customize the URL that appears in the JAD file (use a valid URL for your WAP downloads)
+MIDlet-Info-URL: http://wap.mygbdomain.org
 
 //REQUIRED for USFM: the codepage in which the source files are formatted
 //  examples:
