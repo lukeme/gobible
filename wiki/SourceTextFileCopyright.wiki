@@ -1,4 +1,4 @@
-#summary Important notice about source text files (OSIS or ThML)
+#summary Important notice about source text files (OSIS or ThML or USFM)
 #labels Featured
 
 = Introduction =
