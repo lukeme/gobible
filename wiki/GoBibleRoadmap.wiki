@@ -105,6 +105,7 @@ _Search results_
   * ~~Update GoBibleCreator to build directly from USFM files that conform to version 2.2 of usfm.sty~~ _This task is now complete, and available in version 2.3.6_
 
 ==== Proposals ====
+  * Enhance GoBibleCreator to be capable of processing SIL Fieldworks Translation Editor files, with source text format XHTML-TE. _This has been implemented by SIL, and requires thorough testing_
   * Enhance GoBibleCreator to be capable of processing SWORD modules directly, making use of the [http://www.crosswire.org/jsword/ JSword] API to extract the Biblical text
   * Enhance GoBibleCreator to be capable of processing OSIS files in which chapter and verse XML tags are in the milestone form. Currently it supports only the container form for chapter and verse tags
   * Add option for GoBibleCreator to supply a specified MissingVerseText marker.
