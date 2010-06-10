@@ -3,7 +3,7 @@
 
 = Introduction =
 
-The latest version of GoBibleCreator is v2.3.6. 
+The latest version of GoBibleCreator is v2.4.0. 
 
 This page is not fully up to date. Please refer to GoBibleCreatorReadMe.
 
