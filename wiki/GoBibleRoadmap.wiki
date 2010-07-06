@@ -16,7 +16,7 @@ _Some of these are copied from the [http://gobible.jolon.org/news.html Go Bible 
 _User Interface_
   * Provide support for [http://en.wikipedia.org/wiki/T9_(predictive_text) T9 input] when selecting a book in the "Go to" menu. _This technique is patented, so we will not implement it._
   * Show a list of books which can be scrolled through when selecting a book in the "Go to" menu
-  * Two dimensional "Go to" menu with book abbreviations in a 6x11 table?
+  * Two dimensional "Go to" menu with book abbreviations in a 6x11 (or a 5x14) table?
   * Enable keys 3 & 6 to scroll up & down by 10 verses (useful for long chapters)
   * Enable joystick left/right to scroll through *History* for speedier navigation
   * Add a Help option to the Menu, to display how keys are used for navigation
