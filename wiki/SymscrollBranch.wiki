@@ -1,0 +1,13 @@
+#summary This page describes features being implemented and tested in the *symscroll* branch
+
+== Introduction ==
+
+Daniel is working on a branch of GoBibleCore and GoBibleCreator. The branch is called  *symscroll* and is hosted on the !CrossWire SVN server.
+
+
+=== Details ===
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
