@@ -1,4 +1,4 @@
-#summary This page describes features being implemented and tested in the *symscroll* branch
+#summary This page describes features being implemented and tested in the symscroll branch
 
 == Introduction ==
 
