@@ -21,6 +21,7 @@ _User Interface_
   * Enable joystick left/right to scroll through *History* for speedier navigation
   * Add a Help option to the Menu, to display how keys are used for navigation
   * Add a Reset option to the Menu, to clear History, Bookmarks & Search Results and set all Preferences to the as installed defaults
+  * Add a Delete option for History items
   * Add scrolling & user interface support for [http://en.wikipedia.org/wiki/Touchscreen touchscreen] only phones (e.g. Samsung SGH-F488)
   * Add landscape orientation support for slide phones with full QWERTY keyboard (e.g. LG KS360)
   * Include an abbreviation for the Bible version along with Send Verses by MMS/SMS
