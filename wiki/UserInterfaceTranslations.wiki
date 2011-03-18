@@ -3,7 +3,7 @@
 
 = Introduction =
 
-The *User Interface* (UI) for Go Bible consists of 73 short phrases listed in the [http://gobible.jolon.org/developer/GoBibleCreator/GoBibleCreator.html Go Bible Creator] page on the main Go Bible website.
+The *User Interface* (UI) for Go Bible consists of 73 short phrases listed in the [http://crosswire.org/wiki/Projects:Go_Bible/UI_Translation Go Bible UI Translation] page on the !CrossWire Developers' wiki.
 
 Currently the UserInterfaceTranslations are managed in a piece-meal manner or not at all.
 
