@@ -1,4 +1,5 @@
 #summary This page describes features being implemented and tested in the symscroll branch
+#labels Phase-Implementation,Featured
 
 == Introduction ==
 
@@ -7,7 +8,9 @@ Daniel is working on a branch of GoBibleCore and GoBibleCreator. The branch is c
 
 === Details ===
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+  #. Symmetric scrolling. Pressing 'up' goes up by one screen, and pressing 'down' goes down by one screen. This should be much more intuitive than the previous method.
+  #. Touchscreen support. For the few out there using the dying breed of phones that support both Java and touchscreens, this branch is for you. For touchscreen phones with a hardware menu button, you can safely get rid of the on-screen keypad and retain full functionality.
+  #. Psalm titles
+  #. Text added in by translators can now be marked up, provided the original sources have them.
+  #. Verse numbers in other numeral representations.
+  #. Search next feature allows you to search from a particular point in the text.
