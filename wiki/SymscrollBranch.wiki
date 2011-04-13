@@ -20,3 +20,6 @@ This part of the code branch is substantially completed, apart from more extensi
 === Details (Creator) ===
 
 This aspect of the code branch is still at an early stage. The aim is to enhance GoBIbleCreator to fully support all the new features.
+
+=== Documentation ===
+Please see http://crosswire.org/wiki/Projects:Go_Bible/SymScroll
