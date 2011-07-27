@@ -52,6 +52,8 @@ _Further features_
   * Add support for *printing* (e.g. for modern phones that can connect to a wireless printer)
 
 === Search feature improvements ===
+_Search algorithm_
+  * Improve search speed by implementing some form of the [http://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_string_search_algorithm Boyer–Moore string search algorithm]
 _Search scope (radio button) options are hard coded only for the complete Western canon_
   * Provide support for source text files with other than 66 books
   * Provide support for non-Western canonical ordering of books
