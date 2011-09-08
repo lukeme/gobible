@@ -1,5 +1,4 @@
 #summary GoBible on the Openmoko
-#labels Featured
 
 = Introduction =
 
