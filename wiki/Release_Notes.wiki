@@ -1,5 +1,5 @@
 #summary This page lists release notes for Go Bible Core and Go Bible Creator.
-#labels Featured
+#labels Deprecated
 
 = Introduction =
 
